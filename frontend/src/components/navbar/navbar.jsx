@@ -7,10 +7,19 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props)
 
+        this.reRoute = this.reRoute.bind(this);
     }
 
     reRoute(field) {
+        const { history } = this.props;
 
+        if (field === 'portfolio') {
+            history.push('/');
+        } else if (field === 'location') {
+            history.push('/location');
+        } else if (field === 'contact') {
+            history.push('/contact');
+        };
     }
 
     render() {
@@ -24,14 +33,17 @@ class Navbar extends React.Component {
         return (
             <div className="navbar-container">
                 <LogoButton />
+                <div className="nav-buttons-container">
                 {
                     navs.map((nav, i) => {
                         return <NavButton 
                             title={nav} 
                             key={`nav-${i}}`}
-                            location={location}/>
+                            location={location}
+                            reRoute={this.reRoute}/>
                     })
                 }
+                </div>
             </div>
         )
     }
