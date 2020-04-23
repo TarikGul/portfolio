@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 const NavButton = props => {
     const { title, reRoute, location } = props;
@@ -9,11 +10,11 @@ const NavButton = props => {
                 (location.pathname === '/' && title === 'portfolio') ?
                 (
                     <div className='current-nav-button'>
-                        {title}
+                        {_.capitalize(title)}
                     </div>
                 ) : (
                     <div className='nav-button'>
-                        {title}
+                        {_.capitalize(title)}
                     </div>
                 )
             }

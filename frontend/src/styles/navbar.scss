@@ -1,6 +1,6 @@
 @import './theme.scss';
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-device-width: 600px) {
     .navbar-container {
         display: flex;
         flex-direction: row;
@@ -8,39 +8,87 @@
         width: 100%;
         background-color: #292a2d;
     }
+
+    .navbar-container {
+        display: flex;
+        flex-direction: row;
+        height: 60px;
+        width: 100%;
+        // background-color: #292a2d;
+        background-color: red;
+    }
+
+    .nav-buttons-container {
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav-buttons-container > div {
+        padding-top: 20px;
+    }
+
+    .current-nav-button {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        text-align: center;
+        line-height: 30px;
+        background-color: #343A40;
+        height: 30px;
+        width: 90px;
+        cursor: pointer;
+    }
+
+    .nav-button {
+        text-align: center;
+        line-height: 30px;
+        height: 30px;
+        width: 90px;
+        cursor: pointer;
+    }
 }
 
-.navbar-container {
-    display: flex;
-    flex-direction: row;
-    height: 60px;
-    width: 100%;
-    background-color: #292a2d;
-}
+@media only screen and (min-device-width: 600px) {
 
-.nav-buttons-container {
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-}
+    .navbar-container {
+        display: flex;
+        flex-direction: row;
+        height: 60px;
+        width: 100%;
+        background-color: #292a2d;
+    }
 
-.nav-buttons-container > div {
-    padding-top: 20px;
-}
+    .nav-buttons-container {
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+    }
 
-.current-nav-button {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    text-align: center;
-    line-height: 30px;
-    background-color: #343A40;
-    height: 30px;
-    width: 90px;
-}
+    .nav-buttons-container > div {
+        padding-top: 20px;
+    }
 
-.nav-button {
-    text-align: center;
-    line-height: 30px;
-    height: 30px;
-    width: 90px;
+    .current-nav-button {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        text-align: center;
+        line-height: 30px;
+        background-color: #343A40;
+        height: 30px;
+        width: 90px;
+        cursor: pointer;
+    }
+
+    .nav-button {
+        text-align: center;
+        line-height: 30px;
+        height: 30px;
+        width: 90px;
+        cursor: pointer;
+        color: gray;
+    }
+
+    .nav-button:hover {
+        color: white;
+    }
 }
