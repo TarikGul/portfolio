@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
-import Main from './main_page';
-import { openModal } from '../../actions/modal_actions';
+import Navbar from './navbar'
 
 const msp = state => {
     return {
@@ -11,11 +10,11 @@ const msp = state => {
 
 const mdtp = dispatch => {
     return {
-        openModal: modal => dispatch(openModal(modal))
+
     };
 };
 
 export default connect(
-    msp, 
+    msp,
     mdtp
-)(Main);
+)(Navbar)
