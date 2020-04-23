@@ -132,16 +132,20 @@
     }
 
     .logo:hover {
-        transform: scale(1.1);
+        transform: scale(1.2);
         color: pink;
     }
 
     .moon-svg {
-        height: 30px;
-        width: 30px;
+        height: 27px;
+        width: 27px;
         margin-right: 20px;
         margin-top: 15px;
         cursor: pointer;
+        transition: all .2s ease-in-out;
     }
 
+    .moon-svg:hover {
+        transform: scale(1.1);
+    }
 }
