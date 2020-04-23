@@ -14,48 +14,8 @@
         flex-direction: row;
         height: 60px;
         width: 100%;
-        // background-color: #292a2d;
-        background-color: red;
-    }
-
-    .nav-buttons-container {
-        margin: 10px;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .nav-buttons-container > div {
-        padding-top: 20px;
-    }
-
-    .current-nav-button {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        text-align: center;
-        line-height: 30px;
-        background-color: #343A40;
-        height: 30px;
-        width: 90px;
-        cursor: pointer;
-    }
-
-    .nav-button {
-        text-align: center;
-        line-height: 30px;
-        height: 30px;
-        width: 90px;
-        cursor: pointer;
-    }
-}
-
-@media only screen and (min-device-width: 600px) {
-
-    .navbar-container {
-        display: flex;
-        flex-direction: row;
-        height: 60px;
-        width: 100%;
         background-color: #292a2d;
+        // background-color: red;
     }
 
     .nav-buttons-container {
@@ -87,8 +47,81 @@
         cursor: pointer;
         color: gray;
     }
+}
+
+@media only screen and (min-device-width: 600px) {
+
+    .navbar-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 60px;
+        width: 100%;
+        background-color: #292a2d;
+    }
+
+    .nav-buttons-container {
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav-buttons-container > div {
+        padding-top: 20px;
+    }
+
+    .navbar-left-container {
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+    }
+
+    .current-nav-button {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        text-align: center;
+        line-height: 30px;
+        background-color: #343A40;
+        height: 30px;
+        width: 90px;
+        cursor: pointer;
+    }
+
+    .nav-button {
+        text-align: center;
+        line-height: 30px;
+        height: 30px;
+        width: 90px;
+        cursor: pointer;
+        color: gray;
+    }
 
     .nav-button:hover {
         color: white;
     }
+
+    .logo {
+        font-size: 26px;
+        font-weight: 600;
+        color: gray;
+        line-height: 60px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+    }
+
+    .logo:hover {
+        transform: scale(1.1);
+        color: pink;
+    }
+
+    .moon-svg {
+        height: 30px;
+        width: 30px;
+        margin-right: 20px;
+        margin-top: 15px;
+        cursor: pointer;
+    }
+
 }

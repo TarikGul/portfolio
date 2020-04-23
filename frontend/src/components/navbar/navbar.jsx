@@ -32,17 +32,22 @@ class Navbar extends React.Component {
 
         return (
             <div className="navbar-container">
-                <LogoButton />
-                <div className="nav-buttons-container">
-                {
-                    navs.map((nav, i) => {
-                        return <NavButton 
+                <div className="navbar-left-container">
+                    <LogoButton />
+                    <div className="nav-buttons-container">
+                    {
+                        navs.map((nav, i) => {
+                            return <NavButton 
                             title={nav} 
                             key={`nav-${i}}`}
                             location={location}
                             reRoute={this.reRoute}/>
-                    })
-                }
+                        })
+                    }
+                    </div>
+                </div>
+                <div className="light-toggle">
+                    <img src="/moon.svg" className="moon-svg"/>
                 </div>
             </div>
         )

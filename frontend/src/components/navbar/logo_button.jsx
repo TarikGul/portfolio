@@ -3,7 +3,7 @@ import React from 'react';
 const LogoButton = props => {
 
     return (
-        <div>
+        <div className="logo">
             TG
         </div>
     )

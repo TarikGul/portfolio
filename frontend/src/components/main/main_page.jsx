@@ -12,7 +12,7 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                React is awesome
+               
             </div>
         )
     }
