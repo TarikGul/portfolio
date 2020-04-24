@@ -1,4 +1,7 @@
 import React from 'react';
+import Welcome from './welcome';
+import Timeline from './timeline/timeline';
+import About from './about/about';
 
 class Main extends React.Component {
     constructor(props) {
@@ -11,8 +14,10 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div>
-               
+            <div className="main-page-container">
+                <Welcome />
+                <About />
+                <Timeline />
             </div>
         )
     }

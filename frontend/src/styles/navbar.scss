@@ -7,7 +7,7 @@
         justify-content: space-between;
         height: 60px;
         width: 100%;
-        background-color: #292a2d;
+        background-color: #393e46;
     }
 
     .navbar-left-container {
@@ -19,7 +19,7 @@
         flex-direction: row;
         height: 60px;
         width: 100%;
-        background-color: #292a2d;
+        background-color: #393e46;
         // background-color: red;
     }
 
@@ -38,7 +38,7 @@
         border-top-right-radius: 5px;
         text-align: center;
         line-height: 30px;
-        background-color: #343A40;
+        background-color: #222831;
         height: 30px;
         width: 90px;
         cursor: pointer;
@@ -73,12 +73,13 @@
 @media only screen and (min-device-width: 600px) {
 
     .navbar-container {
+        position: fixed;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         height: 60px;
         width: 100%;
-        background-color: #292a2d;
+        background-color: #393e46;
     }
 
     .nav-buttons-container {
@@ -102,7 +103,7 @@
         border-top-right-radius: 5px;
         text-align: center;
         line-height: 30px;
-        background-color: #343A40;
+        background-color: #222831;
         height: 30px;
         width: 90px;
         cursor: pointer;
