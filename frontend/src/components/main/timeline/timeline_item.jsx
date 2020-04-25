@@ -29,7 +29,9 @@ const TimelineItem = ({ data }) => {
                                 <div className="circle-images-container">
                                     <span className="circle" />
                                     <div className="image-container-null">
-                                        
+                                        <div className="image-null-text">
+                                            As a result, I am now the happiest I have ever been, and absolutely grateful and thankful for the decisions I have made.
+                                        </div>
                                     </div>
                                 </div>
                             ) : (

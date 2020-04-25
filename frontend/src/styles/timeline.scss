@@ -143,6 +143,24 @@
     position: absolute;
     top: calc(50% - 60px);
     right: 570px;
+    width: 480px;
+}
+
+.timeline-item-content .image-container-null {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: calc(50% - 60px);
+    right: -520px;
+    width: 480px;
+}
+
+.timeline-item:nth-child(odd) .timeline-item-content .image-container-null {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: calc(50% - 60px);
+    right: 570px;
 }
 
 
@@ -156,6 +174,10 @@
     border-radius: 5px;
     width: 140px;
     height: 110px;
+}
+
+.image-null-text {
+    color: rgb(219, 219, 219);
 }
 
 @media only screen and (max-width: 1023px) {
