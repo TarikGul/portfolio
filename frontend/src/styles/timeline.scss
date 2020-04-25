@@ -115,6 +115,7 @@
     background-color: #fff;
     border: 3px solid #00adb5;
     border-radius: 50%;
+    cursor: pointer;
     position: absolute;
     top: calc(50% - 10px);
     right: -40px;
@@ -126,6 +127,35 @@
 .timeline-item:nth-child(odd) .timeline-item-content .circle {
     right: auto;
     left: -40px;
+}
+
+.timeline-item-content .image-container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: calc(50% - 60px);
+    right: -520px;
+}
+
+.timeline-item:nth-child(odd) .timeline-item-content .image-container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: calc(50% - 60px);
+    right: 570px;
+}
+
+
+
+.image-container > img {
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.dropdown-image {
+    border-radius: 5px;
+    width: 140px;
+    height: 110px;
 }
 
 @media only screen and (max-width: 1023px) {

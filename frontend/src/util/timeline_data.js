@@ -10,6 +10,13 @@ module.exports = [
             url:
                 'https://www.sonoma.edu/',
             text: 'Read more'
+        },
+        images: {
+            url: [
+                '/college-views.png',
+                '/got-junk-days.png',
+                '/tahoe-hanging-back.png'
+            ]
         }
     },
     {
@@ -23,6 +30,13 @@ module.exports = [
             url:
                 'https://www.instagram.com/tarikonwheels/?hl=en',
             text: 'Read more'
+        },
+        images: {
+            url: [
+                '/washington-pct.png',
+                '/donogua-pass.png',
+                '/hot-springs.png'
+            ]
         }
     },
     {
@@ -36,6 +50,13 @@ module.exports = [
             url:
                 'https://www.instagram.com/tarikonwheels/?hl=en',
             text: 'Read more'
+        },
+        images: {
+            url: [
+               '/desert-cows.png',
+               '/glacier-nat.png',
+               '/san-juans.png' 
+            ]
         }
     },
     {
@@ -49,6 +70,13 @@ module.exports = [
             url:
                 'https://www.instagram.com/tarikonwheels/?hl=en',
             text: 'Read more'
+        },
+        images: {
+            url: [
+                '/biking-pain.png',
+                '/beach-biking.png',
+                '/biking-days.png'
+            ]
         }
     },
     {
@@ -62,6 +90,11 @@ module.exports = [
             url:
                 'https://www.appacademy.io/',
             text: 'Read more'
+        },
+        images: {
+            url: [
+
+            ]
         }
     }
 ];
