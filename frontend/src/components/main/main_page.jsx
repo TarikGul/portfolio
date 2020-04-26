@@ -2,6 +2,7 @@ import React from 'react';
 import Welcome from './welcome';
 import Timeline from './timeline/timeline';
 import About from './about/about';
+import Resume from './resume/resume'
 
 class Main extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class Main extends React.Component {
                 <Welcome />
                 <About />
                 <Timeline />
+                <Resume />
             </div>
         )
     }
