@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../styles/resume.scss'
 
 const Resume = props => {
 
@@ -9,7 +10,7 @@ const Resume = props => {
                     Download My Resume
                 </div>
                 <a href="/Tariks-Resume.pdf" download> 
-                    <button>
+                    <button className="resume-button">
                         Resume
                     </button> 
                 </a>
