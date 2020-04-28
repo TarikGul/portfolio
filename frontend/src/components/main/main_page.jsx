@@ -3,6 +3,7 @@ import Welcome from './welcome';
 import Timeline from './timeline/timeline';
 import About from './about/about';
 import Resume from './resume/resume'
+import Skills from './skills/skills'
 
 class Main extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class Main extends React.Component {
                 <Welcome />
                 <About />
                 <Timeline />
+                <Skills />
                 <Resume />
             </div>
         )
