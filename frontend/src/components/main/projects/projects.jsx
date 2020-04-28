@@ -6,7 +6,7 @@ const Projects = props => {
             <div className='projects-inner-container'>
                 <div className='bimeo-container'>
                     Bimeo
-                    <img src="" alt=""/>
+                    <img src='/bimeo-page.png' className='bimeo-project'/>
                 </div>
                 <div className='covid-container'>
                     Covid-415
