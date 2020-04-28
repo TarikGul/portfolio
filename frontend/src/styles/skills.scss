@@ -1,0 +1,74 @@
+@import './theme.scss';
+
+@media only screen and (max-device-width: 600px) { 
+
+}
+
+@media only screen and (min-device-width: 600px) { 
+    .skills-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .skills-inner-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .skills-inner-container > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .node-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .react-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .redux-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .rails-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .javascript-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .html-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .css-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mongo-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .postgres-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .python-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
