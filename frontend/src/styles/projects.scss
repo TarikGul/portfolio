@@ -1,0 +1,40 @@
+@import './theme.scss';
+
+@media only screen and (max-device-width: 600px) { 
+
+}
+
+@media only screen and (min-device-width: 600px) { 
+    .image-project {
+        width: 360px;
+        height: 215px;
+    }
+
+    .projects-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .projects-inner-container {
+        width: 1050px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .projects-boxes > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .projects-boxes {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .projects-header {
+        text-align: center;
+    }
+}
