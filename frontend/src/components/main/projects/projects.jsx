@@ -19,6 +19,9 @@ const Projects = props => {
                         <img src='/bimeo-page.png' 
                              className='image-project'
                              onClick={() => handleReroute('https://bimeo.herokuapp.com')}/>
+                        <div className='project-description'>
+                            
+                        </div>
                     </div>
                     <div className='box-container'>
                         <span>Covid-415</span>
