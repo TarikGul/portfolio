@@ -62,8 +62,18 @@
     }
 
     .project-description {
+        text-align: left;
+        padding-top: 30px;
+        padding: 10px;
+        line-height: 22px;
+        border: 1px solid #00adb5;
+        border-radius: 4px;
+    }
+
+    .project-description-container {
+        margin-top: 20px;
         width: 340px;
         height: auto;
-        border: 1px solid #00adb5;
+
     }
 }
