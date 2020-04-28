@@ -3,31 +3,31 @@ import { Link } from 'react-router-dom';
 import '../../../styles/projects.scss';
 
 const handleReroute = (route) => {
-    window.location.href = route
-}
+    window.open(route);
+};
 
 const Projects = props => {
     return (
         <div className='projects-container'>
             <div className='projects-inner-container'>
                 <div className='projects-header'>
-                    Projects
+                    Projects and Applications
                 </div>
                 <div className='projects-boxes'>
                     <div className='box-container'>
-                        Bimeo
+                        <span>Bimeo</span>
                         <img src='/bimeo-page.png' 
                              className='image-project'
                              onClick={() => handleReroute('https://bimeo.herokuapp.com')}/>
                     </div>
                     <div className='box-container'>
-                        Covid-415
+                        <span>Covid-415</span>
                         <img src='/covid-415.png' 
                              className='image-project'
                              onClick={() => handleReroute('https://covid415.herokuapp.com')}/>
                     </div>
                     <div className='box-container'>
-                        Sudoku-Visualizer
+                        <span>Sudoku-Visualizer</span>
                         <img src='sudoku-solver.png' 
                              className='image-project'
                              onClick={() => handleReroute('https://tarikgul.github.io/Sudoku-solving-visualizer/dist/')}/>

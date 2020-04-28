@@ -9,6 +9,12 @@
         width: 340px;
         height: 205px;
         cursor: pointer;
+        padding-top: 10px;
+        transition: all .2s ease-in-out;
+    }
+
+    .image-project:hover {
+        transform: scale(1.2);
     }
 
     .projects-container {
@@ -38,6 +44,7 @@
     }
 
     .projects-header {
+        width: 100%;
         text-align: center;
         font-size: 26px;
         color: rgb(209, 209, 209);
@@ -47,5 +54,10 @@
 
     .box-container {
         text-align: center;
+    }
+
+    .box-container > span {
+        font-size: 14px;
+        color: rgb(182, 182, 182);
     }
 }
