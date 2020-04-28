@@ -20,3 +20,5 @@ const Projects = props => {
         </div>
     )
 }
+
+export default Projects;

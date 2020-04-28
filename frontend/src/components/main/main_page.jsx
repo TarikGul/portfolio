@@ -2,8 +2,9 @@ import React from 'react';
 import Welcome from './welcome';
 import Timeline from './timeline/timeline';
 import About from './about/about';
-import Resume from './resume/resume'
-import Skills from './skills/skills'
+import Resume from './resume/resume';
+import Skills from './skills/skills';
+import Projects from './projects/projects';
 
 class Main extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class Main extends React.Component {
                 <Welcome />
                 <About />
                 <Timeline />
+                <Projects />
                 <Skills />
                 <Resume />
             </div>
