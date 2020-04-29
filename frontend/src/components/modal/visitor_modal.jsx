@@ -8,8 +8,8 @@ class VisitorModal extends React.Component {
 
     render() {
         return (
-            <div>
-
+            <div className='visitor-modal-container'>
+                
             </div>
         )
     };
