@@ -5,7 +5,7 @@ import Map from './map';
 const msp = state => {
     return {
 
-    }
+    };
 };
 
 const mdtp = dispatch => {
@@ -17,4 +17,4 @@ const mdtp = dispatch => {
 export default connect(
     msp,
     mdtp
-)(Map)
+)(Map);
