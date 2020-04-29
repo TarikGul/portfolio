@@ -10,7 +10,7 @@ class VisitorModal extends React.Component {
     render() {
         return (
             <div className='visitor-modal-container'>
-                Heyyyyyyy
+                
             </div>
         )
     };
