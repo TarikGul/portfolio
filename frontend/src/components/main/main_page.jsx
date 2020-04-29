@@ -13,6 +13,8 @@ class Main extends React.Component {
 
     componentDidMount() {
         const { openModal } = this.props;
+
+        openModal('welcome-visitor');
     }
 
     render() {

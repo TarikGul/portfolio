@@ -10,18 +10,20 @@
   z-index: 10;
 }
 
-.modal-child-welcome {
+.modal-child-visitor {
   color: black;
   position: absolute;
   top: 50%;
   left: 50%;
+  background-color: white;
   transform: translate(-50%, -50%);
-  width: 65%;
-  height: 65%; 
+  width: 400px;
+  height: 600px; 
   // background-image: linear-gradient(to bottom right, $figma-red, $figma-grapefruit, $figma-peach );
   background: rgba(51,58,64,0.8);
   border-radius: 10px;
   padding: 10px 0px 0px 0px;
   overflow: hidden;
   animation: modal-height 1s;
+  z-index: 100;
 }
