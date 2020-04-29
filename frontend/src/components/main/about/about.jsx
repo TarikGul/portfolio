@@ -9,10 +9,12 @@ const About = props => {
                     About me
                 </div>
                 <div className='about-description'>
-                        My name is Tarik Gul. I grew up in New Jersey, in a small railroad town outside of New York City. I was quiet the child that fortunately lived, an 
-                    amazing life because of my parents. I was involved in a ton of mathematics, and robotics, while maintaining a balanced life of soccer, bmx dirt jumping, and 
-                    snowboarding. When I was 18 I moved out to San Francisco with at the time my highschool sweetheart. San Francisco has always had a place in my heard since i was 5. 
-                    I remember looking at a picture of hippies in golden gate park in a history book my father had, and it always stuck in my brain.  
+                        Howdy! My name is Tarik, and I am a 25 year old Software Engineer with a passionate love for the outdoors, and
+                        an appreciation for mathematics, and computer science. I have spent the last few years long distance hiking, and have cumulated more than 10,000 miles under my feet.
+                        During those times, i have been developing a network of incredible friends, and community around the world while narrowing down what I love about life. 
+                        I spend a lot of my time either at the computer hiking, outside excercising, or playing billiards at the pool hall. During these tough, i find myself joining hackathons, coding a lot, writing, and 
+                        playing go. When it comes to my current projects, I am working on developing an API, visualizer. I have always been into visualizing mathematical concepts, and algorithms. This is my way of expanding my knowledge, and 
+                        understanding of data.
                 </div>
             </div>
         </div>
