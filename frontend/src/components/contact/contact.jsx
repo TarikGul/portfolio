@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/contact.scss'
 
 const Contact = props => {
 
@@ -7,6 +8,6 @@ const Contact = props => {
             If you would like to email me please contact me at tariksnow37@gmail.com.
         </div>
     )
-}
+};
 
 export default Contact;
