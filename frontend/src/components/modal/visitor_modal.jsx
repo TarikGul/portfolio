@@ -13,8 +13,13 @@ class VisitorModal extends React.Component {
                 <div className='visitor-modal-welcome'>
                     Welcome
                 </div>
-                <div className='visiot-modal-content'>
+                <div className='visitor-modal-content'>
+                    <div className='modal-description'>
+                        Please state what kind of visitor you are. 
+                    </div>
+                    <div className=''>
 
+                    </div>
                 </div>
             </div>
         )
