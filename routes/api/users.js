@@ -10,6 +10,8 @@ const User = require('../../models/User');
 
 const router = express.Router();
 
+router.get('/test', (req, res) => res.json({ msg: 'This is the user route' }))
+
 router.post('/register', (req, res) => {
     // This will do all validations, including matching passwords
     const { errors, isValid } = validateRegisterInput(req.body);
