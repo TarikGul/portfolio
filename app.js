@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const users = require('./routes/api/users');
+const visitors = require('./routes/api/visitors');
+
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -27,7 +30,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Setup base routes
+app.use('/api/users', users);
+app.use('/api/visitors', visitors);
 app.get('/', (req, res) => res.send('The dolphin has landed'));
+
 
 
 // Setup the server
