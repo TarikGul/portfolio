@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Set the token as a common header for all axios requests
         setAuthToken(localStorage.jwtToken);
-        debugger
+        
         // Decode the token to obtain the user's information
         // jwt_decode parses users session token
         const decodedUser = jwt_decode(localStorage.jwtToken);
