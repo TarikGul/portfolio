@@ -113,14 +113,12 @@ router.post('/login', (req, res) => {
 router.get('/current',
     passport.authenticate('jwt', { session: false }), (req, res) => {
         const {
-            id, email, firstName, lastName, phoneNumber
+            id, email, username
         } = req.user;
         res.json({
             id,
             email,
-            firstName,
-            lastName,
-            phoneNumber
+            username
         });
     });
 
