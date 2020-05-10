@@ -2,7 +2,6 @@ import axios from 'axios';
 
 // setAuthToken defaults header of all axios request with given token
 export const setAuthToken = (token) => {
-    debugger
     if (token) {
         axios.defaults.headers.common['Authorization'] = token;
     } else {
@@ -11,7 +10,6 @@ export const setAuthToken = (token) => {
 };
 
 export const signup = (userData) => {
-    debugger
     return axios.post('/api/users/register', userData);
 };
 
