@@ -5,6 +5,7 @@ import MainContainer from './main/main_page_container';
 import NavbarContainer from './navbar/navbar_container';
 import MapContainer from './location/map_container';
 import ContactContainer from './contact/contact_container';
+import LoginFormContainer from './session/login_form_container';
 import Modal from './modal/modal';
 
 const App = () => (
