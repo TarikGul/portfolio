@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        const { email, password } = state;
+        const { email, password } = this.state;
         let user = {
             email,
             password
@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
     };
 
     renderErrors() {
-        const { errors } = state;
+        const { errors } = this.state;
         return (
             <ul className='errors-list'>
                 {Object.keys(errors).map((error, i) => (
