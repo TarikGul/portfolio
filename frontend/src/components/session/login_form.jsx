@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
             email,
             password
         };
-        
+
         this.props.login(user);
     };
 
@@ -33,9 +33,10 @@ class LoginForm extends React.Component {
         return (
             <div>
                 <form action="">
+                    <div className=''>
 
+                    </div>
                 </form>
-
             </div>
         )
     };
