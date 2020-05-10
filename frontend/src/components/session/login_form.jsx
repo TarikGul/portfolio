@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/login.scss';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -50,31 +51,37 @@ class LoginForm extends React.Component {
         const { email, password } = this.state;
         return (
             <div className='login-form-container'>
-                {this.renderErrors()}
-                <form onSubmit={this.handleSubmit}>
-                    <div className='input-wrapper'>
-                        <input 
-                            type='text'
-                            placholder='Email'
-                            value={email}
-                            onChange={this.update('email')}
-                        />
-                    </div>
-                    <div className='input-wrapper'>
-                        <input
-                            type='password'
-                            placholder='Password'
-                            value={password}
-                            onChange={this.update('password')}
-                        />
-                    </div>
-                </form>
-                <button
-                    className='session-button'
-                    type='submit'
-                    onClick={this.handleSubmit}>
-                    Log In
-                </button>
+                <div className='login-form-inner-container'>
+                    Admin Login
+                    {this.renderErrors()}
+                    <form onSubmit={this.handleSubmit}
+                          className='login-form'>
+                        <div className='input-container'>
+                            <div className='input-wrapper'>
+                                <input 
+                                    type='text'
+                                    placholder='Email'
+                                    value={email}
+                                    onChange={this.update('email')}
+                                />
+                            </div>
+                            <div className='input-wrapper'>
+                                <input
+                                    type='password'
+                                    placholder='Password'
+                                    value={password}
+                                    onChange={this.update('password')}
+                                />
+                            </div>
+                        </div>
+                    </form>
+                    <button
+                        className='session-button'
+                        type='submit'
+                        onClick={this.handleSubmit}>
+                        Log In
+                    </button>
+                </div>
             </div>
         )
     };
