@@ -45,11 +45,17 @@ class LoginForm extends React.Component {
     }
 
     render() {
+        const { email } = this.state;
         return (
             <div>
                 <form action="">
-                    <div className=''>
-
+                    <div className='input-wrapper'>
+                        <input 
+                            type='text'
+                            placholder='Email'
+                            value={email}
+                            onChange={this.update('email')}
+                        />
                     </div>
                 </form>
             </div>
