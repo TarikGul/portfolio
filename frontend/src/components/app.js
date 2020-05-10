@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import { AuthRoute } from '../util/route_util';
+
 import MainContainer from './main/main_page_container';
 import NavbarContainer from './navbar/navbar_container';
 import MapContainer from './location/map_container';
@@ -15,6 +17,7 @@ const App = () => (
         <Route exact path='/' component={MainContainer}/>
         <Route exact path='/location' component={MapContainer}/>
         <Route exact path='/contact' component={ContactContainer}/>
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
     </div>
 );
 
