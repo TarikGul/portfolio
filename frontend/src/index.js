@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let store;
 
     // If a returning user has a session token stored in localStorage
-    if (localStorage.jwtToken) {
+    if (localStorage.jwtToken !== 'undefined') {
 
         // Set the token as a common header for all axios requests
         setAuthToken(localStorage.jwtToken);
-
+        debugger
         // Decode the token to obtain the user's information
         // jwt_decode parses users session token
         const decodedUser = jwt_decode(localStorage.jwtToken);
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // If this is a first time user, start with an empty store
         store = configureStore({});
     }
+    // let store = configureStore({});
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
