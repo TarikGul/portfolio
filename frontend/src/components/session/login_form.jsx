@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
     render() {
         const { email, password } = this.state;
         return (
-            <div>
+            <div className='login-form-container'>
                 {this.renderErrors()}
                 <form onSubmit={this.handleSubmit}>
                     <div className='input-wrapper'>
