@@ -45,10 +45,10 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        const { email } = this.state;
+        const { email, password } = this.state;
         return (
             <div>
-                <form action="">
+                <form onSubmit={this.handleSubmit}>
                     <div className='input-wrapper'>
                         <input 
                             type='text'
@@ -57,7 +57,21 @@ class LoginForm extends React.Component {
                             onChange={this.update('email')}
                         />
                     </div>
+                    <div className='input-wrapper'>
+                        <input
+                            type='password'
+                            placholder='Password'
+                            value={password}
+                            onChange={this.update('password')}
+                        />
+                    </div>
                 </form>
+                <button
+                    className='session-button'
+                    type='submit'
+                    onClick={this.handleSubmit}>
+                    Log In
+                </button>
             </div>
         )
     };
