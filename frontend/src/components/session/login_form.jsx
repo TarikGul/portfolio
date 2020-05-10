@@ -31,7 +31,8 @@ class LoginForm extends React.Component {
     };
 
     renderErrors() {
-        const { errors } = this.state;
+        const { errors } = this.props;
+
         return (
             <ul className='errors-list'>
                 {Object.keys(errors).map((error, i) => (
