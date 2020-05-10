@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
         this.update = this.update.bind(this);
     }
 
@@ -48,6 +49,7 @@ class LoginForm extends React.Component {
         const { email, password } = this.state;
         return (
             <div>
+                {this.renderErrors()}
                 <form onSubmit={this.handleSubmit}>
                     <div className='input-wrapper'>
                         <input 
