@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const BlogSchema = new Schema({
-    content: {
+    description: {
         type: String,
         required: true
+    },
+    ownderId: {
+        type: Number
     },
     locationURL: {
         type: String,

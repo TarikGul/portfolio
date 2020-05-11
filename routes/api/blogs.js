@@ -41,9 +41,8 @@ router.post('/blog', (req, res) => {
             description: body.description,
             locationUrl: location,
         });
-
         newBlog.save()
-            .then((visitor) => res.json(visitor))
+            .then((blog) => res.json(blog))
             .catch(err => res.json(err))
     };
     // If the response correct then we will store this function to be called
@@ -67,7 +66,6 @@ router.post('/blog', (req, res) => {
         } else {
             params = undefined;
         }
-
 
         if (params === undefined) {
             createBlog(false, undefined, body);
