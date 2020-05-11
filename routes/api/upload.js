@@ -1,14 +1,14 @@
 const AWS = require('aws-sdk');
 const Busboy = require('busboy');
 
-const keys = require('../config/keys');
-const awsBucket = require('../config/bucket');
+const keys = require('../../config/keys');
+const awsBucket = require('../../config/bucket');
 
 const BUCKET_NAME = awsBucket.bucket;
 const IAM_USER_KEY = keys.awsAccessKey;
 const IAM_USER_SECRET = keys.awsSecretAccessKey;
 
-function uploadToS3(file) {
+const uploadToS3 = (file, callback) => {
     let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,
         secretAccessKey: IAM_USER_SECRET,
