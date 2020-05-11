@@ -8,7 +8,7 @@ const BUCKET_NAME = awsBucket.bucket;
 const IAM_USER_KEY = keys.awsAccessKey;
 const IAM_USER_SECRET = keys.awsSecretAccessKey;
 
-const uploadToS3 = (file, callback) => {
+const uploadToS3 = (file) => {
     let s3bucket = new AWS.S3({
         accessKeyId: IAM_USER_KEY,
         secretAccessKey: IAM_USER_SECRET,
