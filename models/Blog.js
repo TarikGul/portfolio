@@ -3,11 +3,15 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const BlogSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: true
     },
-    ownderId: {
+    ownerId: {
         type: Number
     },
     locationURL: {
