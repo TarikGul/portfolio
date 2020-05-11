@@ -6,9 +6,14 @@ module.exports = function validateBlogInput(blogData) {
     const data = { ...blogData };
 
     data.body = validText(data.body) ? data.body : '';
+    data.title = validText(data.title) ? data.title : '';
 
     if (Validator.isEmpty(data.body)) {
-        errors.body = 'Description field must be filled'
+        errors.body = 'Description field must be filled';
+    };
+
+    if (Validator.isEmpty(data.title)) {
+        errors.title = 'Title field must be filled';
     };
 
     return {
