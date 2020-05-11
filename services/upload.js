@@ -1,9 +1,12 @@
 const AWS = require('aws-sdk');
 const Busboy = require('busboy');
 
-const BUCKET_NAME = '';
-const IAM_USER_KEY = '';
-const IAM_USER_SECRET = '';
+const keys = require('../config/keys');
+const awsBucket = require('../config/bucket');
+
+const BUCKET_NAME = awsBucket.bucket;
+const IAM_USER_KEY = keys.awsAccessKey;
+const IAM_USER_SECRET = keys.awsSecretAccessKey;
 
 function uploadToS3(file) {
     let s3bucket = new AWS.S3({
@@ -11,20 +14,18 @@ function uploadToS3(file) {
         secretAccessKey: IAM_USER_SECRET,
         Bucket: BUCKET_NAME
     });
-    s3bucket.createBucket(function () {
-        var params = {
-            Bucket: BUCKET_NAME,
-            Key: file.name,
-            Body: file.data
-        };
-        s3bucket.upload(params, function (err, data) {
-            if (err) {
-                console.log('error in callback');
-                console.log(err);
-            }
-            console.log('success');
-            console.log(data);
-        });
+    let params = {
+        Bucket: BUCKET_NAME,
+        Key: file.name,
+        Body: file.data
+    };
+    s3bucket.upload(params, function (err, data) {
+        if (err) {
+            console.log('error in callback');
+            console.log(err);
+        }
+        console.log('success');
+        console.log(data);
     });
 }
 
