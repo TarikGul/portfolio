@@ -8,6 +8,7 @@ class Navbar extends React.Component {
         super(props)
 
         this.reRoute = this.reRoute.bind(this);
+        this.logoutUser = this.logoutUser.bind(this);
     }
 
     reRoute(field) {
@@ -22,14 +23,19 @@ class Navbar extends React.Component {
         };
     }
 
+    logoutUser(e) {
+        e.preventDefault();
+        this.props.logout();
+    }
+
     render() {
-        const { location } = this.props;
+        const { location, session } = this.props;
         const navs = [
             'portfolio',
             'location',
             'contact'
         ];
-
+        
         return (
             <div className="navbar-container">
                 <div className="navbar-left-container">
@@ -47,9 +53,16 @@ class Navbar extends React.Component {
                     </div>
                 </div>
                 <div className="light-toggle">
-                    <div>
-                        Logout
-                    </div>
+                    {
+                        session.isAuthenticated ?
+                        (
+                            <div onClick={this.logoutUser}>
+                                Logout
+                            </div>
+                        ) : (
+                            null
+                        )
+                    }
                     <img src="/moon.svg" className="moon-svg"/>
                 </div>
             </div>
