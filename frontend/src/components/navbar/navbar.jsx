@@ -47,6 +47,9 @@ class Navbar extends React.Component {
                     </div>
                 </div>
                 <div className="light-toggle">
+                    <div>
+                        Logout
+                    </div>
                     <img src="/moon.svg" className="moon-svg"/>
                 </div>
             </div>
