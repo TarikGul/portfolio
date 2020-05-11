@@ -62,4 +62,6 @@ router.post('/blog', (req, res) => {
     }
 
     uploadToS3(req.body.file);
-})
+});
+
+module.exports = router;

@@ -6,6 +6,7 @@ const path = require('path');
 
 const users = require('./routes/api/users');
 const visitors = require('./routes/api/visitors');
+const blogs = require('./routes/api/blogs')
 
 const port = process.env.PORT || 5000;
 
@@ -36,6 +37,7 @@ require('./config/passport')(passport);
 // Setup base routes
 app.use('/api/users', users);
 app.use('/api/visitors', visitors);
+app.use('/api/blogs', blogs);
 app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 
