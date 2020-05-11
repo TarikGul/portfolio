@@ -8,7 +8,7 @@ module.exports = function validateBlogInput(blogData) {
     data.body = validText(data.description) ? data.description : '';
     data.title = validText(data.title) ? data.title : '';
 
-    if (Validator.isEmpty(data.body)) {
+    if (Validator.isEmpty(data.description)) {
         errors.desctiption = 'Description field must be filled';
     };
 
