@@ -5,15 +5,15 @@ module.exports = function validateBlogInput(blogData) {
     const errors = {};
     const data = { ...blogData };
 
-    data.body = validText(data.body) ? data.body : '';
+    data.body = validText(data.description) ? data.description : '';
     data.title = validText(data.title) ? data.title : '';
 
     if (Validator.isEmpty(data.body)) {
-        errors.body = 'Description field must be filled';
+        errors.desctiption = 'Description field must be filled';
     };
 
     if (Validator.isEmpty(data.title)) {
-        errors.title = 'Title field must be filled';
+        errors.description = 'Title field must be filled';
     };
 
     return {

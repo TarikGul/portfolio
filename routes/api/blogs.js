@@ -25,43 +25,69 @@ router.post('/blog', (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors)
     };
+
+    const createBlog = (boolean, data, body) => {
+        let location; 
+
+        if (boolean) {
+            location = data.locationURL
+        } else {
+            location = undefined
+        }
+
+        const newBlog = new Blog({
+            title: body.title,
+            owner: body.ownerId,
+            description: body.description,
+            locationUrl: location,
+        });
+
+        newBlog.save()
+            .then((visitor) => res.json(visitor))
+            .catch(err => res.json(err))
+    };
     // If the response correct then we will store this function to be called
-    const uploadToS3 = (file) => {
+    const uploadBlog = (file) => {
+        const { body } = req;
+
         let s3bucket = new AWS.S3({
             accessKeyId: IAM_USER_KEY,
             secretAccessKey: IAM_USER_SECRET,
             Bucket: BUCKET_NAME
         });
-        let params = {
-            Bucket: BUCKET_NAME,
-            Key: file.name,
-            Body: file.data
-        };
-        // Callback to return the locationUrl from AWS
-        s3bucket.upload(params, function (err, data) {
-            if (err) {
-                console.log('error in callback');
-                console.log(err);
-            }
-            console.log('success');
 
-            //If Successful create a new blog post in mongoDB;
-            const { body } = req;
+        let params;
 
-            const newBlog = new Blog({
-                title: body.title,
-                owner: body.ownerId,
-                description: body.description,
-                locationUrl: data.locationURL,
+        if (file) {
+            params = {
+                Bucket: BUCKET_NAME,
+                Key: file.name,
+                Body: file.data
+            };
+        } else {
+            params = undefined;
+        }
+
+
+        if (params === undefined) {
+            createBlog(false, undefined, body);
+        } else {
+            // Callback to return the locationUrl from AWS
+            s3bucket.upload(params, function (err, data) {
+                if (err) {
+                    console.log('error in callback');
+                    console.log(err);
+                }
+                console.log('success');
+
+
+                //If Successful create a new blog post in mongoDB;
+                createBlog(true, data, body);
             });
-
-            newBlog.save()
-                .then((visitor) => res.json(visitor))
-                .catch(err => res.json(err))
-        });
+        }
     }
 
-    uploadToS3(req.body.file);
+    uploadBlog(req.body.file);
 });
 
 module.exports = router;
