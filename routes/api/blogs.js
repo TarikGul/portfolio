@@ -33,7 +33,7 @@ router.post('/blog', (req, res) => {
             location = data.locationURL
         } else {
             location = undefined
-        }
+        };
 
         const newBlog = new Blog({
             title: body.title,
@@ -82,8 +82,8 @@ router.post('/blog', (req, res) => {
                 //If Successful create a new blog post in mongoDB;
                 createBlog(true, data, body);
             });
-        }
-    }
+        };
+    };
 
     uploadBlog(req.body.file);
 });
