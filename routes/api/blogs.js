@@ -19,6 +19,13 @@ const router = express.Router();
 
 router.get('/test', (req, res) => res.json({ msg: 'This is a test route' }));
 
+router.get('/', (req, res) => {
+    Blog.find()
+        .sort({ date: -1 })
+        .then((blogs) => res.json(blogs))
+        .catch((err) => res.status(404).json({ notasksfound: 'No blogs found' }));
+})
+
 router.post('/blog', (req, res) => {
     const { errors, isValid } = validateBlogInput(req.body);
 
