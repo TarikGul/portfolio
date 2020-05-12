@@ -45,7 +45,7 @@ router.post('/blog', (req, res) => {
             .then((blog) => res.json(blog))
             .catch(err => res.json(err))
     };
-    // If the response correct then we will store this function to be called
+    // On a successful response check if there is anything to upload
     const uploadBlog = (file) => {
         const { body } = req;
 
