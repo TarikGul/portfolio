@@ -65,7 +65,7 @@ router.post('/blog', (req, res) => {
             };
         } else {
             params = undefined;
-        }
+        };
 
         if (params === undefined) {
             createBlog(false, undefined, body);
