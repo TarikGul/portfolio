@@ -57,6 +57,9 @@ router.post('/blog', (req, res) => {
 
         let params;
 
+        // This is allowing us to define whether or not we have a file in our params
+        // If there is no file we want to make it undefined so we dont chat with
+        // AWS s3
         if (file) {
             params = {
                 Bucket: BUCKET_NAME,
