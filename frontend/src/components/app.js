@@ -8,6 +8,7 @@ import NavbarContainer from './navbar/navbar_container';
 import MapContainer from './location/map_container';
 import ContactContainer from './contact/contact_container';
 import LoginFormContainer from './session/login_form_container';
+import BlogContainer from './blog/blog_container';
 import Modal from './modal/modal';
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
         <Route path='/' component={NavbarContainer}/>
         <Route exact path='/' component={MainContainer}/>
         <Route exact path='/location' component={MapContainer}/>
+        <Route exact path='/blog' component={BlogContainer}/>
         <Route exact path='/contact' component={ContactContainer}/>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
     </div>
