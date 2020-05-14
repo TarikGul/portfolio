@@ -5,5 +5,5 @@ import BlogErrorsReducer from './blog_errors_reducer';
 
 export default combineReducers({
     session: SessionErrorsReducer,
-    
+    blog: BlogErrorsReducer
 });
