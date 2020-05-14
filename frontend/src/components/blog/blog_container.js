@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 
 const msp = state => {
+    const { errors } = state
     return {
-
+        errors
     };
 };
 
