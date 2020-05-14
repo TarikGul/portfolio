@@ -1,4 +1,5 @@
 import React from 'react';
+import BlogFormContainer from './blog_form_container';
 
 class Blog extends React.Component {
     constructor(props) {
@@ -7,9 +8,19 @@ class Blog extends React.Component {
     }
 
     render() {
+        const { session } = this.props;
         return (
-            <div>
-                
+            <div className='blog-container'>
+                <div className='blog-inner-container'>
+                {
+                    session.isAuthenticated && session.user === admin ?
+                    (
+                        <BlogFormContainer />
+                    ) : (
+                        null
+                    )
+                    }
+                </div>
             </div>
         )
     }
