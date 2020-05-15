@@ -9,13 +9,12 @@ class Blog extends React.Component {
     }
 
     render() {
-        debugger
         const { session } = this.props;
         return (
             <div className='blog-container'>
                 <div className='blog-inner-container'>
                 {
-                    session.isAuthenticated && session.user === 'testing' ?
+                    session.isAuthenticated && session.username === 'testing' ?
                     (
                         <BlogFormContainer />
                     ) : (
