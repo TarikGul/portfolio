@@ -1,5 +1,6 @@
 import React from 'react';
 import BlogFormContainer from './blog_form_container';
+import '../../styles/blog.scss';
 
 class Blog extends React.Component {
     constructor(props) {
