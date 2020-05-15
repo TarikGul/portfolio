@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import Blog from './blog';
 
 const msp = state => {
-    const { errors } = state
+    const { errors, session } = state
     return {
-        errors
+        errors, 
+        session
     };
 };
 
