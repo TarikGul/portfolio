@@ -10,10 +10,9 @@ class BlogForm extends React.Component {
     render() {
         return (
             <div className='blog-form-container'>
-                this is the blog form
                 <div className='blog-form-inner-container'>
                     <form>
-
+                        <label>New Blog Post</label>
                     </form>
                 </div>
             </div>
