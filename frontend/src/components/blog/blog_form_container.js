@@ -10,10 +10,11 @@ const msp = state => {
 
 const mdtp = dispatch => {
     return {
-
+        
     };
 };
 
 export default connect(
-
+    msp,
+    mdtp
 )(BlogForm)
