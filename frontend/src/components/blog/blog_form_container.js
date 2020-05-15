@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-
+import { createNewBlog } from '../../actions/blog_actions';
 import BlogForm from './blog_form';
 
 const msp = state => {
@@ -10,7 +10,7 @@ const msp = state => {
 
 const mdtp = dispatch => {
     return {
-        
+        createBlog: data => dispatch(createNewBlog(data))
     };
 };
 
