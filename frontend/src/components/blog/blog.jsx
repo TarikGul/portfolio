@@ -14,13 +14,13 @@ class Blog extends React.Component {
             <div className='blog-container'>
                 <div className='blog-inner-container'>
                 {
-                    session.isAuthenticated && session.username === 'testing' ?
+                    session.isAuthenticated && session.user.username === 'testing' ?
                     (
                         <BlogFormContainer />
                     ) : (
                         null
                     )
-                    }
+                }
                 </div>
             </div>
         )
