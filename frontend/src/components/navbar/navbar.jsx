@@ -20,6 +20,8 @@ class Navbar extends React.Component {
             history.push('/location');
         } else if (field === 'contact') {
             history.push('/contact');
+        } else if (field === 'blog') {
+            history.push('/blog');
         };
     }
 
@@ -33,7 +35,8 @@ class Navbar extends React.Component {
         const navs = [
             'portfolio',
             'location',
-            'contact'
+            'blog',
+            'contact',
         ];
         
         return (
