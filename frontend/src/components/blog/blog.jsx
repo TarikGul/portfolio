@@ -8,6 +8,10 @@ class Blog extends React.Component {
 
     }
 
+    componentDidMount() {
+        
+    }
+
     render() {
         const { session } = this.props;
         return (
