@@ -15,7 +15,7 @@ class Blog extends React.Component {
 
     render() {
         const { session, blogs } = this.props;
-        debugger
+
         const posts = Object.values(blogs);
 
         if(posts.length === 0 ) {
