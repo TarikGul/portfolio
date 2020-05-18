@@ -9,7 +9,7 @@ class Blog extends React.Component {
     }
 
     componentDidMount() {
-        
+        this.props.fetchBlogs();
     }
 
     render() {

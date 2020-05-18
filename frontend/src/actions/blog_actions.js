@@ -26,7 +26,7 @@ const receiveErrors = errors => {
 };
 
 export const fetchBlogs = () => dispatch => {
-    return APIUTIL.createBlog()
+    return APIUTIL.getBlogs()
         .then(blogs => dispatch(receiveBlogPosts(blogs)))
         .catch(err => console.log(err))
 }; 
