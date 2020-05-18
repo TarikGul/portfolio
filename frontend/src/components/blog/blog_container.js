@@ -5,10 +5,11 @@ import { fetchBlogs } from '../../actions/blog_actions';
 import Blog from './blog';
 
 const msp = state => {
-    const { errors, session } = state
+    const { errors, session, blogs } = state
     return {
         errors, 
-        session
+        session,
+        blogs
     };
 };
 
