@@ -8,6 +8,8 @@ const users = require('./routes/api/users');
 const visitors = require('./routes/api/visitors');
 const blogs = require('./routes/api/blogs')
 
+const checkInternet = require('./util/check_internet');
+
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -21,7 +23,27 @@ if (process.env.NODE_ENV === 'production') {
 };
 
 
-const db = require('./config/keys').mongoURI;
+let db;
+
+// Check if there is internet
+// This allows us to use the appropriate database
+// Either the cloud atlas or local mongodb server
+const connection = checkInternet.checkInternet(function(isConnected) {
+    if (isConnected) {
+        return true
+    } else {
+        return false
+    };
+});
+
+if (connection) {
+    db = require('./config/keys').mongoURI;
+} else {
+    db = 'mongodb://localhost:27017/portfolio'
+};
+
+
+// const db = require('./config/keys').mongoURI;
 // Connect database using mongoose
 mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
