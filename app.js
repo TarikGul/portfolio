@@ -24,7 +24,6 @@ if (process.env.NODE_ENV === 'production') {
 
 
 let db;
-
 // Check if there is internet
 // This allows us to use the appropriate database
 // Either the cloud atlas or local mongodb server
