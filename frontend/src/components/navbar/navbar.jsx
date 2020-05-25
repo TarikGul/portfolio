@@ -35,7 +35,7 @@ class Navbar extends React.Component {
         const navs = [
             'portfolio',
             'location',
-            'blog',
+            // 'blog',
             'contact',
         ];
         
