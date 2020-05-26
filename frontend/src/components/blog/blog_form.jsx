@@ -12,7 +12,12 @@ class BlogForm extends React.Component {
             locationUrl: null,
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this);
+    }
+
+    update(field) {
+        return e => this.setState({ [field]: e.target.value })
     }
 
     handleSubmit(e) {
@@ -25,7 +30,12 @@ class BlogForm extends React.Component {
             <div className='blog-form-container'>
                 <div className='blog-form-inner-container'>
                     <form onSubmit={this.handleSubmit}>
-                        <label>Title</label>
+                        <label>Title
+                            <input 
+                                type="text"
+                                placeholder='Title'
+                                onChange={this.update('title')}/>
+                        </label>
                         <input type="text"/>
                         <label>Blog Post</label>
                         <input type="text" />
