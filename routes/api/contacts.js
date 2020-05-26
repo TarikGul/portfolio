@@ -20,7 +20,7 @@ router.post('/contact', (req, res) => {
         title: body.title,
         message: body.message,
         email: body.email
-    }) 
+    }); 
 
     const mailOptions = {
         from: 'tarikportfolio37@gmail.com',
