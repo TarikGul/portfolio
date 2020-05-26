@@ -7,6 +7,11 @@ class BlogForm extends React.Component {
 
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        
+    }
+
     render() {
         return (
             <div className='blog-form-container'>
