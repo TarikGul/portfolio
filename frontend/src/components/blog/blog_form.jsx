@@ -24,12 +24,18 @@ class BlogForm extends React.Component {
         e.preventDefault();
 
         const { createBlog } = this.props;
-        const { title, description } = this.state;
+        const { title, description, ownerId, locationUrl } = this.state;
 
         if (title.length === 0 || description.length === 0) {
             return null
         }; 
 
+        createBlog({
+            description,
+            title,
+            ownerId,
+            locationUrl
+        });
     }
 
     render() {
