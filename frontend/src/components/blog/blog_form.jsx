@@ -32,13 +32,23 @@ class BlogForm extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <label>Title
                             <input 
-                                type="text"
+                                type='text'
                                 placeholder='Title'
+                                value={this.state.title}
                                 onChange={this.update('title')}/>
                         </label>
-                        <input type="text"/>
-                        <label>Blog Post</label>
-                        <input type="text" />
+                        <label>Description
+                            <textarea 
+                                type='text'
+                                placeholder='Description'
+                                value={this.state.description}
+                                onChange={this.update('description')}/>
+                        </label>
+                        <div className='submit-container'>
+                            <button className='submit-button'>
+                                Submit
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
