@@ -46,6 +46,9 @@ if (process.env.NODE_ENV === 'production') {
 // Best way to connect to the local database is to manually change the 
 // DB address
 
+// Checking for an internet connection is a promise and wont work until i reqrite all this code
+// 
+
 const db = require('./config/keys').mongoURI;
 // Connect database using mongoose
 mongoose
