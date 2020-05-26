@@ -67,7 +67,7 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
 app.use('/api/visitors', visitors);
 app.use('/api/blogs', blogs);
-app.use('/api/contact', contact)
+app.use('/api/contacts', contacts);
 app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 
