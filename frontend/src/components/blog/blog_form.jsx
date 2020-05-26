@@ -6,7 +6,10 @@ class BlogForm extends React.Component {
         super(props)
 
         this.state = {
-
+            title: '',
+            ownerId: this.props,
+            description: '',
+            locationUrl: null,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
