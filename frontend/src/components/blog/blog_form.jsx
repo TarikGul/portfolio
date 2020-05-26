@@ -45,7 +45,7 @@ class BlogForm extends React.Component {
                                 onChange={this.update('description')}/>
                         </label>
                         <div className='submit-container'>
-                            <button className='submit-button'>
+                            <button className='submit-button' type='submit'>
                                 Submit
                             </button>
                         </div>
