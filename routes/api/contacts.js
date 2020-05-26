@@ -2,6 +2,7 @@ const express = require('express');
 
 const Contact = require('../../models/Contact');
 const validateContactInput = require('../../validation/contact');
+const transporter = require('../../util/email');
 
 const router = express.Router();
 
@@ -21,8 +22,24 @@ router.post('/contact', (req, res) => {
         email: body.email
     }) 
 
+    const mailOptions = {
+        from: 'tarikportfolio37@gmail.com',
+        to: 'tariksnow37@gmail.com',
+        subject: `${body.title} from ${body.email}`,
+        text: body.message
+    };
+
     newContact.save()
-        .then((contact) => res.json(contact))
+        .then((contact) => {
+            res.json(contact)
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+        })
         .catch(err => res.json(err))
 });
 
