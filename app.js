@@ -7,7 +7,8 @@ const sslRedirect = require('heroku-ssl-redirect');
 
 const users = require('./routes/api/users');
 const visitors = require('./routes/api/visitors');
-const blogs = require('./routes/api/blogs')
+const blogs = require('./routes/api/blogs');
+const contacts = require('./routes/api/contacts');
 
 const checkInternet = require('./util/check_internet');
 
@@ -66,6 +67,7 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
 app.use('/api/visitors', visitors);
 app.use('/api/blogs', blogs);
+app.use('/api/contact', contact)
 app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 
