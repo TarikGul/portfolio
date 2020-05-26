@@ -12,9 +12,9 @@ class BlogForm extends React.Component {
             <div className='blog-form-container'>
                 <div className='blog-form-inner-container'>
                     <form>
-                        <label>New Blog Post</label>
+                        <label>Title</label>
                         <input type="text"/>
-                        <label>New Blog Post</label>
+                        <label>Blog Post</label>
                         <input type="text" />
                     </form>
                 </div>
