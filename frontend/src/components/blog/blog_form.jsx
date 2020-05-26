@@ -7,7 +7,7 @@ class BlogForm extends React.Component {
 
         this.state = {
             title: '',
-            ownerId: this.props,
+            ownerId: this.props.session.id,
             description: '',
             locationUrl: null,
         }
