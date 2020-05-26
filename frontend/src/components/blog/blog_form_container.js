@@ -3,8 +3,9 @@ import { createNewBlog } from '../../actions/blog_actions';
 import BlogForm from './blog_form';
 
 const msp = state => {
+    const { session } = state;
     return {
-
+        session
     };
 };
 
