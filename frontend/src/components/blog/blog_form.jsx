@@ -26,6 +26,10 @@ class BlogForm extends React.Component {
         const { createBlog } = this.props;
         const { title, description } = this.state;
 
+        if (title.length === 0 || description.length === 0) {
+            return null
+        }; 
+
     }
 
     render() {
