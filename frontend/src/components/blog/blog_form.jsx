@@ -23,6 +23,7 @@ class BlogForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        const { createBlog } = this.props;
     }
 
     render() {
