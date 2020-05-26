@@ -25,3 +25,5 @@ router.post('/contact', (req, res) => {
         .then((contact) => res.json(contact))
         .catch(err => res.json(err))
 });
+
+module.exports = router;
