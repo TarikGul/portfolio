@@ -43,6 +43,8 @@ if (process.env.NODE_ENV === 'production') {
 //     db = 'mongodb://localhost:27017/portfolio'
 // };
 
+// Best way to connect to the local database is to manually change the 
+// DB address
 
 const db = require('./config/keys').mongoURI;
 // Connect database using mongoose
