@@ -10,7 +10,7 @@ class BlogForm extends React.Component {
             ownerId: this.props.session.user.id,
             description: '',
             pictureFiles: null,
-        }
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
