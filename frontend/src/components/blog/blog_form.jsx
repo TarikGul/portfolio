@@ -24,6 +24,8 @@ class BlogForm extends React.Component {
         e.preventDefault();
 
         const { createBlog } = this.props;
+        const { title, description } = this.state;
+
     }
 
     render() {
