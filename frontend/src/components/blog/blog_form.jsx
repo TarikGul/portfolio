@@ -8,8 +8,7 @@ class BlogForm extends React.Component {
         this.state = {
             title: '',
             ownerId: this.props.session.user.id,
-            description: '',
-            locationUrl: null,
+            description: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +23,7 @@ class BlogForm extends React.Component {
         e.preventDefault();
 
         const { createBlog } = this.props;
-        const { title, description, ownerId, locationUrl } = this.state;
+        const { title, description, ownerId } = this.state;
 
         if (title.length === 0 || description.length === 0) {
             return null
@@ -33,8 +32,7 @@ class BlogForm extends React.Component {
         createBlog({
             description,
             title,
-            ownerId,
-            locationUrl
+            ownerId
         });
     }
 
