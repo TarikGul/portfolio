@@ -25,26 +25,26 @@ if (process.env.NODE_ENV === 'production') {
 };
 
 
-let db;
-// Check if there is internet
-// This allows us to use the appropriate database
-// Either the cloud atlas or local mongodb server
-const connection = checkInternet.checkInternet(function(isConnected) {
-    if (isConnected) {
-        return true
-    } else {
-        return false
-    };
-});
+// let db;
+// // Check if there is internet
+// // This allows us to use the appropriate database
+// // Either the cloud atlas or local mongodb server
+// const connection = checkInternet.checkInternet(function(isConnected) {
+//     if (isConnected) {
+//         return true
+//     } else {
+//         return false
+//     };
+// });
 
-if (connection) {
-    db = require('./config/keys').mongoURI;
-} else {
-    db = 'mongodb://localhost:27017/portfolio'
-};
+// if (connection) {
+//     db = require('./config/keys').mongoURI;
+// } else {
+//     db = 'mongodb://localhost:27017/portfolio'
+// };
 
 
-// const db = require('./config/keys').mongoURI;
+const db = require('./config/keys').mongoURI;
 // Connect database using mongoose
 mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
