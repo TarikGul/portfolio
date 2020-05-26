@@ -7,7 +7,7 @@ class BlogForm extends React.Component {
 
         this.state = {
             title: '',
-            ownerId: this.props.session.id,
+            ownerId: this.props.session.user.id,
             description: '',
             locationUrl: null,
         }
@@ -29,7 +29,7 @@ class BlogForm extends React.Component {
         if (title.length === 0 || description.length === 0) {
             return null
         }; 
-
+        debugger
         createBlog({
             description,
             title,
