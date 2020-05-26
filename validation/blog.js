@@ -9,7 +9,7 @@ module.exports = function validateBlogInput(blogData) {
     data.title = validText(data.title) ? data.title : '';
 
     if (Validator.isEmpty(data.description)) {
-        errors.desctiption = 'Description field must be filled';
+        errors.description = 'Description field must be filled';
     };
 
     if (Validator.isEmpty(data.title)) {
