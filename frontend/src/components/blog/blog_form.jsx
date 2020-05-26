@@ -8,7 +8,8 @@ class BlogForm extends React.Component {
         this.state = {
             title: '',
             ownerId: this.props.session.user.id,
-            description: ''
+            description: '',
+            pictureFiles: null,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
