@@ -47,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
 // DB address
 
 // Checking for an internet connection is a promise and wont work until i reqrite all this code
-// 
+// ill put it all in a promise and wait for a response 
 
 const db = require('./config/keys').mongoURI;
 // Connect database using mongoose
