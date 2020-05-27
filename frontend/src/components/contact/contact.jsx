@@ -9,6 +9,7 @@ class Contact extends React.Component {
             title: '',
             message: '',
             email: '',
+            error: false
         };
 
         this.update = this.update.bind(this);
@@ -23,11 +24,21 @@ class Contact extends React.Component {
         e.preventDefault();
 
         const { createContact } = this.props;
+        const { title, message, email } = this.state;
+        if (title.length === 0 || message.length === 0 || email.length === 0) {
+            this.setState({ error: true })
+            return;
+        };
 
-        createContact(this.state);
+        createContact({
+            title,
+            message,
+            email
+        });
     }
 
     render() {
+        const { error } = this.state;
         return (
             <div className='contact-container'>
                 <div className='contact-me'>
@@ -50,12 +61,24 @@ class Contact extends React.Component {
                             placeholder='Write Tarik a message'
                             onChange={this.update('message')}/>
                     </form>
+                    {
+                        error ?
+                        (
+                        <div>
+                            Please fill in all the appropriate fields
+                        </div>
+
+                        ): (
+                            null
+                        )
+                    }
                 </div>
                 <div className='contact-submit-button-container'>
                     <button className='contact-submit-button'>
                         Send
                     </button>
                 </div>
+                
             </div>
         )
     }

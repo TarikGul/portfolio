@@ -39,6 +39,8 @@
         outline: none;
         height: 40px;
         border-radius: 3px;
+        text-indent: 10px;
+        font-size: 16px;
     }
 
     .contact-email-input {
@@ -50,6 +52,8 @@
         outline: none;
         height: 40px;
         border-radius: 3px;
+        text-indent: 10px;
+        font-size: 16px;
     }
 
     .contact-message-input {
@@ -58,6 +62,8 @@
         outline: none;
         height: 240px;
         border-radius: 3px;
+        text-indent: 10px;
+        font-size: 16px;
     }
 
     .contact-submit-button-container {
@@ -77,6 +83,7 @@
         color: white;
         font-size: 16px;
         transition: 1s;
+        outline: none;
     }
 
     .contact-submit-button:hover {
@@ -84,16 +91,12 @@
         background-color: rgb(56, 116, 207);
     }
 
+    .contact-submit-button:focus {
+        background-color: rgb(39, 81, 145);
+    }
+
     .contact-me {
         font-size: 26px;
         color: rgb(233, 233, 233);
-    }
-
-    input::placeholder {
-        padding-left: 10px;
-    }
-
-    textarea::placeholder {
-        padding-left: 10px;
     }
 }
