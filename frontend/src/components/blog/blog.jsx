@@ -17,22 +17,26 @@ class Blog extends React.Component {
         const { session, blogs } = this.props;
 
         const posts = Object.values(blogs);
-
-        if(posts.length === 0 ) {
-            return null
-        }
+        
         return (
             <div className='blog-container'>
                 <div className='blog-inner-container'>
                     <div className='blog-posts'>
                         {
-                            posts.map((post, i) => {
-                                return <BlogItem 
-                                        key={`item${i}`}
-                                        title={post.title}
-                                        description={post.description}
-                                        date={post.date}/>
-                            })
+                            posts.length !== 0 ? 
+                            (
+                                posts.map((post, i) => {
+                                    return <BlogItem 
+                                            key={`item${i}`}
+                                            title={post.title}
+                                            description={post.description}
+                                            date={post.date}/>
+                                })
+                            ) : (
+                                <div>
+                                    There are currently no posts
+                                </div>
+                            )
                         }
                     </div>
                     {
