@@ -20,14 +20,11 @@ class Contact extends React.Component {
         return e => this.setState({ [field]: e.currentTarget.value });
     }
 
-    handleSubmit(e) {
-        // e.preventDefault();
-        console.log('hit the submit')
+    handleSubmit() {
         const { createContact } = this.props;
         const { title, message, email } = this.state;
         if (title.length === 0 || message.length === 0 || email.length === 0) {
             this.setState({ error: true })
-            console.log('hit the error')
             return;
         };
 
