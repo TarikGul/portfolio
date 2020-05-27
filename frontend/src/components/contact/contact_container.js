@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { createContact } from '../../util/contact_util';
+import { createNewContact } from '../../actions/contact_actions';
 import Contact from './contact';
 
 const msp = state => {
@@ -11,7 +11,7 @@ const msp = state => {
 
 const mdtp = dispatch => {
     return {
-        createContact: data => dispatch(createContact(data))
+        createContact: data => dispatch(createNewContact(data))
     };
 };
 
