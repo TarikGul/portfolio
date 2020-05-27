@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/contact.scss'
 
-class Contact {
+class Contact extends React.Component {
     constructor(props) {
         super(props)
 
@@ -24,15 +24,30 @@ class Contact {
 
         const { createContact } = this.props;
 
-        createContact();
+        createContact(this.state);
     }
 
     render() {
         return (
             <div className='contact-container'>
-                <form>
-            
-                </form>
+                <div className='contact-inner-container'>
+                    <form className='contact-form' onSubmit={this.handleSubmit}>
+                        <input 
+                            type='text'
+                            className='contact-title-input'
+                            placeholder='Title'
+                            onChange={this.update('title')}/>
+                        <input 
+                            type='text'
+                            className='contact-email-input'
+                            placeholder='Your Email'
+                            onChange={this.update('email')}/>
+                        <textarea 
+                            className='contact-message-input'
+                            placeholder='Write Tarik a message'
+                            onChange={this.update('message')}/>
+                    </form>
+                </div>
             </div>
         )
     }
