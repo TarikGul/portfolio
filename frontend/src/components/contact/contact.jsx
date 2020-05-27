@@ -1,13 +1,26 @@
 import React from 'react';
 import '../../styles/contact.scss'
 
-const Contact = props => {
+class Contact {
+    constructor(props) {
+        super(props)
 
-    return (
-        <div className='contact-container'>
-            If you would like to email me please contact me at tariksnow37@gmail.com.
-        </div>
-    )
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+    }
+    
+    render() {
+        return (
+            <div className='contact-container'>
+                <form>
+            
+                </form>
+            </div>
+        )
+    }
 };
 
 export default Contact;
