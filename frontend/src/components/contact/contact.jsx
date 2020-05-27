@@ -9,7 +9,8 @@ class Contact extends React.Component {
             title: '',
             message: '',
             email: '',
-            error: false
+            error: false,
+            success: false
         };
 
         this.update = this.update.bind(this);
@@ -32,11 +33,12 @@ class Contact extends React.Component {
             title,
             message,
             email
-        });
+        })
+        .then(() => this.setState({ title: '', email: '', message: '', success: true }))
     }
 
     render() {
-        const { error } = this.state;
+        const { error, title, email, message, success } = this.state;
         return (
             <div className='contact-container'>
                 <div className='contact-me'>
@@ -46,15 +48,18 @@ class Contact extends React.Component {
                     <form className='contact-form'>
                         <input 
                             type='text'
+                            value={title}
                             className='contact-title-input'
                             placeholder='Subject'
                             onChange={this.update('title')}/>
                         <input 
                             type='text'
+                            value={email}
                             className='contact-email-input'
                             placeholder='Your Email'
                             onChange={this.update('email')}/>
                         <textarea 
+                            value={message}
                             className='contact-message-input'
                             placeholder='Write Tarik a message'
                             onChange={this.update('message')}/>
@@ -62,11 +67,20 @@ class Contact extends React.Component {
                     {
                         error ?
                         (
-                        <div className='contact-error-message'>
-                            Please fill in all the fields
-                        </div>
-
+                            <div className='contact-error-message'>
+                                Please fill in all the fields
+                            </div>
                         ): (
+                            null
+                        )
+                    }
+                    {
+                        success ?
+                        (
+                            <div className='contact-success-message'>
+                                Your message was sent succssfully. Thanks again
+                            </div>
+                        ) : (
                             null
                         )
                     }
