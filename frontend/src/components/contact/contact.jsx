@@ -66,7 +66,7 @@ class Contact extends React.Component {
                         error ?
                         (
                         <div className='contact-error-message'>
-                            Please fill in all the appropriate fields
+                            Please fill in all the fields
                         </div>
 
                         ): (
