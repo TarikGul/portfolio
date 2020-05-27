@@ -12,7 +12,7 @@ const receiveNewContact = data => {
 
 const receiveErrors = errors => {
     return {
-        type: RECEIVE_CONTACT_ERRORS,,
+        type: RECEIVE_CONTACT_ERRORS,
         errors
     };
 };
