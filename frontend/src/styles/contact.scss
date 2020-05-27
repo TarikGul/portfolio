@@ -92,11 +92,11 @@
         background-color: rgb(56, 116, 207);
     }
 
-    input:focus {
+    .contact-title-input:focus, .contact-email-input:focus {
         border: 1.5px solid rgb(0, 132, 255);
     }
 
-    textarea:focus {
+    .contact-message-input:focus {
         border: 1.5px solid rgb(0, 132, 255);
     }
 
