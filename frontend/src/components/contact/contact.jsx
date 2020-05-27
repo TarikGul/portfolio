@@ -27,6 +27,7 @@ class Contact extends React.Component {
         const { title, message, email } = this.state;
         if (title.length === 0 || message.length === 0 || email.length === 0) {
             this.setState({ error: true })
+            console.log('hit the error')
             return;
         };
 
@@ -45,7 +46,7 @@ class Contact extends React.Component {
                     <span>Contact Me</span>
                 </div>
                 <div className='contact-inner-container'>
-                    <form className='contact-form' onSubmit={this.handleSubmit}>
+                    <form className='contact-form' onSubmit={() => this.handleSubmit()}>
                         <input 
                             type='text'
                             className='contact-title-input'
@@ -72,11 +73,11 @@ class Contact extends React.Component {
                             null
                         )
                     }
-                </div>
-                <div className='contact-submit-button-container'>
-                    <button className='contact-submit-button' type='submit'>
-                        Send
-                    </button>
+                    <div className='contact-submit-button-container'>
+                        <button className='contact-submit-button' type='submit'>
+                            Send
+                        </button>
+                    </div>
                 </div>
                 
             </div>
