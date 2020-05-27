@@ -29,7 +29,7 @@ class BlogForm extends React.Component {
         if (title.length === 0 || description.length === 0) {
             return null
         }; 
-        debugger
+
         createBlog({
             description,
             title,

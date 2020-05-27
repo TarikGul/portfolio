@@ -6,7 +6,7 @@ const BlogsReducer = (state = {}, action) => {
     
     switch(action.type) {
         case RECEIVE_NEW_BLOG:
-            nextState[action.blog.title] = action.blog;
+            nextState[action.data.data.title] = action.blog;
             return nextState;
         case RECEIVE_BLOGS:
             let data = action.data.data
