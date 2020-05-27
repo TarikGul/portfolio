@@ -21,8 +21,8 @@ class Contact extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-
+        // e.preventDefault();
+        console.log('hit the submit')
         const { createContact } = this.props;
         const { title, message, email } = this.state;
         if (title.length === 0 || message.length === 0 || email.length === 0) {
@@ -46,7 +46,7 @@ class Contact extends React.Component {
                     <span>Contact Me</span>
                 </div>
                 <div className='contact-inner-container'>
-                    <form className='contact-form' onSubmit={() => this.handleSubmit()}>
+                    <form className='contact-form'>
                         <input 
                             type='text'
                             className='contact-title-input'
@@ -65,7 +65,7 @@ class Contact extends React.Component {
                     {
                         error ?
                         (
-                        <div>
+                        <div className='contact-error-message'>
                             Please fill in all the appropriate fields
                         </div>
 
@@ -74,7 +74,7 @@ class Contact extends React.Component {
                         )
                     }
                     <div className='contact-submit-button-container'>
-                        <button className='contact-submit-button' type='submit'>
+                        <button className='contact-submit-button' type='checkbox' onClick={() => this.handleSubmit()}>
                             Send
                         </button>
                     </div>
