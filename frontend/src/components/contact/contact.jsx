@@ -74,7 +74,7 @@ class Contact extends React.Component {
                     }
                 </div>
                 <div className='contact-submit-button-container'>
-                    <button className='contact-submit-button'>
+                    <button className='contact-submit-button' type='submit'>
                         Send
                     </button>
                 </div>
