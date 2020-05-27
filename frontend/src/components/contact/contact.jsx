@@ -25,7 +25,7 @@ class Contact extends React.Component {
         const { createContact } = this.props;
         const { title, message, email } = this.state;
         if (title.length === 0 || message.length === 0 || email.length === 0) {
-            this.setState({ error: true })
+            this.setState({ error: true });
             return;
         };
 
