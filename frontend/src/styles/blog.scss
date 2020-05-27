@@ -25,4 +25,39 @@
         width: 800px;
         border: 1px solid gray;
     }
+
+    .blog-navbar-container {
+        cursor: pointer;
+    }
+
+    .blog-navbar div {
+        height: 4px;
+        background-color: white;
+        margin: 5px 0;
+        border-radius: 25px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .blog-navbar {
+        width: 30px;
+        display: block;
+        margin: 1em 0 0 1em;
+    }
+
+    .one {
+        width: 30px;
+    }
+
+    .two {
+        width: 20px;
+    }
+
+    .three {
+        width: 25px;
+    }
+
+    .blog-navbar:hover div {
+        width: 30px;
+    }
 }

@@ -17,7 +17,7 @@ class Blog extends React.Component {
         const { session, blogs } = this.props;
 
         const posts = Object.values(blogs);
-        
+
         return (
             <div className='blog-container'>
                 <div className='blog-inner-container'>
@@ -47,6 +47,13 @@ class Blog extends React.Component {
                             null
                         )
                     }
+                </div>
+                <div className='blog-navbar-container'>
+                    <div href="#" className='blog-navbar'>
+                        <div className='one'></div>
+                        <div className='two'></div>
+                        <div className='three'></div>
+                    </div>
                 </div>
             </div>
         )
