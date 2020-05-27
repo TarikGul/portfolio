@@ -42,14 +42,14 @@ class BlogForm extends React.Component {
             <div className='blog-form-container'>
                 <div className='blog-form-inner-container'>
                     <form onSubmit={this.handleSubmit}>
-                        <label>Title
+                        <label>
                             <input 
                                 type='text'
                                 placeholder='Title'
                                 value={this.state.title}
                                 onChange={this.update('title')}/>
                         </label>
-                        <label>Description
+                        <label>
                             <textarea 
                                 type='text'
                                 placeholder='Description'

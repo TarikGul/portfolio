@@ -7,6 +7,7 @@
 @media only screen and (min-device-width: 600px) { 
     .blog-container {
         display: flex;
+        justify-content: center;
         width: 100%;
         padding-top: 85px;
     }
