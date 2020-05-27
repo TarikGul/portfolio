@@ -20,5 +20,5 @@ const receiveErrors = errors => {
 export const createNewContact = data => dispatch => {
     return APIUTIL.createContact(data)
         .then(contact => dispatch(receiveNewContact(contact)))
-        .catch(err => dispatch())
-}
+        .catch(err => dispatch(receiveErrors(err)))
+};
