@@ -88,4 +88,12 @@
         font-size: 26px;
         color: rgb(233, 233, 233);
     }
+
+    input::placeholder {
+        padding-left: 10px;
+    }
+
+    textarea::placeholder {
+        padding-left: 10px;
+    }
 }
