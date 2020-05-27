@@ -11,13 +11,20 @@ class Contact {
             email: '',
         };
 
+        this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    update(field) {
+        return e => this.setState({ [field]: e.currentTarget.value });
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
+        const { createContact } = this.props;
 
+        createContact();
     }
 
     render() {
