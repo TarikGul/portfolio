@@ -8,15 +8,19 @@
 
     .contact-container {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         padding-top: 100px;
+        align-items: center;
     }
 
     .contact-inner-container {
         width: 600px;
         height: 400px;
-        border: 1px solid gray;
         margin: 40px;
+        border: 1px solid gray;
+        background-color: #393e46;
+        border-radius: 2px;
     }
 
     .contact-form {
@@ -53,5 +57,35 @@
         border: none;
         outline: none;
         height: 240px;
+        border-radius: 3px;
+    }
+
+    .contact-submit-button-container {
+        width: 600px;
+        height: 60px;
+    }
+
+    .contact-submit-button {
+        width: 100px;
+        height: 40px;
+        float: right;
+        border: none;
+        border: 1px solid gray; 
+        border-radius: 3px;
+        background-color: #393e46;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        transition: 1s;
+    }
+
+    .contact-submit-button:hover {
+        border: 1px solid white;
+        background-color: rgb(56, 116, 207);
+    }
+
+    .contact-me {
+        font-size: 26px;
+        color: rgb(233, 233, 233);
     }
 }

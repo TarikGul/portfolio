@@ -30,12 +30,15 @@ class Contact extends React.Component {
     render() {
         return (
             <div className='contact-container'>
+                <div className='contact-me'>
+                    <span>Contact Me</span>
+                </div>
                 <div className='contact-inner-container'>
                     <form className='contact-form' onSubmit={this.handleSubmit}>
                         <input 
                             type='text'
                             className='contact-title-input'
-                            placeholder='Title'
+                            placeholder='Subject'
                             onChange={this.update('title')}/>
                         <input 
                             type='text'
@@ -47,6 +50,11 @@ class Contact extends React.Component {
                             placeholder='Write Tarik a message'
                             onChange={this.update('message')}/>
                     </form>
+                </div>
+                <div className='contact-submit-button-container'>
+                    <button className='contact-submit-button'>
+                        Send
+                    </button>
                 </div>
             </div>
         )
