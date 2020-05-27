@@ -6,7 +6,7 @@ const ContactsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case CREATE_CONTACT: 
-            nextState['message'] = 'success'
+            nextState['message'] = 'success';
             return nextState;
         default:
             return nextState;
