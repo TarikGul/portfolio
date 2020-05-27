@@ -92,6 +92,13 @@
         background-color: rgb(56, 116, 207);
     }
 
+    input:focus {
+        border: 1.5px solid rgb(0, 132, 255);
+    }
+
+    textarea:focus {
+        border: 1.5px solid rgb(0, 132, 255);
+    }
 
     .contact-me {
         font-size: 40px;
