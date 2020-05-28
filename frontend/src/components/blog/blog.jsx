@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogItem from './blog_item';
 import BlogFormContainer from './blog_form_container';
+import BlogNavbarContainer from './blog_navbar_container';
 import '../../styles/blog.scss';
 
 class Blog extends React.Component {
@@ -20,13 +21,7 @@ class Blog extends React.Component {
 
         return (
             <div className='blog-container'>
-                <div className='blog-navbar-container'>
-                    <div href="#" className='blog-navbar'>
-                        <div className='one'></div>
-                        <div className='two'></div>
-                        <div className='three'></div>
-                    </div>
-                </div>
+                <BlogNavbarContainer />
                 <div className='blog-inner-container'>
                     <div className='blog-posts'>
                         {
