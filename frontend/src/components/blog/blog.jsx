@@ -20,6 +20,13 @@ class Blog extends React.Component {
 
         return (
             <div className='blog-container'>
+                <div className='blog-navbar-container'>
+                    <div href="#" className='blog-navbar'>
+                        <div className='one'></div>
+                        <div className='two'></div>
+                        <div className='three'></div>
+                    </div>
+                </div>
                 <div className='blog-inner-container'>
                     <div className='blog-posts'>
                         {
@@ -47,13 +54,6 @@ class Blog extends React.Component {
                             null
                         )
                     }
-                </div>
-                <div className='blog-navbar-container'>
-                    <div href="#" className='blog-navbar'>
-                        <div className='one'></div>
-                        <div className='two'></div>
-                        <div className='three'></div>
-                    </div>
                 </div>
             </div>
         )
