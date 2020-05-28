@@ -45,6 +45,7 @@ class BlogForm extends React.Component {
                         <label>
                             <input 
                                 type='text'
+                                className='blog-form-title'
                                 placeholder='Title'
                                 value={this.state.title}
                                 onChange={this.update('title')}/>
@@ -52,6 +53,7 @@ class BlogForm extends React.Component {
                         <label>
                             <textarea 
                                 type='text'
+                                className='blog-form-description'
                                 placeholder='Description'
                                 value={this.state.description}
                                 onChange={this.update('description')}/>

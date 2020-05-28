@@ -7,9 +7,14 @@
 @media only screen and (min-device-width: 600px) { 
     .blog-form-container {
         display: flex;
+        flex-direction: column;
+        width: 900px;
+        border: 1px solid red;
     }
 
     .blog-form-inner-container {
         display: flex;
     }
+
+
 }
