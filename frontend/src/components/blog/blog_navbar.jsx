@@ -6,6 +6,7 @@ class BlogNavbar extends React.Component {
 
         this.state = {
             open: false,
+            fade: false
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -14,17 +15,37 @@ class BlogNavbar extends React.Component {
     handleClick(e) {
         e.preventDefault();
 
-        this.setState(prevState => ({ open: !prevState }))
+        this.setState(prevState => ({ open: !prevState.open, fade: !prevState.fade }))
     }
 
     render() {
+        const { open } = this.state;
         return (
             <div className='blog-navbar-container'>
-                <div href='#' className='blog-navbar' onClick={this.handleClick}>
-                    <div className='one'></div>
-                    <div className='two'></div>
-                    <div className='three'></div>
-                </div>
+                {   
+                    open ? 
+                    (
+                        <div 
+                            href='#' 
+                            className='blog-navbar' 
+                            onClick={this.handleClick}
+                            onAnimationEnd={() => this.setState({ fade: false })}>
+                            <div className='one'></div>
+                            <div className='two'></div>
+                            <div className='three'></div>
+                        </div>
+                    ) : (
+                        <div 
+                            href='#' 
+                            className='blog-navbar' 
+                            onClick={this.handleClick}
+                            onAnimationEnd={() => this.setState({ fade: false })}>
+                            <div className='one'></div>
+                            <div className='two'></div>
+                            <div className='three'></div>
+                        </div>
+                    )
+                }
             </div>
         )
     }
