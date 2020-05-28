@@ -6,15 +6,37 @@
 
 @media only screen and (min-device-width: 600px) { 
     .blog-form-container {
-        display: flex;
-        flex-direction: column;
+        display: inline-block;
         width: 900px;
         border: 1px solid red;
     }
 
     .blog-form-inner-container {
-        display: flex;
+        display: inline-block;
+        width: 100%;
+        margin: 20px;
     }
 
+    .blog-form {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+    }
 
+    .blog-form-description {
+        width: 90%;
+    }
+
+    .submit-container {
+        width: auto;
+    }
+
+    .submit_button {
+        float: right;
+    }
+
+    .welcome-back-tarik {
+        text-align: center;
+        font-size: 12px;
+    }
 }

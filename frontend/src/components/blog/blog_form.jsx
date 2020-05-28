@@ -40,8 +40,13 @@ class BlogForm extends React.Component {
     render() {
         return (
             <div className='blog-form-container'>
+                <div className='welcome-back-tarik'>
+                    Welcome back Tarik! Remember, the only way out is forward! <br/>
+                    Keep chugging along bud, I know you got this. <br/>
+                    One Love -Leafy
+                </div>
                 <div className='blog-form-inner-container'>
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit} className='blog-form'>
                         <label>
                             <input 
                                 type='text'
