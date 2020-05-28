@@ -10,6 +10,7 @@ class BlogForm extends React.Component {
             ownerId: this.props.session.user.id,
             description: '',
             pictureFiles: null,
+            success: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,10 +35,12 @@ class BlogForm extends React.Component {
             description,
             title,
             ownerId
-        });
+        })
+            .then(() => this.setState({ title: '', description: '', success: true }));
     }
 
     render() {
+        const { success } = this.state;
         return (
             <div className='blog-form-container'>
                 <div className='welcome-back-tarik'>
@@ -68,6 +71,16 @@ class BlogForm extends React.Component {
                                 Submit
                             </button>
                         </div>
+                        {
+                            success ? 
+                            (
+                                <div className='posted-blog-post'>
+                                    Posted
+                                </div>
+                            ) : (
+                                null
+                            )
+                        }
                     </form>
                 </div>
             </div>
