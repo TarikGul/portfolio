@@ -22,7 +22,6 @@
         display: flex;
         flex-direction: column;
         width: 900px;
-        border: 1px solid gray;
     }
 
     .blog-navbar-container {
@@ -87,5 +86,14 @@
         padding: 20px;
         font-size: 14px;
         color: rgb(226, 226, 226);
+    }
+
+    .blog-description {
+        display: block;
+        font-family: Bariol-Regular;
+        font-size: 18px;
+        padding-bottom: 30px;
+        width: 90%;
+        white-space: pre-line;
     }
 }

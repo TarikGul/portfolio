@@ -15,9 +15,9 @@ const BlogItem = props => {
             <div className='blog-date'>
                 {parseDate(date)}
             </div>
-            <div className='blog-description'>
+            <p className='blog-description'>
                 {description}
-            </div>  
+            </p>  
         </div>
     )
 };

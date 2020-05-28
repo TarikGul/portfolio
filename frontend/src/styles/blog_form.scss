@@ -8,7 +8,6 @@
     .blog-form-container {
         display: inline-block;
         width: 900px;
-        border: 1px solid red;
     }
 
     .blog-form-inner-container {
@@ -23,20 +22,60 @@
         width: auto;
     }
 
+    .blog-form-title {
+        width: 90%;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: none;
+        outline: none;
+        height: 40px;
+        border-radius: 3px;
+        text-indent: 10px;
+        font-size: 16px;
+    }
+
     .blog-form-description {
         width: 90%;
+        margin: 20px;
+        border: none;
+        outline: none;
+        height: 240px;
+        border-radius: 3px;
+        text-indent: 10px;
+        font-size: 16px;
+        line-height: 40px;
+        white-space: normal;
     }
 
     .submit-container {
-        width: auto;
+        width: 90%;
     }
 
-    .submit_button {
+    .submit-button {
+        width: 100px;
+        height: 40px;
         float: right;
+        border: none;
+        border: 1px solid gray; 
+        border-radius: 3px;
+        background-color: #393e46;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        transition: 1s;
+        outline: none;
     }
 
     .welcome-back-tarik {
         text-align: center;
         font-size: 12px;
+        margin-top: 10px;
+    }
+
+     .submit-button:hover {
+        border: 1px solid white;
+        background-color: rgb(56, 116, 207);
     }
 }
