@@ -40,10 +40,10 @@ class Navbar extends React.Component {
         ];
         
         return (
-            <div className="navbar-container">
-                <div className="navbar-left-container">
+            <div className='navbar-container'>
+                <div className='navbar-left-container'>
                     <LogoButton />
-                    <div className="nav-buttons-container">
+                    <div className='nav-buttons-container'>
                     {
                         navs.map((nav, i) => {
                             return <NavButton 
@@ -55,18 +55,20 @@ class Navbar extends React.Component {
                     }
                     </div>
                 </div>
-                <div className="light-toggle">
+                <div className='navbar-right-container'>
                     {
                         session.isAuthenticated ?
-                        (
-                            <div onClick={this.logoutUser}>
-                                Logout
-                            </div>
-                        ) : (
-                            null
-                        )
+                            (
+                                <div onClick={this.logoutUser}>
+                                    Logout
+                                </div>
+                            ) : (
+                                null
+                            )
                     }
-                    <img src="/moon.svg" className="moon-svg"/>
+                    <div className='light-toggle'>
+                        <img src='/moon.svg' className='moon-svg'/>
+                    </div>
                 </div>
             </div>
         )

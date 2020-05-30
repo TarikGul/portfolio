@@ -64,6 +64,12 @@
     .logo {
         display: none;
     }
+
+    .navbar-right-container {
+        display: flex;
+        flex-direction: row;
+        width: 300px;
+    }
 }
 
 
