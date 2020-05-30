@@ -16,6 +16,7 @@ class Map extends React.Component {
             map: '',
             allMarkers: [],
             dispalyNotAssignedTasks: true,
+            loader: true
         }
     }
 
@@ -128,10 +129,17 @@ class Map extends React.Component {
         });
     }
 
+
+
     render() {
+        const { loader } = this.state;
+
         return (
             <div>
                 <div ref={el => this.mapContainer = el} className='map-container' />
+                <div className='loader-container'>
+                    <div className='lds-dual-ring'></div>
+                </div>
             </div>
         )
     }
