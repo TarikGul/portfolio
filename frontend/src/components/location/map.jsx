@@ -29,18 +29,18 @@ class Map extends React.Component {
             zoom: this.state.zoom
         });
 
-        var size = 200;
+        let size = 200;
 
         // implementation of CustomLayerInterface to draw a pulsing dot icon on the map
         // see https://docs.mapbox.com/mapbox-gl-js/api/#customlayerinterface for more info
-        var pulsingDot = {
+        let pulsingDot = {
             width: size,
             height: size,
             data: new Uint8Array(size * size * 4),
 
             // get rendering context for the map canvas when layer is added to the map
             onAdd: function () {
-                var canvas = document.createElement('canvas');
+                let canvas = document.createElement('canvas');
                 canvas.width = this.width;
                 canvas.height = this.height;
                 this.context = canvas.getContext('2d');
@@ -48,12 +48,12 @@ class Map extends React.Component {
 
             // called once before every frame where the icon will be used
             render: function () {
-                var duration = 1000;
-                var t = (performance.now() % duration) / duration;
+                let duration = 1000;
+                let t = (performance.now() % duration) / duration;
 
-                var radius = (size / 2) * 0.3;
-                var outerRadius = (size / 2) * 0.7 * t + radius;
-                var context = this.context;
+                let radius = (size / 2) * 0.3;
+                let outerRadius = (size / 2) * 0.7 * t + radius;
+                let context = this.context;
 
                 // draw outer circle
                 context.clearRect(0, 0, this.width, this.height);
