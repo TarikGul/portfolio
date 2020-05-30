@@ -35,8 +35,11 @@ class Blog extends React.Component {
                                             date={post.date}/>
                                 })
                             ) : (
-                                <div>
-                                    There are currently no posts
+                                <div class='container'>
+                                    <div class='progress progress-infinite'>
+                                        <div class='progress-bar3' >
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         }
