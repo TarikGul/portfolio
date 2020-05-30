@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 };
 
+// Check NODE_ENV for proper database env
 const db = require('./config/db');
 // Connect database using mongoose
 mongoose
