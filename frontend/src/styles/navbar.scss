@@ -55,12 +55,6 @@
     .logo {
         display: none;
     }
-
-    .navbar-right-container {
-        display: flex;
-        flex-direction: row;
-        width: 300px;
-    }
 }
 
 
@@ -147,5 +141,30 @@
 
     .moon-svg:hover {
         transform: scale(1.1);
+    }
+
+
+    .navbar-right-container {
+        display: flex;
+        flex-direction: row;
+        width: 200px;
+        justify-content: space-evenly;
+    }
+
+    .logout-button {
+        transform: translateY(15px);
+        height: 30px;
+        width: 80px;
+        border: 1px solid gray;
+        transition: 1s;
+        text-align: center;
+        border-radius: 3px;
+        cursor: pointer;
+        line-height: 30px;
+    }
+
+    .logout-button:hover {
+        border: 1px solid white;
+        background-color: rgb(73, 174, 207);
     }
 }

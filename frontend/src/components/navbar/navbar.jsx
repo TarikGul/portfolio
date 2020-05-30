@@ -59,7 +59,7 @@ class Navbar extends React.Component {
                     {
                         session.isAuthenticated ?
                             (
-                                <div onClick={this.logoutUser}>
+                                <div onClick={this.logoutUser} className='logout-button'>
                                     Logout
                                 </div>
                             ) : (
