@@ -28,7 +28,7 @@ class Map extends React.Component {
             style: 'mapbox://styles/mapbox/light-v10',
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom
-        });
+        })
 
         let size = 200;
 
@@ -126,7 +126,10 @@ class Map extends React.Component {
                     'icon-image': 'pulsing-dot'
                 }
             });
-        });
+        })
+        setTimeout(() => {
+            this.setState({ loader: false })
+        }, 2000);
     }
 
 
@@ -137,9 +140,17 @@ class Map extends React.Component {
         return (
             <div>
                 <div ref={el => this.mapContainer = el} className='map-container' />
-                <div className='loader-container'>
-                    <div className='lds-dual-ring'></div>
-                </div>
+                {
+                    loader ?
+                    (
+                        <div className='loader-container'>
+                            <div className='lds-dual-ring'></div>
+                        </div>
+                    ) : (
+                        null
+                    )
+                }
+    
             </div>
         )
     }
