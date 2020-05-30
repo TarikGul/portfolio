@@ -129,7 +129,7 @@ class Map extends React.Component {
         })
         setTimeout(() => {
             this.setState({ loader: false })
-        }, 2000);
+        }, 2500);
     }
 
 
