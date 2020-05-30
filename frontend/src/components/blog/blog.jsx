@@ -45,7 +45,7 @@ class Blog extends React.Component {
                         }
                     </div>
                     {
-                        session.isAuthenticated && session.user.username === 'testing' ?
+                        session.isAuthenticated && session.user.username === 'admin' ?
                         (
                             <BlogFormContainer />
                         ) : (
