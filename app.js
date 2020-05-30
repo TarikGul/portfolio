@@ -10,8 +10,6 @@ const visitors = require('./routes/api/visitors');
 const blogs = require('./routes/api/blogs');
 const contacts = require('./routes/api/contacts');
 
-const checkInternet = require('./util/check_internet');
-
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -25,32 +23,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 };
 
-
-// let db;
-// // Check if there is internet
-// // This allows us to use the appropriate database
-// // Either the cloud atlas or local mongodb server
-// const connection = checkInternet.checkInternet(function(isConnected) {
-//     if (isConnected) {
-//         return true
-//     } else {
-//         return false
-//     };
-// });
-
-// if (connection) {
-//     db = require('./config/keys').mongoURI;
-// } else {
-//     db = 'mongodb://localhost:27017/portfolio'
-// };
-
-// Best way to connect to the local database is to manually change the 
-// DB address
-
-// Checking for an internet connection is a promise and wont work until i reqrite all this code
-// ill put it all in a promise and wait for a response 
-
-const db = require('./config/keys').mongoURI;
+const db = require('./config/db');
 // Connect database using mongoose
 mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
