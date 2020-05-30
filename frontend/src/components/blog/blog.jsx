@@ -11,6 +11,7 @@ class Blog extends React.Component {
     }
 
     componentDidMount() {
+        // Fetch all the blogs but not sorted
         this.props.fetchBlogs();
     }
 
