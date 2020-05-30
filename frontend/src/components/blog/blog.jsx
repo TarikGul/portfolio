@@ -35,9 +35,9 @@ class Blog extends React.Component {
                                             date={post.date}/>
                                 })
                             ) : (
-                                <div class='container'>
-                                    <div class='progress progress-infinite'>
-                                        <div class='progress-bar3' >
+                                <div className='container'>
+                                    <div className='progress progress-infinite'>
+                                        <div className='progress-bar3' >
                                         </div>
                                     </div>
                                 </div>
