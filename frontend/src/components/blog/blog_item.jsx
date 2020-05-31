@@ -6,11 +6,19 @@ const parseDate = date => {
 }
 
 const BlogItem = props => {
-    const { title, description, date } = props;
+    const { title, description, date, authorQuote, quote } = props;
     return (
         <div className='blog-item-container'>
             <div className='blog-title'>
                 {title}
+            </div>
+            <div className='quote-container'>
+                <div className='quote'>
+                    {quote}
+                </div>
+                <div className='authorQuote-container'>
+                    {`-${authorQuote}`}
+                </div>
             </div>
             <div className='blog-date'>
                 {parseDate(date)}
