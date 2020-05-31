@@ -22,9 +22,9 @@ class BlogNavbar extends React.Component {
         const { open } = this.state;
         return (
             <div className='blog-navbar-container'>
-                {   
+                {
                     open ? 
-                    (
+                    (    
                         <div 
                             href='#' 
                             className='blog-navbar' 
