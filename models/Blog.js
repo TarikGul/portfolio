@@ -11,6 +11,14 @@ const BlogSchema = new Schema({
         type: String,
         required: true
     },
+    quote: {
+        type: String,
+        required: false
+    },
+    authorQuote: {
+        type: String,
+        required: false
+    },
     ownerId: {
         type: Number
     },
