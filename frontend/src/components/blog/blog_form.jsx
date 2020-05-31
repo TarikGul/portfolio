@@ -9,6 +9,8 @@ class BlogForm extends React.Component {
             title: '',
             ownerId: this.props.session.user.id,
             description: '',
+            quote: '',
+            authorQuote: '',
             pictureFiles: null,
             success: false
         };
@@ -31,12 +33,19 @@ class BlogForm extends React.Component {
             return null
         }; 
 
+        // Create blogpost and reset all the input fields
         createBlog({
             description,
             title,
             ownerId
         })
-            .then(() => this.setState({ title: '', description: '', success: true }));
+            .then(() => this.setState({ 
+                title: '', 
+                description: '', 
+                quote: '',
+                authorQuote: '',
+                success: true 
+            }));
     }
 
     render() {
@@ -57,6 +66,22 @@ class BlogForm extends React.Component {
                                 placeholder='Title'
                                 value={this.state.title}
                                 onChange={this.update('title')}/>
+                        </label>
+                        <label>
+                            <input
+                                type='text'
+                                className='blog-form-quote'
+                                placeholder='Quote'
+                                value={this.state.quote}
+                                onChange={this.update('quote')} />
+                        </label>
+                        <label>
+                            <input
+                                type='text'
+                                className='blog-form-authorQuote'
+                                placeholder='Author Quote'
+                                value={this.state.authorQuote}
+                                onChange={this.update('authorQuote')} />
                         </label>
                         <label>
                             <textarea 
