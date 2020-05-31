@@ -7,8 +7,6 @@ const parseDate = date => {
 
 const BlogItem = props => {
     const { title, description, date, authorQuote, quote } = props;
-    let tempQuote;
-    let tempAuthor;
 
     return (
         <div className='blog-item-container'>
