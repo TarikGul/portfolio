@@ -46,6 +46,8 @@ router.post('/blog', (req, res) => {
             title: body.title,
             owner: body.ownerId,
             description: body.description,
+            quote: body.quote,
+            authorQuote: body.authorQuote,
             locationUrl: location,
         });
         newBlog.save()
