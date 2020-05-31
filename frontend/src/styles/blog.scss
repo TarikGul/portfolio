@@ -159,4 +159,21 @@
         width: 500px;
         text-align: center;
     }
+
+    .quote-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 10px;
+        padding: 5px;
+        color: rgb(187, 187, 187);
+    }
+
+    .quote {
+        font-family: cassandra;
+    }
+
+    .authorQuote-container {
+        font-family: cassandra;
+    }
 }
