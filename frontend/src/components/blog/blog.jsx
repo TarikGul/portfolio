@@ -33,7 +33,9 @@ class Blog extends React.Component {
                                             key={`item${i}`}
                                             title={post.title}
                                             description={post.description}
-                                            date={post.date}/>
+                                            date={post.date}
+                                            quote={post.quote}
+                                            authorQuote={post.authorQuote}/>
                                 })
                             ) : (
                                 <div className='container'>
