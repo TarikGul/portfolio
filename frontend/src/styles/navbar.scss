@@ -147,7 +147,7 @@
     .navbar-right-container {
         display: flex;
         flex-direction: row;
-        width: 200px;
+        width: auto;
         justify-content: space-evenly;
     }
 
@@ -161,6 +161,7 @@
         border-radius: 3px;
         cursor: pointer;
         line-height: 30px;
+        margin-right: 20px;
     }
 
     .logout-button:hover {
