@@ -18,7 +18,7 @@ const BlogItem = props => {
                     (
                         <div className='quote-container'>
                             <div className='quote'>
-                                {quote}
+                                {`"${quote}"`}
                             </div>
                             <div className='authorQuote-container'>
                                 {`-${authorQuote}`}
