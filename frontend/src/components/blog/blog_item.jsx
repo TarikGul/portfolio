@@ -7,19 +7,29 @@ const parseDate = date => {
 
 const BlogItem = props => {
     const { title, description, date, authorQuote, quote } = props;
+    let tempQuote;
+    let tempAuthor;
+
     return (
         <div className='blog-item-container'>
             <div className='blog-title'>
                 {title}
             </div>
-            <div className='quote-container'>
-                <div className='quote'>
-                    {quote}
-                </div>
-                <div className='authorQuote-container'>
-                    {`-${authorQuote}`}
-                </div>
-            </div>
+                {
+                    quote ?
+                    (
+                        <div className='quote-container'>
+                            <div className='quote'>
+                                {quote}
+                            </div>
+                            <div className='authorQuote-container'>
+                                {`-${authorQuote}`}
+                            </div>
+                        </div>
+                    ) : (
+                        null
+                    )
+                }
             <div className='blog-date'>
                 {parseDate(date)}
             </div>

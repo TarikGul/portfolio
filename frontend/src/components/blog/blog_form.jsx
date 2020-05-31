@@ -27,7 +27,7 @@ class BlogForm extends React.Component {
         e.preventDefault();
 
         const { createBlog } = this.props;
-        const { title, description, ownerId } = this.state;
+        const { title, description, ownerId, authorQuote, quote } = this.state;
 
         if (title.length === 0 || description.length === 0) {
             return null
@@ -37,7 +37,9 @@ class BlogForm extends React.Component {
         createBlog({
             description,
             title,
-            ownerId
+            ownerId,
+            quote,
+            authorQuote
         })
             .then(() => this.setState({ 
                 title: '', 
