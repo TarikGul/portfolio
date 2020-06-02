@@ -2,6 +2,14 @@
 
 @media only screen and (max-device-width: 600px) { 
 
+    .border_gradient {
+        align-items: center;
+    }
+
+    .self-pic {
+        width: 380px;
+        height: auto;
+    }
 }
 
 @media only screen and (min-device-width: 600px) { 
