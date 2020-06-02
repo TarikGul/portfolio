@@ -66,9 +66,9 @@ class Navbar extends React.Component {
                                 null
                             )
                     }
-                    <div className='light-toggle'>
+                    {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )
