@@ -1,7 +1,177 @@
 @import './theme.scss';
 
 @media only screen and (max-device-width: 600px) { 
+    .blog-container {
+        display: flex;
+        width: 100%;
+        padding-top: 65px;
+    }
 
+    .blog-inner-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .blog-posts {
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+    }
+
+    .blog-navbar-container {
+        height: 40px;
+        cursor: pointer;
+        float: left;
+    }
+
+    .blog-navbar div {
+        height: 4px;
+        background-color: white;
+        margin: 5px 0;
+        border-radius: 25px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    // .blog-navbar {
+    //     width: 30px;
+    //     display: block;
+    //     margin: 1em 0 0 1em;
+    //     position: fixed;
+    // }
+
+    // .one {
+    //     width: 30px;
+    // }
+
+    // .two {
+    //     width: 20px;
+    // }
+
+    // .three {
+    //     width: 25px;
+    // }
+
+    // .blog-navbar:hover div {
+    //     width: 30px;
+    // }
+
+    .blog-item-container {
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        width: auto;
+        padding-top: 50px;
+        border-bottom: 1px solid rgb(228, 228, 228);
+        border-bottom-width: thin;
+    }
+
+    .blog-title {
+        text-align: center;
+        font-size: 30px;
+        font-family: Gotham-Book;
+        font-style: normal;
+        font-weight: normal;
+        letter-spacing: 3px;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+
+    .blog-date {
+        padding: 20px;
+        font-size: 14px;
+        color: rgb(226, 226, 226);
+    }
+
+    .blog-description {
+        display: block;
+        font-family: Bariol-Regular;
+        font-size: 18px;
+        padding-bottom: 30px;
+        width: 95%;
+        white-space: pre-line;
+        padding-left: 20px;
+        line-height: 28px;;
+    }
+
+    $green: #4cd964;
+    $turquoise: #5ac8fa;
+    $blue: #007aff;
+    $light-blue: #7DC8E8;
+    $purple: #5856d6;
+    $red: #ff2d55;
+
+    .progress-bar {
+        height: 18px;
+        border-radius: 4px;
+        background-image: 
+            linear-gradient(to right, 
+            $green, $turquoise, $blue, 
+            $light-blue, $purple, $red);
+        transition: 0.4s linear;  
+        transition-property: width, background-color;    
+    }
+
+    .progress-infinite, .progress-bar3 { 	 
+        width: 100%; 
+        background-image: 
+            linear-gradient(to right, $green, $turquoise, $blue, $light-blue, $purple, $red);
+        animation: colorAnimation 1s infinite;
+    }
+
+    @keyframes colorAnimation {
+    0% { 
+        background-image: 
+        linear-gradient(to right, $green, $turquoise, $blue, $light-blue, $purple, $red);
+    }
+    20% { 
+        background-image: 
+        linear-gradient(to right, $turquoise, $blue, $light-blue, $purple, $red, $green);
+    }
+    40% { 
+        background-image: 
+        linear-gradient(to right, $blue, $light-blue, $purple, $red, $green, $turquoise);
+    }
+    60% { 
+        background-image: 
+        linear-gradient(to right, $light-blue, $purple, $red, $green, $turquoise, $blue);
+    }
+    100% { 
+        background-image: 
+        linear-gradient(to right, $purple, $red, $green, $turquoise, $blue, $light-blue);
+    }
+    }
+
+    .progress {
+        padding: 6px;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    }
+    .container {
+        margin: 100px auto;
+        width: 500px;
+        text-align: center;
+    }
+
+    .quote-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 10px;
+        padding: 5px;
+        color: rgb(187, 187, 187);
+    }
+
+    .quote {
+        font-family: cassandra;
+    }
+
+    .authorQuote-container {
+        font-family: cassandra;
+    }
 }
 
 @media only screen and (min-device-width: 600px) { 

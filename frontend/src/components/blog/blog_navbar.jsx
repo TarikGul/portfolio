@@ -15,7 +15,7 @@ class BlogNavbar extends React.Component {
     handleClick(e) {
         e.preventDefault();
 
-        this.setState(prevState => ({ open: !prevState.open, fade: !prevState.fade }))
+        this.setState(prevState => ({ open: !prevState.open }))
     }
 
     render() {
