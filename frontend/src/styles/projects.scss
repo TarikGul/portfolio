@@ -1,7 +1,77 @@
 @import './theme.scss';
 
 @media only screen and (max-device-width: 600px) { 
+    .image-project {
+        width: 340px;
+        height: 205px;
+        cursor: pointer;
+        padding-top: 10px;
+        transition: all .2s ease-in-out;
+    }
 
+    .image-project:hover {
+        transform: scale(1.2);
+    }
+
+    .projects-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 100px;
+    }
+
+    .projects-inner-container {
+        width: 1050px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .projects-boxes > div {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .projects-boxes {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .projects-header {
+        width: 100%;
+        text-align: center;
+        font-size: 26px;
+        color: rgb(209, 209, 209);
+        padding-bottom: 20px;
+        padding-top: 80px;
+    }
+
+    .box-container {
+        text-align: center;
+    }
+
+    .box-container > span {
+        font-size: 14px;
+        color: rgb(182, 182, 182);
+    }
+
+    .project-description {
+        text-align: left;
+        padding-top: 30px;
+        padding: 10px;
+        line-height: 22px;
+        border: 1px solid #00adb5;
+        border-radius: 4px;
+    }
+
+    .project-description-container {
+        margin-top: 20px;
+        width: 340px;
+        height: auto;
+
+    }
 }
 
 @media only screen and (min-device-width: 600px) { 
