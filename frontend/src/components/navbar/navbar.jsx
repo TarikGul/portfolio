@@ -67,9 +67,9 @@ class Navbar extends React.Component {
                                 null
                             )
                     }
-                    <ResumeButton />
                     <img src='/github-logo.svg' width='45' height='45'/>
                     <img src='/mail.svg' width='45' height='45'/>
+                    <ResumeButton />
                     {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>
                     </div> */}
