@@ -147,8 +147,9 @@
     .navbar-right-container {
         display: flex;
         flex-direction: row;
-        width: auto;
+        width: 20%;
         justify-content: space-evenly;
+        margin-top: 10px;
     }
 
     .logout-button {
