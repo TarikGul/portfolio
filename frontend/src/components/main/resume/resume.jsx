@@ -1,4 +1,5 @@
 import React from 'react';
+import ResumeButton from './resume_button';
 import '../../../styles/resume.scss'
 
 const Resume = props => {
@@ -9,11 +10,7 @@ const Resume = props => {
                 <div className='download-header'>
                     Download My Resume
                 </div>
-                <a href='/Tariks-Resume.pdf' download> 
-                    <button className='resume-button'>
-                        Resume
-                    </button> 
-                </a>
+                <ResumeButton />
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import React from 'react';
 import LogoButton from './logo_button';
 import NavButton from './nav_button';
+import ResumeButton from '../main/resume/resume_button';
 import '../../styles/navbar.scss';
 
 class Navbar extends React.Component {
@@ -66,6 +67,8 @@ class Navbar extends React.Component {
                                 null
                             )
                     }
+                    <ResumeButton />
+
                     {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>
                     </div> */}
