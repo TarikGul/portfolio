@@ -69,7 +69,7 @@ class Navbar extends React.Component {
                                 null
                             )
                     }
-                    <img className='github-logo' src='/github-logo.svg' width='45' height='45' onClick={() => this.reRoute('github')}/>
+                    <img className='github-logo' src='/github.svg' width='43' height='43' onClick={() => this.reRoute('github')}/>
                     <ResumeButton />
                     {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>
