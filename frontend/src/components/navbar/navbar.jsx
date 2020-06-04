@@ -23,6 +23,8 @@ class Navbar extends React.Component {
             history.push('/contact');
         } else if (field === 'blog') {
             history.push('/blog');
+        } else if (field === 'github') {
+            window.location.href = 'https://github.com/TarikGul'
         };
     }
 
@@ -67,8 +69,7 @@ class Navbar extends React.Component {
                                 null
                             )
                     }
-                    <img src='/github-logo.svg' width='45' height='45'/>
-                    <img src='/mail.svg' width='45' height='45'/>
+                    <img className='github-logo' src='/github-logo.svg' width='45' height='45' onClick={() => this.reRoute('github')}/>
                     <ResumeButton />
                     {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>

@@ -147,7 +147,7 @@
     .navbar-right-container {
         display: flex;
         flex-direction: row;
-        width: 20%;
+        width: 15%;
         justify-content: space-evenly;
         margin-top: 10px;
     }
@@ -168,5 +168,9 @@
     .logout-button:hover {
         border: 1px solid white;
         background-color: rgb(73, 174, 207);
+    }
+
+    .github-logo {
+        cursor: pointer;
     }
 }
