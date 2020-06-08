@@ -9,6 +9,7 @@ const users = require('./routes/api/users');
 const visitors = require('./routes/api/visitors');
 const blogs = require('./routes/api/blogs');
 const contacts = require('./routes/api/contacts');
+const message_server = require('./routes/api/message_server');
 
 const port = process.env.PORT || 5000;
 
@@ -42,6 +43,7 @@ app.use('/api/users', users);
 app.use('/api/visitors', visitors);
 app.use('/api/blogs', blogs);
 app.use('/api/contacts', contacts);
+app.use('/api/sms', message_server);
 app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 
