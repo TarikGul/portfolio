@@ -18,6 +18,11 @@ router.post('/location', (res, req) => {
     const newLocation = new Location({
         location: body.body
     });
+
+    newLocation.save()
+        .then((lcoation) => {
+            res.json(location);
+        });
 });
 
 module.exports = router;
