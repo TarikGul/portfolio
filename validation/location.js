@@ -8,7 +8,7 @@ module.exports = function validateLocationInput(locationData) {
     data.body = validText(data.body) ? data.body : '';
 
     if (Validator.isEmpty(data.body)) {
-        errors.body = 'location cannot be empty';
+        errors.body = 'Location field must be filled';
     };
 
     return {
