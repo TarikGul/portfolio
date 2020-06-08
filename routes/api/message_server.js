@@ -5,6 +5,8 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 const app = express();
 
+// Success webhook route for receiving messages,
+// Responds with a success message to the receivers number
 app.post('/sms', (req, res) => {
     const twiml = new MessagingResponse();
 
