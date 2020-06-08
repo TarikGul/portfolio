@@ -4,5 +4,8 @@ module.exports = {
     awsAccessKey: process.env.AWS_ACCESS_KEY,
     awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     mapboxPublicKey: process.env.MAP_BOX_PUBLIC_KEY,
-    emailAddressKey: process.env.EMAIL_PASSWORD_KEY
+    emailAddressKey: process.env.EMAIL_PASSWORD_KEY,
+    twilioAccountSid: process.env.TWILIO_ACCOUNT_SID,
+    twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
+    twilioPhoneNumber: process.env.TWILIO_PHONE_NUMBER,
 };
