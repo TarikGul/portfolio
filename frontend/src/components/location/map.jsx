@@ -3,7 +3,6 @@ import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss'
 
 import { mapBoxPublicKey } from '../../config/keys_front'
-// import '../../styles/map.scss'
 
 class Map extends React.Component {
     constructor(props) {
