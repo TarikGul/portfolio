@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import location from './location_reducer';
 import contacts from './contact_reducer'
 import session from './session_reducer';
 import errors from './errors_reducer';
@@ -11,6 +12,7 @@ const RootReducer = combineReducers({
     errors,
     blogs,
     contacts,
+    location,
     ui
 });
 

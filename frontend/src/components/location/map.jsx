@@ -136,13 +136,18 @@ class Map extends React.Component {
                 this.setState({ loader: false })
                 console.log('success')
             }, 2500);
+
+            // We are polling the database because it is not expensive for us,
+            // because of the low latency/ zero traffic
+            // This will need to be changed into a websocket connection though. 
+            this.updateLocation();
         });
     }
 
     updateLocation() {
         setInterval(() => {
             this.props.fetchLocations()
-        }, 60000) 
+        }, 6000) 
     }
 
     render() {
