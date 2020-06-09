@@ -5,14 +5,14 @@ module.exports = function validateLocationInput(locationData) {
     const errors = {};
     const data = { ...locationData };
 
-    data.message = validText(data.message) ? data.message : '';
+    data.location = validText(data.location) ? data.location : '';
 
-    if (Validator.isEmpty(data.message)) {
-        errors.message = 'Location field must be filled';
+    if (Validator.isEmpty(data.location)) {
+        errors.location = 'Location field must be filled';
     };
 
     return {
         errors,
-        isValid: Object.keys(errors).length = 0
+        isValid: Object.keys(errors).length === 0
     };
 };
