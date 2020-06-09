@@ -20,5 +20,5 @@ const receiveErrors = errors => {
 export const fetchLocations = () => dispatch => {
     return APIUTIL.getLocations()
         .then(locations => dispatch(receiveLocations(locations)))
-        .catch(err => dispatch(receiveErrors(err)))
-}
+        .catch(err => dispatch(receiveErrors(err)));
+};
