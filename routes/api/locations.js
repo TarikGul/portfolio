@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/test', (req, res) => res.json({ msg: 'This is a test route' }));
 
-router.post('/locations', (res, req) => {
+router.post('/location', (res, req) => {
     const { body } = req;
     const { errors, isValid } = validateLocationInput(body);
 
