@@ -15,8 +15,10 @@ router.post('/location', (res, req) => {
         return res.status(400).json(errors);
     };
 
+    const coordinates = body.location;
+    
     const newLocation = new Location({
-        location: body.body
+        location: coordinates
     });
 
     newLocation.save()
