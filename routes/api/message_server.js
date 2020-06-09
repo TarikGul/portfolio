@@ -1,5 +1,4 @@
 const http = require('http');
-const axios = require('axios');
 
 const express = require('express');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
@@ -16,6 +15,7 @@ app.post('/message', (req, res) => {
     const twiml = new MessagingResponse();
     
     const { body } = req;
+
     axios.post('/locations/location', body.Body)
         .then((res) => {
             twiml.message(`Your lat/long was successfully received from ${body.From}, and saved in the DB`);
@@ -31,5 +31,5 @@ app.post('/message', (req, res) => {
 });
 
 http.createServer(app).listen(1337, () => {
-    console.log('Express Server listening on port 1337');
+    console.log('Express Messaging Server listening on port 1337');
 });
