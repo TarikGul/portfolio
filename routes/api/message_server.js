@@ -15,7 +15,16 @@ app.use(bodyParser.json());
 app.post('/message', (req, res) => {
     const twiml = new MessagingResponse();
     
-    twiml.message(`Your ${req} lat/long was successfully received, attempting to save in the DB`);
+    const { body } = req;
+    axios.post('/locations/location', body.Body)
+        .then((res) => {
+            twiml.message(`Your lat/long was successfully received from ${body.From}, and saved in the DB`);
+            console.log('success', res);
+        })
+        .catch((err) => {
+            twiml.message(`There was an errors in saving the lat/long in the database: ${err}`);
+        });
+    
     
     res.writeHead(200, { 'content-type': 'text/xml' });
     res.end(twiml.toString());
