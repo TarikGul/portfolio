@@ -1,6 +1,6 @@
 import { RECEIVE_BLOG_ERRORS } from '../actions/blog_actions';
 
-const BlogErrorsRedcuer = (state=[], action) => {
+const BlogErrorsReducer = (state=[], action) => {
     Object.freeze(state);
 
     switch(action.type) {

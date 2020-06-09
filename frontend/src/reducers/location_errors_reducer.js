@@ -1,4 +1,4 @@
-import { RECEIVE_LOCATION_ERRORS, RECEIVE_LOCATIONS } from '../actions/location_actions';
+import { RECEIVE_LOCATION_ERRORS } from '../actions/location_actions';
 
 const LocationErrorsReducer = (state=[], action) => {
     Object.freeze(state);
