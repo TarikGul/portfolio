@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     Location.find()
         .sort({ date: -1 })
         .then((locations) => res.json(locations))
-        .catch((err) => res.status(404).json({ noLocationsFound: 'No blogs found' }));
+        .catch((err) => res.status(404).json({ noLocationsFound: 'No locations found' }));
 })
 
 router.post('/location', (req, res) => {
