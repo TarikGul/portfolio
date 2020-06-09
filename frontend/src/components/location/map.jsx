@@ -16,7 +16,6 @@ class Map extends React.Component {
             zoom: 11,
             map: '',
             allMarkers: [],
-            dispalyNotAssignedTasks: true,
             loader: true
         }
 
