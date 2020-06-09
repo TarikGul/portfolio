@@ -6,7 +6,7 @@ const locationReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_LOCATIONS:
             let data = action.data.data;
-            nextState['current'] = Object.keys(data)[1]; 
+            nextState['current'] = Object.keys(data)[0]; 
             return nextState;
         default: 
             return nextState;
