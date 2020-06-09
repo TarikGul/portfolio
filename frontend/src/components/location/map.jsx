@@ -30,8 +30,12 @@ class Map extends React.Component {
                 // Here we are making sure that the state is positioned correctly,
                 // for the component to mount
                 const data = res.data.data;
-                const coords = parseLocation(Object.values(data)[0]);
-                this.setState({ lng: coords[1], lng: coords[0] });
+                const coords = parseLocation(Object.values(data)[0], true);
+                console.log(coords)
+                this.setState({ 
+                    lng: coords[1], 
+                    lat: coords[0]
+                });
 
                 //setup the map
                 mapboxgl.accessToken = mapBoxPublicKey;
@@ -112,6 +116,18 @@ class Map extends React.Component {
                         return true;
                     }
                 };
+                
+                // Check for coords make sure its not undefined or length 0
+                let long;
+                let lat;
+                const { location } = this.props;
+                if(location.length !== 0 || location !== undefined) {
+                    long = location[1];
+                    lat = location[0]
+                } else {
+                    long = 75.00000
+                    lat = 25.00000
+                };
 
                 map.on('load', function () {
                     map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
@@ -125,7 +141,7 @@ class Map extends React.Component {
                                     'type': 'Feature',
                                     'geometry': {
                                         'type': 'Point',
-                                        'coordinates': [-122.465270, 37.753830]
+                                        'coordinates': [long, lat]
                                     }
                                 }
                             ]
@@ -154,7 +170,8 @@ class Map extends React.Component {
     // used to Poll the database for updates in location
     updateLocation() {
         setInterval(() => {
-            this.props.fetchLocations()
+            this.props.fetchLocations()   
+            // Add a setState
         }, 6000) 
     }
 

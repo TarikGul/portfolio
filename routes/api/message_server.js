@@ -1,15 +1,20 @@
 const http = require('http');
+const axios = require('axios');
 
 const express = require('express');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Success webhook route for receiving messages,
 // Responds with a success message to the receivers number
 app.post('/message', (req, res) => {
     const twiml = new MessagingResponse();
-    console.log(req)
+    
     twiml.message(`Your ${req} lat/long was successfully received, attempting to save in the DB`);
     
     res.writeHead(200, { 'content-type': 'text/xml' });

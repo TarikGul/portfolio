@@ -4,9 +4,10 @@ import { fetchLocations } from '../../actions/location_actions';
 import Map from './map';
 
 const msp = state => {
-    const { errors } = state;
+    const { errors, location } = state;
     return {
-        errors
+        errors,
+        location
     };
 };
 
