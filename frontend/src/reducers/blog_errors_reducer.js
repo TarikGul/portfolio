@@ -11,4 +11,4 @@ const BlogErrorsReducer = (state=[], action) => {
     }
 };
 
-export default BlogErrorsRedcuer;
+export default BlogErrorsReducer;
