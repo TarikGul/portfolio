@@ -9,7 +9,7 @@ const users = require('./routes/api/users');
 const visitors = require('./routes/api/visitors');
 const blogs = require('./routes/api/blogs');
 const contacts = require('./routes/api/contacts');
-const location = require('./routes/api/locations');
+const locations = require('./routes/api/locations');
 
 const port = process.env.PORT || 5000;
 
