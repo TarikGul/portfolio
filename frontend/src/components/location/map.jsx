@@ -143,7 +143,6 @@ class Map extends React.Component {
                 })
                 setTimeout(() => {
                     this.setState({ loader: false })
-                    console.log('success')
                 }, 2500);
 
                 // We are polling the database because it is not expensive for us,
