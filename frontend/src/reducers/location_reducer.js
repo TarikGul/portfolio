@@ -1,13 +1,6 @@
 import { RECEIVE_LOCATIONS } from '../actions/location_actions';
 
-const parseLocation = str => {
-    const coords = str.location.split(',');
-
-    const lat = parseFloat(coords[0]);
-    const long = parseFloat(coords[1]);
-
-    return [lat, long]
-};
+import { parseLocation } from '../util/location_util';
 
 const locationReducer = (state = {}, action) => {
     const nextState = Object.assign({}, state);
