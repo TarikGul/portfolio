@@ -7,6 +7,13 @@ const router = express.Router();
 
 router.get('/test', (req, res) => res.json({ msg: 'This is a test route' }));
 
+router.get('/', (req, res) => {
+    Location.find()
+        .sort({ date: -1 })
+        .then((locations) => res.json(locations))
+        .catch((err) => res.status(404).json({ noLocationsFound: 'No blogs found' }));
+})
+
 router.post('/location', (req, res) => {
     const { body } = req;
     const { errors, isValid } = validateLocationInput(body);
