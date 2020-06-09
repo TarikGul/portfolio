@@ -8,6 +8,15 @@ class Map extends React.Component {
     constructor(props) {
         super(props)
 
+        // this.state = {
+        //     lng: -122.44,
+        //     lat: 37.76,
+        //     zoom: 11,
+        //     map: '',
+        //     allMarkers: [],
+        //     dispalyNotAssignedTasks: true,
+        //     loader: true
+        // }
         this.state = {
             lng: -122.44,
             lat: 37.76,
@@ -144,6 +153,7 @@ class Map extends React.Component {
         });
     }
 
+    // used to Poll the database for updates in location
     updateLocation() {
         setInterval(() => {
             this.props.fetchLocations()
