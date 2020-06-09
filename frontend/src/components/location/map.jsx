@@ -18,6 +18,8 @@ class Map extends React.Component {
             dispalyNotAssignedTasks: true,
             loader: true
         }
+
+        this.updateLocation = this.updateLocation.bind(this);
     }
 
     componentDidMount() {
@@ -132,7 +134,9 @@ class Map extends React.Component {
         }, 2500);
     }
 
+    updateLocation() {
 
+    }
 
     render() {
         const { loader } = this.state;
