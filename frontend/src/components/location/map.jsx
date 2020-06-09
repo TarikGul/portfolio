@@ -136,11 +136,13 @@ class Map extends React.Component {
                 this.setState({ loader: false })
                 console.log('success')
             }, 2500);
-        })
+        });
     }
 
     updateLocation() {
-
+        setInterval(() => {
+            this.props.fetchLocations()
+        }, 60000) 
     }
 
     render() {
