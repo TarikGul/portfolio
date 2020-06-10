@@ -161,7 +161,8 @@ class Map extends React.Component {
                                 map.getSource('points').setData(updatedData(location));
                                 map.flyTo({ center: [location[1], location[0]] });
                             })
-                    }, 10000);
+                    }, 30000);
+                    
                     map.addSource('points', {
                         'type': 'geojson',
                         'data': updatedData()
