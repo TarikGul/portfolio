@@ -158,8 +158,8 @@ class Map extends React.Component {
                                 // This will need to be changed into a websocket connection though. 
                                 const updatedCoords = res.data.data;
                                 const location = parseLocation(Object.values(updatedCoords)[0], false);
-                                map.getSource('points').setData(updatedData(location))
-                                map.flyTo({ center: [location[1], location[0]] })
+                                map.getSource('points').setData(updatedData(location));
+                                map.flyTo({ center: [location[1], location[0]] });
                             })
                     }, 10000);
                     map.addSource('points', {
