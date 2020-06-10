@@ -36,7 +36,7 @@ class Map extends React.Component {
 
                 let data;
                 if(res.data === undefined) {
-                    data = [this.state.lng.toString(), this.state.lat.toString()]
+                    data = [this.state.lng.toString() + ',' + this.state.lat.toString()]
                 } else {
                     data = res.data.data
                 }
