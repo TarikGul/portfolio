@@ -19,7 +19,6 @@ class Map extends React.Component {
             loader: true
         }
 
-        this.updateLocation = this.updateLocation.bind(this);
         this.handleMap = this.handleMap.bind(this);
     }
 
@@ -161,7 +160,7 @@ class Map extends React.Component {
                                 const location = parseLocation(Object.values(updatedCoords)[0], false);
                                 map.getSource('points').setData(updatedData(location))
                             })
-                    }, 1000)
+                    }, 10000);
                     map.addSource('points', {
                         'type': 'geojson',
                         'data': updatedData()
