@@ -159,6 +159,7 @@ class Map extends React.Component {
                                 const updatedCoords = res.data.data;
                                 const location = parseLocation(Object.values(updatedCoords)[0], false);
                                 map.getSource('points').setData(updatedData(location))
+                                map.flyTo({ center: [location[1], location[0]] })
                             })
                     }, 10000);
                     map.addSource('points', {
