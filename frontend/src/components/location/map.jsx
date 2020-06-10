@@ -13,16 +13,21 @@ class Map extends React.Component {
         this.state = {
             lng: -122.44,
             lat: 37.76,
-            zoom: 11,
+            zoom: 9,
             map: '',
-            allMarkers: [],
+            updated: false,
             loader: true
         }
 
         this.updateLocation = this.updateLocation.bind(this);
+        this.handleMap = this.handleMap.bind(this);
     }
 
     componentDidMount() {
+        this.handleMap();
+    }
+
+    handleMap() {
         // Receive the current location before setting up the map
         // or polling the database for updated location
         this.props.fetchLocations()
@@ -30,10 +35,10 @@ class Map extends React.Component {
                 // Here we are making sure that the state is positioned correctly,
                 // for the component to mount
                 const data = res.data.data;
-                const coords = parseLocation(Object.values(data)[0], true);
-                console.log(coords)
-                this.setState({ 
-                    lng: coords[1], 
+                const coords = parseLocation(Object.values(data)[0], false);
+
+                this.setState({
+                    lng: coords[1],
                     lat: coords[0]
                 });
 
@@ -46,6 +51,9 @@ class Map extends React.Component {
                     center: [this.state.lng, this.state.lat],
                     zoom: this.state.zoom
                 })
+
+                // Save map to the state
+                this.setState({ map })
 
                 let size = 200;
 
@@ -116,37 +124,49 @@ class Map extends React.Component {
                         return true;
                     }
                 };
-                
-                // Check for coords make sure its not undefined or length 0
-                let long;
-                let lat;
-                const { location } = this.props;
-                if(location.length !== 0 || location !== undefined) {
-                    long = location[1];
-                    lat = location[0]
-                } else {
-                    long = 75.00000
-                    lat = 25.00000
-                };
 
-                map.on('load', function () {
-                    map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
+                let updatedData = (coords) => {
+                    let long;
+                    let lat;
+                    if (coords === undefined) {
+                        long = this.state.lng;
+                        lat = this.state.lat;
+                    } else {
+                        long = coords[1];
+                        lat = coords[0];
+                    }
+                    return {
+                        'type': 'FeatureCollection',
+                        'features': [
+                            {
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [long, lat]
+                                }
+                            }
+                        ]
+                    }
+                }
 
+                map.on('load', () => {
+                    map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 3 });
+                    window.setInterval(() => {
+                        this.props.fetchLocations()
+                            .then(res => {
+                                // We are polling the database, and it is not expensive for us,
+                                // because of the low latency/ zero traffic
+                                // This will need to be changed into a websocket connection though. 
+                                const updatedCoords = res.data.data;
+                                const location = parseLocation(Object.values(updatedCoords)[0], false);
+                                map.getSource('points').setData(updatedData(location))
+                            })
+                    }, 1000)
                     map.addSource('points', {
                         'type': 'geojson',
-                        'data': {
-                            'type': 'FeatureCollection',
-                            'features': [
-                                {
-                                    'type': 'Feature',
-                                    'geometry': {
-                                        'type': 'Point',
-                                        'coordinates': [long, lat]
-                                    }
-                                }
-                            ]
-                        }
+                        'data': updatedData()
                     });
+
                     map.addLayer({
                         'id': 'points',
                         'type': 'symbol',
@@ -156,23 +176,11 @@ class Map extends React.Component {
                         }
                     });
                 })
+
                 setTimeout(() => {
                     this.setState({ loader: false })
                 }, 2500);
-
-                // We are polling the database because it is not expensive for us,
-                // because of the low latency/ zero traffic
-                // This will need to be changed into a websocket connection though. 
-                this.updateLocation();
             });
-    }
-
-    // used to Poll the database for updates in location
-    updateLocation() {
-        setInterval(() => {
-            this.props.fetchLocations()   
-            // Add a setState
-        }, 6000) 
     }
 
     render() {

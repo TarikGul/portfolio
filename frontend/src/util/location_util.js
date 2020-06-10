@@ -21,7 +21,6 @@ const parseDecimalPlaces = (str) => {
     const coord = str.split('.');
 
     let res;
-
     if(coord[1].length > 5) {
         res = coord[1].slice(0, 5);
     }
