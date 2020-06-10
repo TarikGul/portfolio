@@ -17,7 +17,7 @@ app.post('/message', (req, res) => {
     const twiml = new MessagingResponse();
     
     const { body } = req;
-    console.log(body)
+
     const postData = querystring.stringify({
         location: body.Body
     });
@@ -43,27 +43,20 @@ app.post('/message', (req, res) => {
             console.log(`BODY: ${chunk}`);
         });
         res.on('end', () => {
-            twiml.message(`Your lat/long was successfully received from ${body.From}, and saved in the DB`);
             console.log('No more data in response.');
         });
     });
 
     internalRequest.on('error', (e) => {
-        twiml.message(`There was an errors in saving the lat/long in the database: ${e.message}`);
-        console.error(`problem with request: ${e.message}`);
+        console.error(`problem with request: ${e.message}`); 
     });
 
     // Write data to request body
     internalRequest.write(postData);
     internalRequest.end();
-    // if (err) {
-    //     twiml.message(`There was an errors in saving the lat/long in the database: ${err}`);
-    //     console.log(err)
-    // } else {
-    //     twiml.message(`Your lat/long was successfully received from ${body.From}, and saved in the DB`);
-    //     console.log(res)
-    // }
- 
+
+    twiml.message(`Your lat/long was successfully received from ${body.From}, and being saved in the DB`);
+
     res.writeHead(200, { 'content-type': 'text/xml' });
     res.end(twiml.toString());
 });
