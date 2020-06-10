@@ -33,7 +33,13 @@ class Map extends React.Component {
             .then((res) => {
                 // Here we are making sure that the state is positioned correctly,
                 // for the component to mount
-                const data = res.data.data;
+
+                let data;
+                if(res.data.data === undefined) {
+                    data = [this.state.lng, this.state.lat]
+                } else {
+                    data = res.data.data
+                }
                 const coords = parseLocation(Object.values(data)[0], false);
 
                 this.setState({
@@ -162,7 +168,7 @@ class Map extends React.Component {
                                 map.flyTo({ center: [location[1], location[0]] });
                             })
                     }, 30000);
-                    
+
                     map.addSource('points', {
                         'type': 'geojson',
                         'data': updatedData()
