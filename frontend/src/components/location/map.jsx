@@ -36,10 +36,15 @@ class Map extends React.Component {
 
                 let data;
                 if(res.data === undefined) {
-                    data = [this.state.lng.toString() + ',' + this.state.lat.toString()]
+                    data = {
+                        data: {
+                            location: this.state.lat.toString() + ',' + this.state.lng.toString()
+                        }
+                    }
                 } else {
                     data = res.data.data
                 }
+                
                 const coords = parseLocation(Object.values(data)[0], false);
 
                 this.setState({
