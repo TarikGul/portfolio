@@ -35,7 +35,7 @@ class Map extends React.Component {
                 // for the component to mount
 
                 let data;
-                if(res.data.data === undefined) {
+                if(res.data === undefined) {
                     data = [this.state.lng, this.state.lat]
                 } else {
                     data = res.data.data
