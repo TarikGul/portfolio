@@ -1,5 +1,5 @@
 const http = require('http');
-
+const twilio = require('twilio');
 const express = require('express');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const bodyParser = require('body-parser');
@@ -14,10 +14,34 @@ app.use(bodyParser.json());
 // Success webhook route for receiving messages,
 // Responds with a success message to the receivers number
 app.post('/message', (req, res) => {
-    const twiml = new MessagingResponse();
-    
+    const twilioSignature = req.headers['x-twilio-signature'];
+    const url = 'https://tarikgul.com';
     const { body } = req;
 
+    // Authenticating the request when in production;
+    // Otherwise ngrok is used for secure TCP tunnelling
+    // The terminal command is after you do 
+    // -$ twilio login
+    // -$ twilio phone-numbers:update "+1${twilioNumber}" --sms-url="http://localhost:1337/message"
+    if(process.env.NODE_ENV === 'production') {
+        const requestIsValid = twilio.validateRequest(
+            process.env.TWILIO_AUTH_TOKEN,
+            twilioSignature,
+            url,
+            params
+        );
+    
+        if (!requestIsValid) {
+            return res.status(401).send('Unauthorized');
+        }
+
+        res.set({
+            'Content-Type': 'text/plain'
+        });
+    }
+
+    const twiml = new MessagingResponse();
+    
     const postData = querystring.stringify({
         location: body.Body
     });
