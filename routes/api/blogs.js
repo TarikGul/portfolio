@@ -33,9 +33,14 @@ router.post('/blog', (req, res) => {
         return res.status(400).json(errors)
     };
 
+    // This function exists because we need to first check in the uploadblog function
+    // If the user attached a file to the post request. That way we can know whether
+    // or not we can send the file to AWS, or if we can just write the new data object in 
+    // mogno and say the location url field to null. 
     const createBlog = (boolean, data, body) => {
         let location; 
 
+        // The boolen paramter just allows you to declare whether or not a file was attached
         if (boolean) {
             location = data.locationURL
         } else {
@@ -83,7 +88,7 @@ router.post('/blog', (req, res) => {
             createBlog(false, undefined, body);
         } else {
             // Callback to return the locationUrl from AWS
-            s3bucket.upload(params, function (err, data) {
+            s3bucket.upload(params, (err, data) => {
                 if (err) {
                     console.log('error in callback');
                     console.log(err);
