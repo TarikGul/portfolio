@@ -1,6 +1,7 @@
 const http = require('http');
 const twilio = require('twilio');
 const express = require('express');
+const sslRedirect = require('heroku-ssl-redirect');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const bodyParser = require('body-parser');
 
@@ -8,8 +9,13 @@ const querystring = require('querystring');
 
 const app = express();
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(sslRedirect());
+};
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 
 // Success webhook route for receiving messages,
 // Responds with a success message to the receivers number
