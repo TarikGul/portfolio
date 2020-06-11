@@ -135,6 +135,9 @@ class Map extends React.Component {
                     }
                 };
 
+                // We are writing the data into a function to handle any potential errors
+                // and too keep our code DRY because we use this in multiple places in
+                // order to configure the map in realtime. 
                 let updatedData = (coords) => {
                     let long;
                     let lat;
@@ -169,6 +172,9 @@ class Map extends React.Component {
                                 // This will need to be changed into a websocket connection though. 
                                 const updatedCoords = res.data.data;
                                 const location = parseLocation(Object.values(updatedCoords)[0], false);
+
+                                // This allows us to choose which attribute of the map we want,
+                                // and change it and see those reflections on the map itself. 
                                 map.getSource('points').setData(updatedData(location));
                                 map.flyTo({ center: [location[1], location[0]] });
                             })
@@ -189,6 +195,7 @@ class Map extends React.Component {
                     });
                 })
 
+                // This is a hard coded timeout for the loading spinner. 
                 setTimeout(() => {
                     this.setState({ loader: false })
                 }, 2500);
