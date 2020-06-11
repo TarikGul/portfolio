@@ -18,9 +18,9 @@ app.post('/message', (req, res) => {
     const url = 'https://tarikgul.com';
     const { body } = req;
 
-    // Authenticating the request when in production;
+    // Authenticating the request when in production
     // Otherwise ngrok is used for secure TCP tunnelling
-    // The terminal command is after you do 
+    // The terminal commands for development
     // -$ twilio login
     // -$ twilio phone-numbers:update "+1${twilioNumber}" --sms-url="http://localhost:1337/message"
     if(process.env.NODE_ENV === 'production') {
@@ -40,14 +40,17 @@ app.post('/message', (req, res) => {
         });
     }
 
-    const twiml = new MessagingResponse();
-    
+    // Creating a URL querystring to be passed along as a post request to the 
+    // locations api route. The internal route is the internalRequest is then made 
+    // to the correct host/path, and written in the database. The reason we 
+    // are making an internal request is becuase this server is listening on a
+    // different port. 
     const postData = querystring.stringify({
         location: body.Body
     });
-
+    
     let host = (process.env.NODE_ENV === 'production') ? 'www.tarikgul.com' : 'localhost';
-
+    
     const options = {
         hostname: host,
         port: 5000,
@@ -58,7 +61,7 @@ app.post('/message', (req, res) => {
             'Content-Length': Buffer.byteLength(postData)
         }
     };
-
+    
     const internalRequest = http.request(options, (res) => {
         console.log(`STATUS: ${res.statusCode}`);
         console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
@@ -70,14 +73,17 @@ app.post('/message', (req, res) => {
             console.log('No more data in response.');
         });
     });
-
+    
     internalRequest.on('error', (e) => {
         console.error(`problem with request: ${e.message}`); 
     });
-
-    // Write data to request body
+    
+    // Write the necessary data in the request
     internalRequest.write(postData);
     internalRequest.end();
+    
+    // Send a response back to the origin phone number.
+    const twiml = new MessagingResponse();
 
     twiml.message(`Your lat/long was successfully received from ${body.From}, and being saved in the DB`);
 
