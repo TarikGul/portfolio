@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 // Responds with a success message to the receivers number
 app.post('/message', (req, res) => {
     const twilioSignature = req.headers['x-twilio-signature'];
-    const url = 'https://tarik-gul-portfolio.herokuapp.com';
+    const url = 'https://tarikgul.com';
     const { body } = req;
 
     // Authenticating the request when in production
