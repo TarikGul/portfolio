@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
     Blog.find()
         .sort({ date: -1 })
         .then((blogs) => res.json(blogs))
-        .catch((err) => res.status(404).json({ notasksfound: 'No blogs found' }));
+        .catch((err) => res.status(404).json({ notasksfound: 'No blogs found', err }));
 })
 
 router.post('/blog', (req, res) => {
@@ -31,7 +31,7 @@ router.post('/blog', (req, res) => {
 
     if (!isValid) {
         return res.status(400).json(errors)
-    };
+    }
 
     // This function exists because we need to first check in the uploadblog function
     // If the user attached a file to the post request. That way we can know whether
@@ -45,7 +45,7 @@ router.post('/blog', (req, res) => {
             location = data.locationURL
         } else {
             location = undefined
-        };
+        }
 
         const newBlog = new Blog({
             title: body.title,
@@ -82,7 +82,7 @@ router.post('/blog', (req, res) => {
             };
         } else {
             params = undefined;
-        };
+        }
 
         if (params === undefined) {
             createBlog(false, undefined, body);
@@ -99,7 +99,7 @@ router.post('/blog', (req, res) => {
                 //If Successful create a new blog post in mongoDB;
                 createBlog(true, data, body);
             });
-        };
+        }
     };
 
     uploadBlog(req.body.file);

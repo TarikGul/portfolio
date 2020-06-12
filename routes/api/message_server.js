@@ -11,7 +11,7 @@ const app = express();
 
 if (process.env.NODE_ENV === 'production') {
     app.use(sslRedirect());
-};
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -34,12 +34,12 @@ app.post('/message', (req, res) => {
             process.env.TWILIO_AUTH_TOKEN,
             twilioSignature,
             url,
-            params
+            body
         );
     
         if (!requestIsValid) {
             return res.status(401).send('Unauthorized');
-        };
+        }
 
         res.set({
             'Content-Type': 'text/plain'
