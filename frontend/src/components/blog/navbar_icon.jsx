@@ -6,8 +6,7 @@ const BlogNavIcon = props => {
         <div
             href='#'
             className='blog-navbar'
-            onClick={this.handleClick}
-            onAnimationEnd={() => this.setState({ fade: false })}>
+            onClick={props.handleClick}>
             <div className='one'></div>
             <div className='two'></div>
             <div className='three'></div>

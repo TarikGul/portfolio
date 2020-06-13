@@ -1,4 +1,5 @@
 import React from 'react';
+import BlogNavIcon from './navbar_icon';
 
 class BlogNavbar extends React.Component {
     constructor(props) {
@@ -25,25 +26,9 @@ class BlogNavbar extends React.Component {
                 {
                     open ? 
                     (    
-                        <div 
-                            href='#' 
-                            className='blog-navbar' 
-                            onClick={this.handleClick}
-                            onAnimationEnd={() => this.setState({ fade: false })}>
-                            <div className='one'></div>
-                            <div className='two'></div>
-                            <div className='three'></div>
-                        </div>
+                        <BlogNavIcon />
                     ) : (
-                        <div 
-                            href='#' 
-                            className='blog-navbar' 
-                            onClick={this.handleClick}
-                            onAnimationEnd={() => this.setState({ fade: false })}>
-                            <div className='one'></div>
-                            <div className='two'></div>
-                            <div className='three'></div>
-                        </div>
+                        <BlogNavIcon />
                     )
                 }
             </div>
