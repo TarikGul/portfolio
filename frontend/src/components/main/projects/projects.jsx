@@ -18,20 +18,25 @@ const Projects = props => {
                              className='image-project'
                              onClick={() => handleReroute('https://bimeo.herokuapp.com')}/>
                         <div className='project-right-box'>
-                            <div className='project-name'>
+                            <h3 className='project-name'>
                                 Bimeo
-                            </div>
+                            </h3>
                             <div className='project-description-container'>
                                 <div className='project-description'>
                                     Fullstack clone of Vimeo. Built on Ruby on Rails, React, Redux, webpack, PostgreSQL. Displays full CRUD actions, RESTful API routes, and database management. 
                                 </div>
                             </div>
                             <div className='technologies'>
-                                <div className='technologies-header'>
-                                    Technologies
-                                </div>
+                                <h4 className='technologies-header'>
+                                    Technologies:
+                                </h4>
                                 <span>React</span>
                                 <span>Redux</span>
+                                <span>Rails</span>
+                                <span>AWS</span>
+                                <span>PostgreSQL</span>
+                                <span>HTML</span>
+                                <span>SCSS</span>
                             </div>
                         </div>
                     </div>
@@ -40,16 +45,25 @@ const Projects = props => {
                              className='image-project'
                              onClick={() => handleReroute('https://covid415.herokuapp.com')}/>
                         <div className='project-right-box'>
-                            <div className='project-name'>
+                            <h3 className='project-name'>
                                 Covid-415
-                            </div>
+                            </h3>
                             <div className='project-description-container'>
                                 <div className='project-description'>
                                     Built using the MERN stack, COVID415 gives San Franciscan's the resources to establish a connection for help during the coronavirus pandemic.
                                 </div>
                             </div>
                             <div className='technologies'>
-
+                                <h4 className='technologies-header'>
+                                    Technologies:
+                                </h4>
+                                <span>React</span>
+                                <span>Redux</span>
+                                <span>Express</span>
+                                <span>Node</span>
+                                <span>MongoDB</span>
+                                <span>HTML</span>
+                                <span>SCSS</span>
                             </div>
                         </div>
                     </div>
@@ -58,16 +72,21 @@ const Projects = props => {
                              className='image-project'
                              onClick={() => handleReroute('https://tarikgul.github.io/Sudoku-solving-visualizer/dist/')}/>
                         <div className='project-right-box'>
-                            <div className='project-name'>
+                            <h3 className='project-name'>
                                 Sudoku Solver
-                            </div>
+                            </h3>
                             <div className='project-description-container'>
                                 <div className='project-description'>
                                     This is a Sudoku solving visualizer. It focus's on solving the Exact Cover problem. Used in computer science and mathematics it is studied under the NP vs P debate.
                                 </div>
                             </div>
                             <div className='technologies'>
-
+                                <h4 className='technologies-header'>
+                                    Technologies:
+                                </h4>
+                                <span>Javascript</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
                             </div>
                         </div>
                     </div>
