@@ -65,6 +65,14 @@ const Projects = props => {
                                 <span>HTML</span>
                                 <span>SCSS</span>
                             </div>
+                            <div className='project-links-wrapper'>
+                                <a href="" className='project-link'>
+                                        Github Repo
+                                </a>
+                                <a href="" className='project-link'>
+                                        Live Site
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className='box-container'>

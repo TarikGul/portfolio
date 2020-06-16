@@ -122,21 +122,18 @@
     }
 
     .box-container {
-        border: 1px solid red;
-        background-color: #393e46;
+        background-color: #50555f;
     }
 
     .project-description {
         text-align: left;
-        padding-top: 30px;
-        padding: 10px;
         line-height: 22px;
         border-radius: 4px;
     }
 
     .project-description-container {
         margin-top: 20px;
-        width: 90%;
+        width: 100%;
         height: auto;
         display: inline-block;
         justify-content: center;
@@ -145,14 +142,13 @@
     .technologies {
         height: 80px;
         width: 90%;
-        padding-left: 15px;
     }
 
     .technologies > span {
-        padding: 10px;
         margin-right: 10px;
         width: 60px;
         height: 25px;
+        padding: 10px;
         background-color: gray;
         border-radius: 20px;;
     }
@@ -160,10 +156,15 @@
     .project-right-box {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        margin: 1.625rem;
     }
     
     .project-name {
         text-align: left;
+        color: rgb(160, 150, 150);
+    }
+
+    .project-links-wrapper {
+        
     }
 }
