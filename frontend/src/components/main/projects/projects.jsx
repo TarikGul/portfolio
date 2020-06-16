@@ -38,6 +38,14 @@ const Projects = props => {
                                 <span>HTML</span>
                                 <span>SCSS</span>
                             </div>
+                            <div className='project-links-wrapper'>
+                                <a href="" className='project-link'>
+                                    Github Repo
+                                </a>
+                                <a href="" className='project-link'>
+                                    Live Site
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className='box-container'>
@@ -50,7 +58,11 @@ const Projects = props => {
                             </h3>
                             <div className='project-description-container'>
                                 <div className='project-description'>
-                                    Built using the MERN stack, COVID415 gives San Franciscan's the resources to establish a connection for help during the coronavirus pandemic.
+                                    Built using the MERN stack, COVID415 gives San Franciscan's the resources 
+                                    to establish a connection for assistance while sheltering-in-place, during the Corona virus pandemic.
+                                    We implemented a tooling system using Mapbox's API, in order to match recipients with volunteers. 
+                                    After we establish the connection, we allow the users to communicate, and confirm there transaction via the Twilio Api.
+
                                 </div>
                             </div>
                             <div className='technologies'>
@@ -95,6 +107,14 @@ const Projects = props => {
                                 <span>Javascript</span>
                                 <span>HTML</span>
                                 <span>CSS</span>
+                            </div>
+                            <div className='project-links-wrapper'>
+                                <a href="" className='project-link'>
+                                    Github Repo
+                                </a>
+                                <a href="" className='project-link'>
+                                    Live Site
+                                </a>
                             </div>
                         </div>
                     </div>
