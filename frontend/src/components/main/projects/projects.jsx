@@ -39,12 +39,18 @@ const Projects = props => {
                                 <span>SCSS</span>
                             </div>
                             <div className='project-links-wrapper'>
-                                <a href="" className='project-link'>
-                                    Github Repo
-                                </a>
-                                <a href="" className='project-link'>
-                                    Live Site
-                                </a>
+                                <div className='link-wrapper'>
+                                    <img src='/github-link.svg' className='site-link-svg' />
+                                    <a href="" className='project-link'>
+                                        Github Repo
+                                    </a>
+                                </div>
+                                <div className='link-wrapper'>
+                                    <img src='/link.svg' className='site-link-svg' />
+                                    <a href="" className='project-link'>
+                                        Live Site
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -78,12 +84,18 @@ const Projects = props => {
                                 <span>SCSS</span>
                             </div>
                             <div className='project-links-wrapper'>
-                                <a href="" className='project-link'>
+                                <div className='link-wrapper'>
+                                    <img src='/github-link.svg' className='site-link-svg' />
+                                    <a href="" className='project-link'>
                                         Github Repo
-                                </a>
-                                <a href="" className='project-link'>
+                                    </a>
+                                </div>
+                                <div className='link-wrapper'>
+                                    <img src='/link.svg' className='site-link-svg'/>
+                                    <a href="" className='project-link'>
                                         Live Site
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -109,13 +121,18 @@ const Projects = props => {
                                 <span>CSS</span>
                             </div>
                             <div className='project-links-wrapper'>
-                                <img src='/lnk.svg' alt=""/>
-                                <a href="" className='project-link'>
-                                    Github Repo
-                                </a>
-                                <a href="" className='project-link'>
-                                    Live Site
-                                </a>
+                                <div className='link-wrapper'>
+                                    <img src='/github-link.svg' className='site-link-svg' />
+                                    <a href="" className='project-link'>
+                                        Github Repo
+                                    </a>
+                                </div>
+                                <div className='link-wrapper'>
+                                    <img src='/link.svg' className='site-link-svg'/>
+                                    <a href="" className='project-link'>
+                                        Live Site
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
