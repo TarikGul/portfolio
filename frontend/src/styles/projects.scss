@@ -130,6 +130,11 @@
         background-color: #50555f36;
         width: 100%;
         height: auto;
+        transition: 1s;
+    }
+
+    .box-container:hover {
+        background-color: #50555fcc;
     }
 
     .project-description {
@@ -159,7 +164,7 @@
         width: 60px;
         height: 25px;
         padding: 10px;
-        background-color: rgb(139, 179, 182);
+        background-color: rgba(139, 179, 182, 0.651);
         border-radius: 20px;
         color: white;
     }
@@ -182,5 +187,11 @@
         margin: 1rem 1rem 0 0;
         width: 8rem;
         height: 1rem;
+    }
+
+    .project-link {
+        text-decoration: none;
+        padding-top: 10px;
+        color: rgb(89, 150, 207);
     }
 }

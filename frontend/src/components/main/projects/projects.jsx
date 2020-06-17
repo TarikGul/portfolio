@@ -109,6 +109,7 @@ const Projects = props => {
                                 <span>CSS</span>
                             </div>
                             <div className='project-links-wrapper'>
+                                <img src='/lnk.svg' alt=""/>
                                 <a href="" className='project-link'>
                                     Github Repo
                                 </a>
