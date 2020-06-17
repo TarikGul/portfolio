@@ -13,9 +13,7 @@ module.exports = [
         },
         images: {
             url: [
-                '/college-views.png',
-                '/got-junk-days.png',
-                '/tahoe-hanging-back.png'
+                
             ]
         }
     },
@@ -33,9 +31,7 @@ module.exports = [
         },
         images: {
             url: [
-                '/washington-pct.png',
-                '/donogua-pass.png',
-                '/hot-springs.png'
+                
             ]
         }
     },
@@ -53,9 +49,7 @@ module.exports = [
         },
         images: {
             url: [
-               '/desert-cows.png',
-               '/glacier-nat.png',
-               '/san-juans.png' 
+                
             ]
         }
     },
@@ -73,9 +67,7 @@ module.exports = [
         },
         images: {
             url: [
-                '/biking-pain.png',
-                '/beach-biking.png',
-                '/biking-days.png'
+                
             ]
         }
     },
