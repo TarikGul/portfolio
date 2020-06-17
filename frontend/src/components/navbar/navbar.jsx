@@ -2,6 +2,7 @@ import React from 'react';
 import LogoButton from './logo_button';
 import NavButton from './nav_button';
 import ResumeButton from '../main/resume/resume_button';
+import { detectMob } from '../../util/detect_mobile';
 import '../../styles/navbar.scss';
 
 class Navbar extends React.Component {
@@ -34,6 +35,7 @@ class Navbar extends React.Component {
     }
 
     render() {
+        const mobile = detectMob();
         const { location, session } = this.props;
         const navs = [
             'portfolio',
@@ -69,7 +71,14 @@ class Navbar extends React.Component {
                                 null
                             )
                     }
-                    <img className='github-logo' src='/github.svg' width='41' height='41' onClick={() => this.reRoute('github')}/>
+                    {
+                        mobile ?
+                        (
+                            null
+                        ) : (
+                            <img className='github-logo' src='/github.svg' width='41' height='41' onClick={() => this.reRoute('github')}/>
+                        )
+                    }
                     <ResumeButton />
                     {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>

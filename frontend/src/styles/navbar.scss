@@ -153,7 +153,7 @@
     }
 
     .logout-button {
-        transform: translateY(15px);
+        transform: translateY(5px);
         height: 30px;
         width: 80px;
         border: 1px solid gray;
@@ -172,5 +172,9 @@
 
     .github-logo {
         cursor: pointer;
+    }
+
+    .github-logo-nav {
+        display: none;
     }
 }
