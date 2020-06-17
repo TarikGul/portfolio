@@ -41,13 +41,13 @@ const Projects = props => {
                             <div className='project-links-wrapper'>
                                 <div className='link-wrapper'>
                                     <img src='/github-link.svg' className='site-link-svg' />
-                                    <a href="" className='project-link'>
+                                    <a href='https://github.com/TarikGul/vimeo_clone_full_stack_project' className='project-link'>
                                         Github Repo
                                     </a>
                                 </div>
                                 <div className='link-wrapper'>
                                     <img src='/link.svg' className='site-link-svg' />
-                                    <a href="" className='project-link'>
+                                    <a href='https://bimeo.herokuapp.com' className='project-link'>
                                         Live Site
                                     </a>
                                 </div>
@@ -86,13 +86,13 @@ const Projects = props => {
                             <div className='project-links-wrapper'>
                                 <div className='link-wrapper'>
                                     <img src='/github-link.svg' className='site-link-svg' />
-                                    <a href="" className='project-link'>
+                                    <a href='https://github.com/emostov/covid415' className='project-link'>
                                         Github Repo
                                     </a>
                                 </div>
                                 <div className='link-wrapper'>
                                     <img src='/link.svg' className='site-link-svg'/>
-                                    <a href="" className='project-link'>
+                                    <a href='https://covid415.herokuapp.com' className='project-link'>
                                         Live Site
                                     </a>
                                 </div>
@@ -123,13 +123,13 @@ const Projects = props => {
                             <div className='project-links-wrapper'>
                                 <div className='link-wrapper'>
                                     <img src='/github-link.svg' className='site-link-svg' />
-                                    <a href="" className='project-link'>
+                                    <a href='https://github.com/TarikGul/Sudoku-solving-visualizer' className='project-link'>
                                         Github Repo
                                     </a>
                                 </div>
                                 <div className='link-wrapper'>
                                     <img src='/link.svg' className='site-link-svg'/>
-                                    <a href="" className='project-link'>
+                                    <a href='https://tarikgul.github.io/Sudoku-solving-visualizer/dist/' className='project-link'>
                                         Live Site
                                     </a>
                                 </div>
