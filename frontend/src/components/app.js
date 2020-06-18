@@ -13,7 +13,7 @@ import BlogContainer from './blog/blog_container';
 import Modal from './modal/modal';
 
 if (window.location.hostname !== 'localhost') {
-    ReactGA.initialize('UA-162754702-1');
+    ReactGA.initialize('UA-162754702-2');
     ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
