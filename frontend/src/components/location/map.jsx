@@ -28,7 +28,7 @@ class Map extends React.Component {
 
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
-            ReactGA.pageview('/blog');
+            ReactGA.pageview('/location');
         }
     }
 

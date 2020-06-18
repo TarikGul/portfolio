@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import '../../styles/contact.scss'
 
 class Contact extends React.Component {
@@ -15,6 +16,13 @@ class Contact extends React.Component {
 
         this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        if (window.location.hostname !== 'localhost') {
+            ReactGA.initialize('UA-162754702-2');
+            ReactGA.pageview('/contact');
+        }
     }
 
     update(field) {
