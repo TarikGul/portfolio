@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss'
 
@@ -200,6 +201,11 @@ class Map extends React.Component {
                     this.setState({ loader: false })
                 }, 2500);
             });
+
+        if (window.location.hostname !== 'localhost') {
+            ReactGA.initialize('UA-162754702-2');
+            ReactGA.pageview('/blog');
+        }
     }
 
     render() {
