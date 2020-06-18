@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import BlogItem from './blog_item';
 import BlogFormContainer from './blog_form_container';
 import BlogNavbarContainer from './blog_navbar_container';
@@ -13,6 +14,12 @@ class Blog extends React.Component {
     componentDidMount() {
         // Fetch all the blogs but not sorted
         this.props.fetchBlogs();
+
+        // Google analytics
+        if (window.location.hostname !== 'localhost') {
+            ReactGA.initialize('UA-162754702-2');
+            ReactGA.pageview('/blog');
+        }
     }
 
     render() {
