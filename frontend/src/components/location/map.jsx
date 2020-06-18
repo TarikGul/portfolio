@@ -25,6 +25,11 @@ class Map extends React.Component {
 
     componentDidMount() {
         this.handleMap();
+
+        if (window.location.hostname !== 'localhost') {
+            ReactGA.initialize('UA-162754702-2');
+            ReactGA.pageview('/blog');
+        }
     }
 
     handleMap() {
@@ -202,10 +207,6 @@ class Map extends React.Component {
                 }, 2500);
             });
 
-        if (window.location.hostname !== 'localhost') {
-            ReactGA.initialize('UA-162754702-2');
-            ReactGA.pageview('/blog');
-        }
     }
 
     render() {
