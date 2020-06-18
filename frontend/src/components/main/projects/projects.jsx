@@ -165,6 +165,7 @@ const Projects = props => {
                                         <span>Javascript</span>
                                         <span>HTML</span>
                                         <span>CSS</span>
+                                        <span>Webpack</span>
                                     </div>
                                     <div className='project-links-wrapper'>
                                         <div className='link-wrapper'>
