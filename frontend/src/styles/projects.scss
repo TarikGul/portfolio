@@ -245,6 +245,10 @@
         line-height: 5px;
     }
 
+    .project-link:hover {
+        text-decoration: underline;
+    }
+
     .link-wrapper {
         display: flex;
         width: 100%;
