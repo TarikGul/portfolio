@@ -10,7 +10,7 @@ const Resume = props => {
                 <div className='download-header'>
                     Download My Resume
                 </div>
-                <ResumeButton />
+                <ResumeButton nav={false}/>
             </div>
         </div>
     )
