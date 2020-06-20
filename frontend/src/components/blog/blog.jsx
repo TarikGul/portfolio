@@ -15,7 +15,7 @@ class Blog extends React.Component {
         // Fetch all the blogs but not sorted
         this.props.fetchBlogs();
 
-        // Google analytics
+        // Google analytics - tracking
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/blog');
