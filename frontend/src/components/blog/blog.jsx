@@ -3,6 +3,7 @@ import ReactGA from 'react-ga';
 import BlogItem from './blog_item';
 import BlogFormContainer from './blog_form_container';
 import BlogNavbarContainer from './blog_navbar_container';
+import { detectMob } from '../../util/detect_mobile';
 import '../../styles/blog.scss';
 
 class Blog extends React.Component {
@@ -26,10 +27,18 @@ class Blog extends React.Component {
         const { session, blogs } = this.props;
 
         const posts = Object.values(blogs);
+        const mobile = detectMob();
 
         return (
             <div className='blog-container'>
-                <BlogNavbarContainer />
+                {
+                    mobile ? 
+                    (
+                        null
+                    ) : (
+                        <BlogNavbarContainer />
+                    )
+                }
                 <div className='blog-inner-container'>
                     <div className='blog-posts'>
                         {
