@@ -201,6 +201,7 @@
     }
 
     .blog-navbar div {
+        transition: ease-in-out 2s;
         height: 4px;
         background-color: white;
         margin: 5px 0;
@@ -211,20 +212,21 @@
 
     .blog-navbar {
         width: 30px;
+        transition: ease-in-out 2s;
         // display: block;
         margin: 1em 0 0 1em;
         // position: fixed;
     }
 
-    .one {
+    .one-open {
         width: 30px;
     }
 
-    .two {
+    .two-open {
         width: 20px;
     }
 
-    .three {
+    .three-open {
         width: 25px;
     }
 
@@ -347,33 +349,60 @@
         font-family: cassandra;
     }
 
-    // .wrapper {
-    //     display: flex;
-    //     width: 100%;
-    //     height: 100%;
-    //     transition: margin .5s;
-    //     margin: 0 0 0 0;
-    // }
+    .wrapper {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: .5s ease-in-out;
+        margin: 0 0 0 0;
+        // overflow-x: hidden;
+    }
 
-    // .wrapper.is-nav-open {
-    //     margin-left: 250px;
-    // }
+    .nav {
+        position: absolute;
+        width: 20px;
+        height: 100%;
+        transition: ease-in-out 2s;
 
-    // .nav {
-    //     position: relative;
-    //     width: 250px;
-    //     height: 100%;
-    //     padding: 20px;
-    //     border-right: 1px solid #ccc;
-    // }
+    }
 
-    // .nav__icon {
-    //     position: absolute;
-    //     top: 0;
-    //     right: -60px;
-    //     padding: 20px;
-    //     font-size: 20px;
-    //     cursor: pointer;
-    //     transition: color .3s;
-    // }
+    .nav-open {
+        position: absolute;
+        width: 250px;
+        height: 100%;
+        background-color: red;
+        transition: ease-in-out 2s;
+    }
+
+    .blog-navbar-open {
+        transition: ease-in-out 2s;
+        transform: translate(200px);
+        width: 30px;
+        margin: 1em 0 0 1em;
+    }
+    .blog-navbar-open div {
+        height: 4px;
+        background-color: white;
+        margin: 5px 0;
+        border-radius: 25px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .blog-navbar {
+        
+    }
+
+    .one {
+        width: 30px;
+    }
+
+    .two {
+        width: 30px;
+    }
+
+    .three {
+        width: 30px;
+    }
 }

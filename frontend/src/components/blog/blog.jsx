@@ -29,7 +29,7 @@ class Blog extends React.Component {
 
         return (
             <div className='blog-container'>
-                {/* <BlogNavbarContainer /> */}
+                <BlogNavbarContainer />
                 <div className='blog-inner-container'>
                     <div className='blog-posts'>
                         {

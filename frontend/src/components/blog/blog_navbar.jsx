@@ -9,32 +9,50 @@ class BlogNavbar extends React.Component {
             open: false
         }
 
-        // this.wrapperRed = React.createRef();
+        // this.wrapperRef = React.createRef();
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e) {
         e.preventDefault();
+        console.log('hello')
 
-
+        this.setState(prevState => ({ open: !prevState.open }))
+        console.log(this.state)
         // const wrapper = this.wrapperRef.current;
         // wrapper.classList.toggle('is-nav-open');
     }
 
     render() {
+
+        const { open } = this.state;
         return (
             <div className='blog-navbar-container'>
-                <div ref={this.wrapperRef} className='wrapper'>
-                    <div className='nav'>
-                        <BlogNavIcon 
-                            className='nav__icon'
-                            type='menu-fold'
-                            onClick={() => this.handleClick()}
-                        />
-                        <div className='nav__body'>
-                            {/* Menu */}
-                        </div>
-                    </div>
+                <div className='wrapper'>
+                    {
+                        open ? 
+                        (
+                            <div className='nav-open'>
+                                <BlogNavIcon
+                                    open={true}
+                                    type='menu-fold'
+                                    handleClick={this.handleClick}
+                                />
+                                <div className='nav_body'>
+                                    Menu
+                                </div>
+                            </div>
+                        ) : (
+                            
+                            <div className='nav'>
+                                <BlogNavIcon 
+                                    open={false}
+                                    type='menu-fold'
+                                    handleClick={this.handleClick}
+                                />
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         )
