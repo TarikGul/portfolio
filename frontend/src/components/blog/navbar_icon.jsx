@@ -3,7 +3,7 @@ import React from 'react';
 const BlogNavIcon = props => {
     const { open } = props;
     return (
-        <div>
+        <div className='icon-wrapper'>
             {
                 open ? 
                 (

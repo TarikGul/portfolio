@@ -362,7 +362,6 @@
     .nav {
         position: absolute;
         width: 20px;
-        height: 100%;
         transition: ease-in-out 2s;
 
     }
@@ -370,7 +369,6 @@
     .nav-open {
         position: absolute;
         width: 250px;
-        height: 100%;
         background-color: red;
         transition: ease-in-out 2s;
     }
@@ -390,10 +388,6 @@
         cursor: pointer;
     }
 
-    .blog-navbar {
-        
-    }
-
     .one {
         width: 30px;
     }
@@ -404,5 +398,10 @@
 
     .three {
         width: 30px;
+    }
+
+    .icon-wrapper {
+        height: 100%;
+        width: 100%;
     }
 }
