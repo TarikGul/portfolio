@@ -38,8 +38,13 @@ class BlogNavbar extends React.Component {
                                     type='menu-fold'
                                     handleClick={this.handleClick}
                                 />
-                                <div className='nav_body'>
-                                    Menu
+                                <div className='nav-body'>
+                                    <div>
+                                        Menu
+                                    </div>
+                                    <div>
+                                        Search
+                                    </div>
                                 </div>
                             </div>
                         ) : (
@@ -50,6 +55,14 @@ class BlogNavbar extends React.Component {
                                     type='menu-fold'
                                     handleClick={this.handleClick}
                                 />
+                                <div className='nav-body-closed'>
+                                    <div>
+                                        Menu
+                                    </div>
+                                    <div>
+                                        Search
+                                    </div>
+                                </div>
                             </div>
                         )
                     }
