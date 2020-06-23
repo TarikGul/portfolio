@@ -10,6 +10,8 @@ const visitors = require('./routes/api/visitors');
 const blogs = require('./routes/api/blogs');
 const contacts = require('./routes/api/contacts');
 const locations = require('./routes/api/locations');
+
+// This is the twilio webhook
 const twilioServer = require('./routes/api/message_server');
 
 const port = process.env.PORT || 5000;
