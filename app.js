@@ -59,6 +59,6 @@ app.get('/', (req, res) => res.send('The dolphin has landed'));
 app.listen(port, () => console.log(`Server is running on ${port}`))
 
 //message server
-twilioServer.listen(1337, () => {
+twilioServer.listen(443, () => {
     console.log('Express Messaging Server listening on port 1337');
 });
