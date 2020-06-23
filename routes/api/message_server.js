@@ -9,9 +9,9 @@ const querystring = require('querystring');
 
 const app = express();
 
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(sslRedirect());
-// }
+if (process.env.NODE_ENV === 'production') {
+    app.use(sslRedirect());
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -56,12 +56,14 @@ app.post('/message', (req, res) => {
     const postData = querystring.stringify({
         location: body.Body
     });
+
+    const port = process.env.PORT || 5000;
     
     let host = (process.env.NODE_ENV === 'production') ? 'www.tarikgul.com' : 'localhost';
     
     const options = {
         hostname: host,
-        port: 5000,
+        port: port,
         path: '/api/locations/location',
         method: 'POST',
         headers: {
