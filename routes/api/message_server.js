@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/test', (req, res) => res.json({ msg: 'this is a test route' }));
 
 // Success webhook route for receiving messages,
 // Responds with a success message to the receivers number
