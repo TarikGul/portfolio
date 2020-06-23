@@ -10,6 +10,7 @@ const visitors = require('./routes/api/visitors');
 const blogs = require('./routes/api/blogs');
 const contacts = require('./routes/api/contacts');
 const locations = require('./routes/api/locations');
+const twilioServer = require('./routes/api/message_server');
 
 const port = process.env.PORT || 5000;
 
@@ -56,3 +57,8 @@ app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 // Setup the server
 app.listen(port, () => console.log(`Server is running on ${port}`))
+
+//message server
+twilioServer.listen(1337, () => {
+    console.log('Express Messaging Server listening on port 1337');
+});
