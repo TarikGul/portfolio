@@ -9,9 +9,9 @@ const querystring = require('querystring');
 
 const app = express();
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(sslRedirect());
-}
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(sslRedirect());
+// }
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
