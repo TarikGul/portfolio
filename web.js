@@ -13,6 +13,7 @@ fs.writeFile("/tmp/app-initialized", "Ready to launch nginx", function (err) {
 });
 
 // listen on the nginx socket
+//This is really frustrating
 app.listen('/tmp/nginx.socket', function () {
     console.log("Listening ");
 });
