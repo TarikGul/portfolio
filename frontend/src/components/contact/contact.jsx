@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
+import Footer from '../footer/footer';
 import '../../styles/contact.scss'
 
 class Contact extends React.Component {
@@ -98,7 +99,7 @@ class Contact extends React.Component {
                         </button>
                     </div>
                 </div>
-                
+                <Footer />
             </div>
         )
     }
