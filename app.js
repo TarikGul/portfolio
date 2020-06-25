@@ -64,3 +64,7 @@ app.listen(port, () => console.log(`Server is running on ${port}`))
 twilioServer.listen(1337, () => {
     console.log('Express Messaging Server listening on port 1337');
 });
+
+// Setup Procfile
+
+// web: bin/start-nginx node web.js
