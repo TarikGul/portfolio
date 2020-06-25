@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import BlogItem from './blog_item';
+import Footer from '../footer/footer';
 import BlogFormContainer from './blog_form_container';
 import BlogNavbarContainer from './blog_navbar_container';
 import { detectMob } from '../../util/detect_mobile';
@@ -72,6 +73,7 @@ class Blog extends React.Component {
                         )
                     }
                 </div>
+                <Footer />
             </div>
         )
     }
