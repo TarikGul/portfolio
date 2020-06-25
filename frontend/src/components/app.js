@@ -18,7 +18,7 @@ if (window.location.hostname !== 'localhost') {
 }
 
 const App = () => (
-    <div>
+    <div className='app-container'>
         <Modal />
         <Route path='/' component={NavbarContainer}/>
         <Route exact path='/' component={MainContainer}/>
