@@ -73,7 +73,7 @@ class Blog extends React.Component {
                         )
                     }
                 </div>
-                <Footer />
+                <Footer position={'relative'}/>
             </div>
         )
     }
