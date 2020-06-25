@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 
 // write nginx tmp
-fs.writeFile("/tmp/app-initialized", "Ready to launch nginx", function (err) {
+fs.writeFile('/tmp/app-initialized', 'Ready to launch nginx', function (err) {
     if (err) {
         console.log(err);
     } else {
