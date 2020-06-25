@@ -27,7 +27,7 @@ class Main extends React.Component {
                 <Projects />
                 <Skills />
                 <Resume />
-                <Footer />
+                <Footer position={'relative'}/>
             </div>
         )
     }
