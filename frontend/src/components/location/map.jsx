@@ -175,14 +175,17 @@ class Map extends React.Component {
                             .then(res => {
                                 // We are polling the database, and it is not expensive for us,
                                 // because of the low latency/ zero traffic
-                                // This will need to be changed into a websocket connection though. 
+                                // This will need to be changed into a websocket connection though.
                                 const updatedCoords = res.data.data;
-                                const location = parseLocation(Object.values(updatedCoords)[0], false);
+                                if (res.data !== undefined) {
 
-                                // This allows us to choose which attribute of the map we want,
-                                // and change it and see those reflections on the map itself. 
-                                map.getSource('points').setData(updatedData(location));
-                                map.flyTo({ center: [location[1], location[0]] });
+                                    const location = parseLocation(Object.values(updatedCoords)[0], false);
+                                    
+                                    // This allows us to choose which attribute of the map we want,
+                                    // and change it and see those reflections on the map itself. 
+                                    map.getSource('points').setData(updatedData(location));
+                                    map.flyTo({ center: [location[1], location[0]] });
+                                }
                             })
                     }, 30000);
 
