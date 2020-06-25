@@ -5,6 +5,7 @@ import About from './about/about';
 import Resume from './resume/resume';
 import Skills from './skills/skills';
 import Projects from './projects/projects';
+import Footer from '../footer/footer';
 
 class Main extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class Main extends React.Component {
                 <Projects />
                 <Skills />
                 <Resume />
+                <Footer />
             </div>
         )
     }
