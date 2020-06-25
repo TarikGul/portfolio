@@ -66,5 +66,6 @@ twilioServer.listen(1337, () => {
 });
 
 // Setup Procfile
-
+// if you want NGINX to start the procfile needs to exist it is what starts 
+// nginx server;
 // web: bin/start-nginx node web.js
