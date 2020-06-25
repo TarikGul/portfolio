@@ -99,7 +99,7 @@ class Contact extends React.Component {
                         </button>
                     </div>
                 </div>
-                <Footer />
+                <Footer position={'absolute'}/>
             </div>
         )
     }
