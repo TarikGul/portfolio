@@ -2,8 +2,9 @@ import React from 'react';
 
 const Footer = props => {
     return (
-        <div>
-
+        <div className='footer-wrapper'>
+            "The queiter you become, the more you can hear" <br/>
+            -Some Hacker
         </div>
     )
 }
