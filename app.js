@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 const sslRedirect = require('heroku-ssl-redirect');
+const fs = require('fs');
 
 const users = require('./routes/api/users');
 const visitors = require('./routes/api/visitors');
@@ -59,6 +60,10 @@ app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 // Setup the server
 app.listen(port, () => {
+    if(process.env.DYNO) {
+        console.log('This is heroku..!!');
+        fs.openSynce('/tmp/app-initialized');
+    }
     console.log(`Server is running on ${port}`)
 });
 
