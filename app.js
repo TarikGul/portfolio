@@ -66,7 +66,7 @@ app.listen(port, () => {
 twilioServer.listen(1337, () => {
     if(process.env.DYNO) {
         console.log('This is heroku..!!');
-        fstat.openSynce('/tmp/app-initialized');
+        fs.openSynce('/tmp/app-initialized');
     }
     console.log(`Express Messaging Server listening on port 1337`);
 });
