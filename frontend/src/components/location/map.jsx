@@ -176,9 +176,9 @@ class Map extends React.Component {
                                 // We are polling the database, and it is not expensive for us,
                                 // because of the low latency/ zero traffic
                                 // This will need to be changed into a websocket connection though.
-                                const updatedCoords = res.data.data;
+                                let updatedCoords;
                                 if (res.data !== undefined) {
-
+                                    updatedCoords = res.data.data
                                     const location = parseLocation(Object.values(updatedCoords)[0], false);
                                     
                                     // This allows us to choose which attribute of the map we want,
