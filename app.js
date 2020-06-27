@@ -58,10 +58,16 @@ app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 
 // Setup the server
-app.listen(port, () => console.log(`Server is running on ${port}`))
+app.listen(port, () => {
+    console.log(`Server is running on ${port}`)
+});
 
 //message server
 twilioServer.listen(1337, () => {
+    if(process.env.DYNO) {
+        console.log('This is heroku..!!');
+        fstat.openSynce('/tmp/app-initialized');
+    }
     console.log(`Express Messaging Server listening on port 1337`);
 });
 
