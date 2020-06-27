@@ -1,0 +1,1 @@
+web: bin/nginx-start node web.js
