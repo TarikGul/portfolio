@@ -1,90 +1,96 @@
-import React from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import ReactGA from 'react-ga';
 import Footer from '../footer/footer';
 import '../../styles/contact.scss'
 
-class Contact extends React.Component {
-    constructor(props) {
-        super(props)
+const Contact  = (props) => {
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
 
-        this.state = {
+    const [filterInput, setFilterInput] = useReducer(
+        (state, newState) => ({ ...state, ...newState }),
+        {
             title: '',
             message: '',
-            email: '',
-            error: false,
-            success: false
-        };
+            email: ''
+        }
+    );
 
-        this.update = this.update.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/contact');
         }
+    }, []);
+    
+
+    const handleUpdate = (e) => {
+        const { name, value } = e.target;
+        setFilterInput({ [name]: value });
     }
 
-    update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value });
-    }
-
-    handleSubmit() {
-        const { createContact } = this.props;
-        const { title, message, email } = this.state;
-        if (title.length === 0 || message.length === 0 || email.length === 0) {
-            this.setState({ error: true });
+    const handleSubmit = () => {
+        const { createContact } = props;
+        if (filterInput.title.length === 0 || filterInput.message.length === 0 || filterInput.email.length === 0) {
+            setError(true);
             return;
         };
 
         createContact({
-            title,
-            message,
-            email
+            title: filterInput.title,
+            message: filterInput.message,
+            email: filterInput.email
         })
-        .then(() => this.setState({ title: '', email: '', message: '', success: true }))
+        .then(() => setSuccess(true), setFilterInput({ title: '', message: '', email: '' }))
+        .then(() => {
+            setTimeout(() => {
+                setSuccess(false)
+            }, 5000)
+        })
+
+
     }
 
-    render() {
-        const { error, title, email, message, success } = this.state;
-        return (
-            <div className='contact-container'>
-                <div className='contact-me'>
-                    <span>Contact Me</span>
-                </div>
-                <div className='contact-inner-container'>
-                    <form className='contact-form'>
-                        <input 
-                            type='text'
-                            value={title}
-                            className='contact-title-input'
-                            placeholder='Subject'
-                            onChange={this.update('title')}/>
-                        <input 
-                            type='text'
-                            value={email}
-                            className='contact-email-input'
-                            placeholder='Your Email'
-                            onChange={this.update('email')}/>
-                        <textarea 
-                            value={message}
-                            className='contact-message-input'
-                            placeholder='Write Tarik a message'
-                            onChange={this.update('message')}/>
-                    </form>
-                    {
-                        error ?
+    return (
+        <div className='contact-container'>
+            <div className='contact-me'>
+                <span>Contact Me</span>
+            </div>
+            <div className='contact-inner-container'>
+                <form className='contact-form'>
+                    <input
+                        type='text'
+                        name='title'
+                        value={filterInput.title}
+                        className='contact-title-input'
+                        placeholder='Subject'
+                        onChange={e => handleUpdate(e)} />
+                    <input
+                        type='text'
+                        name='email'
+                        value={filterInput.email}
+                        className='contact-email-input'
+                        placeholder='Your Email'
+                        onChange={e => handleUpdate(e)} />
+                    <textarea
+                        name='message'
+                        value={filterInput.message}
+                        className='contact-message-input'
+                        placeholder='Write Tarik a message'
+                        onChange={e => handleUpdate(e)} />
+                </form>
+                {
+                    error ?
                         (
                             <div className='contact-error-message'>
                                 Please fill in all the fields
                             </div>
-                        ): (
+                        ) : (
                             null
                         )
-                    }
-                    {
-                        success ?
+                }
+                {
+                    success ?
                         (
                             <div className='contact-success-message'>
                                 Your message was sent succssfully. Thanks again
@@ -92,17 +98,16 @@ class Contact extends React.Component {
                         ) : (
                             null
                         )
-                    }
-                    <div className='contact-submit-button-container'>
-                        <button className='contact-submit-button' type='checkbox' onClick={() => this.handleSubmit()}>
-                            Send
+                }
+                <div className='contact-submit-button-container'>
+                    <button className='contact-submit-button' type='checkbox' onClick={() => handleSubmit()}>
+                        Send
                         </button>
-                    </div>
                 </div>
-                <Footer position={'absolute'}/>
             </div>
-        )
-    }
-};
+            <Footer position={'absolute'} />
+        </div>
+    )
+}
 
 export default Contact;
