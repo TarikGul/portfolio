@@ -7,52 +7,45 @@ import BlogNavbarContainer from './blog_navbar_container';
 import { detectMob } from '../../util/detect_mobile';
 import '../../styles/blog.scss';
 
-class Blog extends React.Component {
-    constructor(props) {
-        super(props)
+const Blog = props => {
+    const { session, blogs } = props;
+    const posts = Object.values(blogs);
+    const mobile = detectMob();
 
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         // Fetch all the blogs but not sorted
-        this.props.fetchBlogs();
+        props.fetchBlogs();
 
         // Google analytics - tracking
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/blog');
         }
-    }
+    }, []);
 
-    render() {
-        const { session, blogs } = this.props;
-
-        const posts = Object.values(blogs);
-        const mobile = detectMob();
-
-        return (
-            <div className='blog-container'>
-                {
-                    mobile ? 
+    return (
+        <div className='blog-container'>
+            {
+                mobile ?
                     (
                         null
                     ) : (
                         <BlogNavbarContainer />
                     )
-                }
-                <div className='blog-inner-container'>
-                    <div className='blog-posts'>
-                        {
-                            posts.length !== 0 ? 
+            }
+            <div className='blog-inner-container'>
+                <div className='blog-posts'>
+                    {
+                        posts.length !== 0 ?
                             (
                                 posts.map((post, i) => {
-                                    return <BlogItem 
-                                            key={`item${i}`}
-                                            title={post.title}
-                                            description={post.description}
-                                            date={post.date}
-                                            quote={post.quote}
-                                            authorQuote={post.authorQuote}/>
+                                    return <BlogItem
+                                        key={`item${i}`}
+                                        title={post.title}
+                                        description={post.description}
+                                        date={post.date}
+                                        quote={post.quote}
+                                        authorQuote={post.authorQuote} />
                                 })
                             ) : (
                                 <div className='container'>
@@ -62,35 +55,20 @@ class Blog extends React.Component {
                                     </div>
                                 </div>
                             )
-                        }
-                    </div>
-                    {
-                        session.isAuthenticated && session.user.username === 'admin' ?
+                    }
+                </div>
+                {
+                    session.isAuthenticated && session.user.username === 'admin' ?
                         (
                             <BlogFormContainer />
                         ) : (
                             null
                         )
-                    }
-                </div>
-                <Footer position={'relative'}/>
+                }
             </div>
-        )
-    }
+            <Footer position={'relative'} />
+        </div>
+    )
 }
-
-// const NewBlog = props => {
-
-//     useEffect(() => {
-//         // Fetch all the blogs but not sorted
-//         props.fetchNlogs();
-
-//         // Google analytics - tracking
-//         if (window.location.hostname !== 'localhost') {
-//             ReactGA.initialize('UA-162754702-2');
-//             ReactGA.pageview('/blog');
-//         }
-//     }, []);
-// }
 
 export default Blog;
