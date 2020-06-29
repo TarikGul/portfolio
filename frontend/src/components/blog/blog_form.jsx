@@ -1,39 +1,37 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import '../../styles/blog_form.scss';
 
-class BlogForm extends React.Component {
-    constructor(props) {
-        super(props)
+const BlogForm = (props) => {
+    const [ownerId, setOwnerId] = useState(props.session.user.id);
+    const [pictureFiles, setPictureFiles] = useState(null);
+    const [success, setSuccess] = useState(false);
 
-        this.state = {
+    const [filterInput, setFilterInput] = useReducer(
+        (state, newState) => ({ ...state, ...newState }),
+        {
             title: '',
-            ownerId: this.props.session.user.id,
-            description: '',
             quote: '',
             authorQuote: '',
-            pictureFiles: null,
-            success: false
-        };
+            description: ''
+        }
+    );
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.update = this.update.bind(this);
-    }
+    // The backend is setup with the ability to connect to AWS and store picture 
+    // in mongo and the cloud. But i need to setup the functionality in the frontend
 
-    update(field) {
-        return e => this.setState({ [field]: e.target.value })
-    }
+    const handleUpdate = (e) => {
+        const { name, value } = e.target;
+        setFilterInput({ [name]: value });
+    };
 
-    handleSubmit(e) {
-        e.preventDefault();
-
-        const { createBlog } = this.props;
-        const { title, description, ownerId, authorQuote, quote } = this.state;
+    const handleSubmit = () => {
+        const { createBlog } = props;
+        const { description, title, quote, authorQuote } = filterInput;
 
         if (title.length === 0 || description.length === 0) {
             return null
-        }; 
+        } 
 
-        // Create blogpost and reset all the input fields
         createBlog({
             description,
             title,
@@ -41,65 +39,74 @@ class BlogForm extends React.Component {
             quote,
             authorQuote
         })
-            .then(() => this.setState({ 
-                title: '', 
-                description: '', 
-                quote: '',
-                authorQuote: '',
-                success: true 
-            }));
-    }
+            .then (() => {
+                setSuccess(true);
+                setFilterInput({
+                    description: '',
+                    title: '',
+                    quote: '',
+                    authorQuote: '',
+                })
+            })
+                .then(() => {
+                    setTimeout(() => {
+                        setSuccess(false)
+                    }, 5000)
+                });
+    };
 
-    render() {
-        const { success } = this.state;
-        return (
-            <div className='blog-form-container'>
-                <div className='welcome-back-tarik'>
-                    Welcome back Tarik! Remember, the only way out is forward! <br/>
-                    Keep chugging along bud, I know you got this. <br/>
+    return (
+        <div className='blog-form-container'>
+            <div className='welcome-back-tarik'>
+                Welcome back Tarik! Remember, the only way out is forward! <br />
+                    Keep chugging along bud, I know you got this. <br />
                     One Love -Leafy
                 </div>
-                <div className='blog-form-inner-container'>
-                    <form onSubmit={this.handleSubmit} className='blog-form'>
-                        <label>
-                            <input 
-                                type='text'
-                                className='blog-form-title'
-                                placeholder='Title'
-                                value={this.state.title}
-                                onChange={this.update('title')}/>
-                        </label>
-                        <label>
-                            <input
-                                type='text'
-                                className='blog-form-quote'
-                                placeholder='Quote'
-                                value={this.state.quote}
-                                onChange={this.update('quote')} />
-                        </label>
-                        <label>
-                            <input
-                                type='text'
-                                className='blog-form-authorQuote'
-                                placeholder='Author Quote'
-                                value={this.state.authorQuote}
-                                onChange={this.update('authorQuote')} />
-                        </label>
-                        <label>
-                            <textarea 
-                                type='text'
-                                className='blog-form-description'
-                                placeholder='Description'
-                                value={this.state.description}
-                                onChange={this.update('description')}/>
-                        </label>
-                        <div className='submit-container'>
-                            <button className='submit-button' type='submit'>
-                                Submit
-                            </button>
-                        </div>
-                        {
-                            success ? 
+            <div className='blog-form-inner-container'>
+                <form onSubmit={() => handleSubmit()} className='blog-form'>
+                    <label>
+                        <input
+                            type='text'
+                            name='title'
+                            className='blog-form-title'
+                            placeholder='Title'
+                            value={filterInput.title}
+                            onChange={e => handleUpdate(e)} />
+                    </label>
+                    <label>
+                        <input
+                            type='text'
+                            name='quote'
+                            className='blog-form-quote'
+                            placeholder='Quote'
+                            value={filterInput.quote}
+                            onChange={e => handleUpdate(e)} />
+                    </label>
+                    <label>
+                        <input
+                            type='text'
+                            name='authorQuote'
+                            className='blog-form-authorQuote'
+                            placeholder='Author Quote'
+                            value={filterInput.authorQuote}
+                            onChange={e => handleUpdate(e)} />
+                    </label>
+                    <label>
+                        <textarea
+                            type='text'
+                            name='description'
+                            className='blog-form-description'
+                            placeholder='Description'
+                            value={filterInput.description}
+                            onChange={e => handleUpdate(e)} />
+                    </label>
+                    <div className='submit-container'>
+                        <button className='submit-button' type='submit'>
+                            Submit
+                        </button>
+                    </div>
+                    {
+                        success ?
                             (
                                 <div className='posted-blog-post'>
                                     Posted
@@ -107,28 +114,11 @@ class BlogForm extends React.Component {
                             ) : (
                                 null
                             )
-                        }
-                    </form>
-                </div>
+                    }
+                </form>
             </div>
-        )
-    }
+        </div>
+    )
 }
-
-// const NewBlogForm = (props) => {
-//     const [ownerId, setOwnerId] = useState(props.session.user.id);
-
-//     const [filterInput, setFilterInput] = useReducer(
-//         (state, newState) => ({ ...state, ...newState }),
-//         {
-//             title: '',
-//             quote: '',
-//             authorQuote: '',
-//             description: ''
-//         }
-//     );
-
-
-// }
 
 export default BlogForm;
