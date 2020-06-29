@@ -47,8 +47,6 @@ const Contact  = (props) => {
                 setSuccess(false)
             }, 5000)
         })
-
-
     }
 
     return (
@@ -102,7 +100,7 @@ const Contact  = (props) => {
                 <div className='contact-submit-button-container'>
                     <button className='contact-submit-button' type='checkbox' onClick={() => handleSubmit()}>
                         Send
-                        </button>
+                    </button>
                 </div>
             </div>
             <Footer position={'absolute'} />
