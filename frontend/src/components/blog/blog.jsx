@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactGA from 'react-ga';
 import BlogItem from './blog_item';
 import Footer from '../footer/footer';
@@ -78,5 +78,19 @@ class Blog extends React.Component {
         )
     }
 }
+
+// const NewBlog = props => {
+
+//     useEffect(() => {
+//         // Fetch all the blogs but not sorted
+//         props.fetchNlogs();
+
+//         // Google analytics - tracking
+//         if (window.location.hostname !== 'localhost') {
+//             ReactGA.initialize('UA-162754702-2');
+//             ReactGA.pageview('/blog');
+//         }
+//     }, []);
+// }
 
 export default Blog;
