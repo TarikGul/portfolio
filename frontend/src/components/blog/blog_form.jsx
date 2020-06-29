@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import '../../styles/blog_form.scss';
 
 class BlogForm extends React.Component {
@@ -114,5 +114,21 @@ class BlogForm extends React.Component {
         )
     }
 }
+
+// const NewBlogForm = (props) => {
+//     const [ownerId, setOwnerId] = useState(props.session.user.id);
+
+//     const [filterInput, setFilterInput] = useReducer(
+//         (state, newState) => ({ ...state, ...newState }),
+//         {
+//             title: '',
+//             quote: '',
+//             authorQuote: '',
+//             description: ''
+//         }
+//     );
+
+
+// }
 
 export default BlogForm;
