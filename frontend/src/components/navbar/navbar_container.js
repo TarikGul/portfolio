@@ -17,7 +17,7 @@ const mdtp = dispatch => {
     };
 };
 
-export default withRouter(connect(
+export default connect(
     msp,
     mdtp
-)(Navbar))
+)(Navbar);
