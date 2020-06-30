@@ -20,13 +20,13 @@ const Welcome = props => {
                 <pre >
                     <code className="language-javascript">
                         {`
-onSubmit(e) {
-    e.preventDefault();
-    this.setState(prevState => {
-        alertFileLimit: !prevState.alertFileSize
-    });
-    console.log('Welcome to my personal website! One love')
-}
+import crypto from 'crypto';
+
+const iv = crypto.createHash('sha256)
+                 .update('myHashedIV)
+                 .digest();
+                 
+const cipher = crypto.createCipheriv('aes256', key, iv);
                                 `}
                     </code>
                 </pre>
