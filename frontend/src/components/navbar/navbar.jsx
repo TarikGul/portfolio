@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import LogoButton from './logo_button';
 import NavButton from './nav_button';
 import ResumeButton from '../main/resume/resume_button';
@@ -8,9 +8,10 @@ import '../../styles/navbar.scss';
 
 const Navbar = props => {
     const mobile = detectMob();
-    const { location, session } = props;
+    const { session } = props;
 
     let history = useHistory();
+    let location = useLocation();
 
     const navs = [
         'portfolio',
