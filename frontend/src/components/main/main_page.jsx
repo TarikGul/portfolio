@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Welcome from './welcome';
 import Timeline from './timeline/timeline';
 import About from './about/about';
@@ -7,30 +7,27 @@ import Skills from './skills/skills';
 import Projects from './projects/projects';
 import Footer from '../footer/footer';
 
-class Main extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+const Main = props => {
 
-    componentDidMount() {
-        const { openModal } = this.props;
+    // This is for new visitors if they want to log there first time coming to 
+    // the site
 
-        // openModal('welcome-visitor');
-    }
+    // const { openModal } = props;
+    // useEffect(() => {
+    //     openModal('welcome-visitor')
+    // }, []);
 
-    render() {
-        return (
-            <div className="main-page-container">
-                <Welcome />
-                <About />
-                <Timeline />
-                <Projects />
-                <Skills />
-                <Resume />
-                <Footer position={'relative'}/>
-            </div>
-        )
-    }
+    return (
+        <div className="main-page-container">
+            <Welcome />
+            <About />
+            <Timeline />
+            <Projects />
+            <Skills />
+            <Resume />
+            <Footer position={'relative'} />
+        </div>
+    )
 }
 
 export default Main;
