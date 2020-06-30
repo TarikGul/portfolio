@@ -1,21 +1,25 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import LogoButton from './logo_button';
 import NavButton from './nav_button';
 import ResumeButton from '../main/resume/resume_button';
 import { detectMob } from '../../util/detect_mobile';
 import '../../styles/navbar.scss';
 
-class Navbar extends React.Component {
-    constructor(props) {
-        super(props)
+const Navbar = props => {
+    const mobile = detectMob();
+    const { location, session } = props;
 
-        this.reRoute = this.reRoute.bind(this);
-        this.logoutUser = this.logoutUser.bind(this);
-    }
+    let history = useHistory();
 
-    reRoute(field) {
-        const { history } = this.props;
+    const navs = [
+        'portfolio',
+        'location',
+        'blog',
+        'contact',
+    ];
 
+    const reRoute = (field) => {
         if (field === 'portfolio') {
             history.push('/');
         } else if (field === 'location') {
@@ -27,66 +31,56 @@ class Navbar extends React.Component {
         } else if (field === 'github') {
             window.location.href = 'https://github.com/TarikGul'
         };
-    }
+    };
 
-    logoutUser(e) {
+    const logoutUser = (e) => {
         e.preventDefault();
-        this.props.logout();
-    }
 
-    render() {
-        const mobile = detectMob();
-        const { location, session } = this.props;
-        const navs = [
-            'portfolio',
-            'location',
-            'blog',
-            'contact',
-        ];
-        
-        return (
-            <div className='navbar-container'>
-                <div className='navbar-left-container'>
-                    <LogoButton />
-                    <div className='nav-buttons-container'>
+        props.logout();
+    };
+
+    return (
+        <div className='navbar-container'>
+            <div className='navbar-left-container'>
+                <LogoButton />
+                <div className='nav-buttons-container'>
                     {
                         navs.map((nav, i) => {
-                            return <NavButton 
-                            title={nav} 
-                            key={`nav-${i}}`}
-                            location={location}
-                            reRoute={this.reRoute}/>
+                            return <NavButton
+                                title={nav}
+                                key={`nav-${i}}`}
+                                location={location}
+                                reRoute={reRoute} />
                         })
                     }
-                    </div>
                 </div>
-                <div className='navbar-right-container'>
-                    {
-                        session.isAuthenticated ?
-                            (
-                                <div onClick={this.logoutUser} className='logout-button'>
-                                    Logout
-                                </div>
-                            ) : (
-                                null
-                            )
-                    }
-                    {
-                        mobile ?
+            </div>
+            <div className='navbar-right-container'>
+                {
+                    session.isAuthenticated ?
+                        (
+                            <div onClick={() => logoutUser()} className='logout-button'>
+                                Logout
+                            </div>
+                        ) : (
+                            null
+                        )
+                }
+                {
+                    mobile ?
                         (
                             null
                         ) : (
-                            <img className='github-logo' src='/github.svg' width='41' height='41' onClick={() => this.reRoute('github')}/>
+                            <img className='github-logo' src='/github.svg' width='41' height='41' onClick={() => reRoute('github')} />
                         )
-                    }
-                    <ResumeButton nav={true}/>
-                    {/* <div className='light-toggle'>
+                }
+                <ResumeButton nav={true} />
+                {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>
                     </div> */}
-                </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Navbar;
