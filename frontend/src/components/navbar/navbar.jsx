@@ -34,9 +34,7 @@ const Navbar = props => {
         };
     };
 
-    const logoutUser = (e) => {
-        e.preventDefault();
-
+    const logoutUser = () => {
         props.logout();
     };
 
