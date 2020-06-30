@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/login.scss';
 
+// Need to change to a functional component/use hooks
 class LoginForm extends React.Component {
     constructor(props) {
         super(props)
