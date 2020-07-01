@@ -1,39 +1,34 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import '../../styles/login.scss';
 
-// Need to change to a functional component/use hooks
-class LoginForm extends React.Component {
-    constructor(props) {
-        super(props)
+const LoginForm = props => {
 
-        this.state = {
+    const [filterInput, setFilterInput] = useReducer(
+        (state, newState) => ({ ...state, ...newState }),
+        {
             email: '',
             password: ''
         }
+    );
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
-        this.update = this.update.bind(this);
-    }
+    const update = (e) => {
+        const { name, value } = e.target;
+        setFilterInput({ [name]: value });
+    };
 
-    update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value })
-    }
+    const handleSubmit = () => {
+        const { email, password } = filterInput;
 
-    handleSubmit(e) {
-        e.preventDefault();
-
-        const { email, password } = this.state;
         let user = {
             email,
             password
         };
 
-        this.props.login(user);
+        props.login(user);
     };
 
-    renderErrors() {
-        const { errors } = this.props;
+    const renderErrors = () => {
+        const { errors } = props;
 
         return (
             <ul className='errors-list'>
@@ -46,46 +41,45 @@ class LoginForm extends React.Component {
                 ))}
             </ul>
         );
-    }
-
-    render() {
-        const { email, password } = this.state;
-        return (
-            <div className='login-form-container'>
-                <div className='login-form-inner-container'>
-                    Admin Login
-                    {this.renderErrors()}
-                    <form onSubmit={this.handleSubmit}
-                          className='login-form'>
-                        <div className='input-container'>
-                            <div className='input-wrapper'>
-                                <input 
-                                    type='text'
-                                    placholder='Email'
-                                    value={email}
-                                    onChange={this.update('email')}
-                                />
-                            </div>
-                            <div className='input-wrapper'>
-                                <input
-                                    type='password'
-                                    placholder='Password'
-                                    value={password}
-                                    onChange={this.update('password')}
-                                />
-                            </div>
-                        </div>
-                    </form>
-                    <button
-                        className='session-button'
-                        type='submit'
-                        onClick={this.handleSubmit}>
-                        Log In
-                    </button>
-                </div>
-            </div>
-        )
     };
+
+    return (
+        <div className='login-form-container'>
+            <div className='login-form-inner-container'>
+                Admin Login
+                {renderErrors()}
+                <form onSubmit={handleSubmit}
+                    className='login-form'>
+                    <div className='input-container'>
+                        <div className='input-wrapper'>
+                            <input
+                                name='email'
+                                type='text'
+                                placholder='Email'
+                                value={filterInput.email}
+                                onChange={e => update(e)}
+                            />
+                        </div>
+                        <div className='input-wrapper'>
+                            <input
+                                name='password'
+                                type='password'
+                                placholder='Password'
+                                value={filterInput.password}
+                                onChange={e => update(e)}
+                            />
+                        </div>
+                    </div>
+                </form>
+                <button
+                    className='session-button'
+                    type='submit'
+                    onClick={handleSubmit}>
+                    Log In
+                </button>
+            </div>
+        </div>
+    )
 }
 
-export default LoginForm
+export default LoginForm;
