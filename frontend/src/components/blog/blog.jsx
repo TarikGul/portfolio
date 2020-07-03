@@ -23,8 +23,15 @@ const Blog = props => {
         }
     }, []);
 
+    let height;
+    useEffect(() => {
+        if(posts.length === 0) {
+            height = 'calc(100vh- 60px)'
+        }
+    }, [posts])
+
     return (
-        <div className='blog-container'>
+        <div className='blog-container' height={height}>
             {
                 mobile ?
                     (
