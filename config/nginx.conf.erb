@@ -23,26 +23,33 @@ http {
 	default_type application/octet-stream;
 	sendfile on;
 
+	proxy_ssl_server_name on:
+
+	resolver 8.8.8.8;
+
 	#Must read the body in 5 seconds.
 	client_body_timeout 5;
 
-	#upstream app_server {
-	#	server unix:/tmp/nginx.socket fail_timeout=0;
- 	#}
+	upstream upstream_app_a {
+		server tarik-gul-portfolio.herokuapp.com:443
+ 	}
+
+	 upstream upstream_app_b {
+		server tarik-gul-portfolio.herokuapp.com:443
+ 	}
 
 	server {
 		listen <%= ENV["PORT"] %>;
-		server_name tarikgul.com www.tarikgul.com;
+		server_name _;
 		keepalive_timeout 5;
 
-		root   /app/public;
-		#index  index.html index.htm;
-
-		location = /message {
+		location /message {
+			set $upstream upstream_app_b;
+			proxy_pass https://127.0.0.1:1337;
+            proxy_ssl_name tarik-gul-portfolio.herokuapp.com;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 			proxy_set_header Host $http_host;
 			proxy_redirect off;
-			proxy_pass http://127.0.0.1:1337;
 		}
 	}
 }
