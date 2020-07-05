@@ -1,28 +1,12 @@
-// const fs = require('fs');
-// const express = require('express');
+const fs = require('fs');
+const express = require('express');
 
-// const app = express();
+const app = express();
 
-// // write nginx tmp
-// fs.writeFile('/tmp/app-initialized', 'Ready to launch nginx', function (err) {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log("The file was saved!");
-//     }
-// });
+const pm2 = require('pm2');
 
-// // listen on the nginx socket
-// //This is really frustrating
-// app.listen('/tmp/nginx.socket', function () {
-//     console.log("Listening ");
-// });
-
-
-var pm2 = require('pm2');
-
-var instances = process.env.WEB_CONCURRENCY || -1; // Set by Heroku or -1 to scale to max cpu core -1
-var maxMemory = process.env.WEB_MEMORY || 512; // " " "
+const instances = process.env.WEB_CONCURRENCY || -1; // Set by Heroku or -1 to scale to max cpu core -1
+const maxMemory = process.env.WEB_MEMORY || 512; // " " "
 
 pm2.connect(function () {
     pm2.start({
@@ -48,4 +32,19 @@ pm2.connect(function () {
             });
         });
     });
+});
+
+// write nginx tmp
+fs.writeFile('/tmp/app-initialized', 'Ready to launch nginx', function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("The file was saved!");
+    }
+});
+
+// listen on the nginx socket
+//This is really frustrating
+app.listen('/tmp/nginx.socket', function () {
+    console.log("Listening ");
 });
