@@ -23,20 +23,18 @@ http {
 	default_type application/octet-stream;
 	sendfile on;
 
-	#proxy_ssl_server_name on:
-
 	resolver 8.8.8.8;
 
-	#Must read the body in 5 seconds.
 	client_body_timeout 5;
 
-	upstream upstream_app_a {
+
+	 upstream upstream_app_b {
 		server tarik-gul-portfolio.herokuapp.com:443
  	}
 
 	server {
 		listen <%= ENV["PORT"] %>;
-		server_name tarikgul.com www.tarikgul.com;
+		server_name _;
 		keepalive_timeout 5;
 
 		location /message {
