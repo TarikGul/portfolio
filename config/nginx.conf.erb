@@ -45,7 +45,7 @@ http {
 
 		location /message {
 			set $upstream upstream_app_b;
-			proxy_pass https://127.0.0.1:1337;
+			proxy_pass https://$upstream;
             proxy_ssl_name tarik-gul-portfolio.herokuapp.com;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 			proxy_set_header Host $http_host;
