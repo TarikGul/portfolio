@@ -29,7 +29,7 @@ http {
 	client_body_timeout 5;
 
 	server {
-		listen 80;
+		listen <%= ENV["PORT"] %>;
 		server_name tarikgul.com www.tarikgul.com;
 		keepalive_timeout 5;
 
