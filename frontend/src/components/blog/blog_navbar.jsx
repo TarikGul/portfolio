@@ -23,10 +23,7 @@ const BlogNavbar = (props) => {
                                 />
                                 <div className='nav-body'>
                                     <div>
-                                        Menu
-                                    </div>
-                                    <div>
-                                        Search
+                                        Coming Soon
                                     </div>
                                 </div>
                             </div>
