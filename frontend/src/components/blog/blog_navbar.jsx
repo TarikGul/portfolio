@@ -40,10 +40,7 @@ const BlogNavbar = (props) => {
                                 />
                                 <div className='nav-body-closed'>
                                     <div>
-                                        Menu
-                                    </div>
-                                    <div>
-                                        Search
+                                        Coming Soon
                                     </div>
                                 </div>
                             </div>
