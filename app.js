@@ -13,9 +13,6 @@ const contacts = require('./routes/api/contacts');
 const locations = require('./routes/api/locations');
 const messages = require('./routes/api/messages');
 
-// This is the twilio webhook
-const twilioServer = require('./routes/api/message_server');
-
 const port = process.env.PORT || 5000;
 
 const app = express();
