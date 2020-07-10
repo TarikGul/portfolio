@@ -11,6 +11,7 @@ const visitors = require('./routes/api/visitors');
 const blogs = require('./routes/api/blogs');
 const contacts = require('./routes/api/contacts');
 const locations = require('./routes/api/locations');
+const messages = require('./routes/api/messages');
 
 // This is the twilio webhook
 const twilioServer = require('./routes/api/message_server');
@@ -53,27 +54,15 @@ app.use('/api/users', users);
 app.use('/api/visitors', visitors);
 app.use('/api/blogs', blogs);
 app.use('/api/contacts', contacts);
-app.use('/api/locations', locations)
+app.use('/api/locations', locations);
+app.use('/api/messages', messages);
 app.get('/', (req, res) => res.send('The dolphin has landed'));
 
 
 
 // Setup the server
 app.listen(port, () => {
-    // if(process.env.DYNO) {
-    //     console.log('This is heroku..!!');
-    //     fs.openSync('/tmp/app-initialized');
-    // }
     console.log(`Server is running on ${port}`)
-});
-
-//message server
-twilioServer.listen(1337, () => {
-    // if(process.env.DYNO) {
-    //     console.log('This is heroku..!!');
-    //     fs.openSync('/tmp/app-initialized');
-    // }
-    console.log(`Express Messaging Server listening on port 1337`);
 });
 
 // Setup Procfile
