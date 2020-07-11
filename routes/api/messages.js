@@ -33,11 +33,6 @@ router.post('/message', (req, res) => {
         if (!requestIsValid) {
             return res.status(401).send('Unauthorized');
         }
-
-        res.set({
-            'Content-Type': 'text/plain'
-        });
-        res.send('You\'re approved');
     }
 
     const { errors, isValid } = validateLocationInput({ location: body.Body });
