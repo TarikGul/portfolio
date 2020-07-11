@@ -11,6 +11,10 @@ module.exports = function validateLocationInput(locationData) {
         errors.location = 'Location field must be filled';
     };
 
+    if (/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/.test(data.location) === false) {
+        errors.locationFormat = 'Location is formatted invalid'
+    }
+
     return {
         errors,
         isValid: Object.keys(errors).length === 0
