@@ -180,11 +180,13 @@ class Map extends React.Component {
                                 if (res.data !== undefined) {
                                     updatedCoords = res.data.data
                                     const location = parseLocation(Object.values(updatedCoords)[0], false);
-                                    
                                     // This allows us to choose which attribute of the map we want,
                                     // and change it and see those reflections on the map itself. 
                                     map.getSource('points').setData(updatedData(location));
-                                    map.flyTo({ center: [location[1], location[0]] });
+                                    if(location[1] !== this.state.lng && location[0] !== this.state.lat) {
+                                        map.flyTo({ center: [location[1], location[0]] });
+                                        this.setState({ lng: location[1], lat: location[0] });
+                                    }
                                 }
                             })
                     }, 30000);
