@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 const sslRedirect = require('heroku-ssl-redirect');
-const fs = require('fs');
 
 const users = require('./routes/api/users');
 const visitors = require('./routes/api/visitors');
