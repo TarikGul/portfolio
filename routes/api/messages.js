@@ -46,7 +46,10 @@ router.post('/message', (req, res) => {
 
     if (!isValid) {
         twiml.message(`Your lat/long was formatted incorrectly, or there was an external error. Sorry`);
-        return res.status(400).json(errors);
+        res.writeHead(200, { 'content-type': 'text/xml' });
+        res.end(twiml.toString());
+        console.log(errors);
+        return;
     } else {
         twiml.message(`Your lat/long was successfully received from ${body.From}, and being saved in the DB`);
 
