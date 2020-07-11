@@ -8,10 +8,6 @@ const validateLocationInput = require('../../validation/location');
 
 const router = express.Router();
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(sslRedirect());
-}
-
 router.get('/test', (req, res) => res.json({ msg: 'this is a test route' }));
 
 // Success webhook route for receiving messages,
