@@ -1,6 +1,5 @@
 const twilio = require('twilio');
 const express = require('express');
-const sslRedirect = require('heroku-ssl-redirect');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const Location = require('../../models/Location');
 const validateLocationInput = require('../../validation/location');
@@ -14,7 +13,7 @@ router.get('/test', (req, res) => res.json({ msg: 'this is a test route' }));
 // Responds with a success message to the receivers number
 router.post('/message', (req, res) => {
     const twilioSignature = req.headers['x-twilio-signature'];
-    const url = 'https://tarikgul.com';
+    const url = 'https://www.tarikgul.com/api/messages/message';
     const { body } = req;
 
     // Authenticating the request when in production
@@ -38,6 +37,7 @@ router.post('/message', (req, res) => {
         res.set({
             'Content-Type': 'text/plain'
         });
+        res.send('You\'re approved');
     }
 
     const { errors, isValid } = validateLocationInput({ location: body.Body });
