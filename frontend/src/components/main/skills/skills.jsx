@@ -11,43 +11,43 @@ const Skills = props => {
                 </div>
                 <div className='skills-logo-container'>
                     <div className='node-container'>
-                        <img className='skills-icon' src='/nodejs-icon.svg' />
+                        <img className='skills-icon' src='/nodejs-icon.svg' alt=''/>
                         Node
                     </div>
                     <div className='react-container'>
-                        <img className='skills-icon' src='/react.svg' />
+                        <img className='skills-icon' src='/react.svg' alt=''/>
                         React
                     </div>
                     <div className='redux-container'>
-                        <img className='skills-icon' src='/redux.svg' />
+                        <img className='skills-icon' src='/redux.svg' alt=''/>
                         Redux
                     </div>
                     <div className='rails-container'>
-                        <img className='skills-icon' src='/rails.svg' />
+                        <img className='skills-icon' src='/rails.svg' alt=''/>
                         Rails
                     </div>
                     <div className='javascript-container'>
-                        <img className='skills-icon' src='/javascript.svg' />
+                        <img className='skills-icon' src='/javascript.svg' alt=''/>
                         Javascript
                     </div>
                     <div className='html-container'>
-                        <img className='skills-icon' src='/html-5.svg' />
+                        <img className='skills-icon' src='/html-5.svg' alt=''/>
                         HTML 5
                     </div>
                     <div className='css-container'>
-                        <img className='skills-icon' src='/css3.svg' />
+                        <img className='skills-icon' src='/css3.svg' alt=''/>
                         CSS 3
                     </div>
                     <div className='mongo-container'>
-                        <img className='skills-icon' src='/mongodb-icon.svg' />
+                        <img className='skills-icon' src='/mongodb-icon.svg' alt=''/>
                         MongoDB
                     </div>
                     <div className='postgres-container'>
-                        <img className='skills-icon' src='/postgresql.svg' />
+                        <img className='skills-icon' src='/postgresql.svg' alt=''/>
                         PostgreSQL
                     </div>
                     <div className='python-container'>
-                        <img className='skills-icon' src='/python-5.svg' />
+                        <img className='skills-icon' src='/python-5.svg' alt=''/>
                         Python
                     </div>
                 </div>

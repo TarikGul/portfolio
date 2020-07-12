@@ -20,7 +20,8 @@ const Projects = props => {
                         <div className='projects-boxes'>
                             <div className='box-container'>
                                 <span>Bimeo</span>
-                                <img src='/bimeo-page.png'
+                                <img alt='' 
+                                    src='/bimeo-page.png'
                                     className='image-project'
                                     onClick={() => handleReroute('https://bimeo.herokuapp.com')} />
                                 <div className='project-description-container'>
@@ -31,7 +32,8 @@ const Projects = props => {
                             </div>
                             <div className='box-container'>
                                 <span>Covid-415</span>
-                                <img src='/covid-415.png'
+                                <img alt='' 
+                                    src='/covid-415.png'
                                     className='image-project'
                                     onClick={() => handleReroute('https://covid415.herokuapp.com')} />
                                 <div className='project-description-container'>
@@ -42,7 +44,8 @@ const Projects = props => {
                             </div>
                             <div className='box-container'>
                                 <span>Sudoku-Visualizer</span>
-                                <img src='sudoku-solver.png'
+                                <img alt='' 
+                                    src='sudoku-solver.png'
                                     className='image-project'
                                     onClick={() => handleReroute('https://tarikgul.github.io/Sudoku-solving-visualizer/dist/')} />
                                 <div className='project-description-container'>
@@ -60,7 +63,8 @@ const Projects = props => {
                         </div>
                         <div className='projects-boxes'>
                             <div className='box-container'>
-                                <img src='/bimeo-page.png' 
+                                <img alt='' 
+                                    src='/bimeo-page.png' 
                                     className='image-project'
                                     onClick={() => handleReroute('https://bimeo.herokuapp.com')}/>
                                 <div className='project-right-box'>
@@ -101,7 +105,8 @@ const Projects = props => {
                                 </div>
                             </div>
                             <div className='box-container'>
-                                <img src='/covid-415.png' 
+                                <img alt='' 
+                                    src='/covid-415.png' 
                                     className='image-project'
                                     onClick={() => handleReroute('https://covid415.herokuapp.com')}/>
                                 <div className='project-right-box'>
@@ -146,7 +151,8 @@ const Projects = props => {
                                 </div>
                             </div>
                             <div className='box-container'>
-                                <img src='sudoku-solver.png' 
+                                <img alt='' 
+                                    src='sudoku-solver.png' 
                                     className='image-project'
                                     onClick={() => handleReroute('https://tarikgul.github.io/Sudoku-solving-visualizer/dist/')}/>
                                 <div className='project-right-box'>

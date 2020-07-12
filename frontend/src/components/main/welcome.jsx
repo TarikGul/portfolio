@@ -11,7 +11,7 @@ const Welcome = props => {
     return (
         <div className="welcome-container">
             <div className="border_gradient">
-                <img src="/self-pic.png" className="self-pic" />
+                <img src="/self-pic.png" className="self-pic" alt=''/>
             </div>
             <div className="welcome-pizzaz">
                 <div className="name-welcome">

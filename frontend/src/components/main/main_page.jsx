@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Welcome from './welcome';
 import Timeline from './timeline/timeline';
 import About from './about/about';
