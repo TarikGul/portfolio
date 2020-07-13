@@ -3,7 +3,7 @@ import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss';
 
-import {createPulsingDot} from './util/pulsing_dot';
+import { createPulsingDot } from './util/pulsing_dot';
 import { mapBoxPublicKey, trailsAuth } from '../../config/keys';
 import { parseLocation } from '../../util/location_util';
 
@@ -124,11 +124,11 @@ const Map = (props) => {
                         'icon-image': 'pulsing-dot'
                     }
                 });
-                if(Object.keys(props.adventures).length === 0) {
+                if(Object.keys(adventures).length === 0) {
                     fetchGeojson({trailsAuth})
                         .then(res => setSourceOfRoutes(res.data.data))
                 } else {
-                    setSourceOfRoutes(adventures);
+                    setSourceOfRoutes(adventures.geojson);
                 }
             });
 
@@ -139,7 +139,6 @@ const Map = (props) => {
         };
         if (!map) initializeMap({ setMap, mapContainer });
     }
-
 
     useEffect(() => {
 
@@ -158,7 +157,7 @@ const Map = (props) => {
             ReactGA.pageview('/location');
         }
     }, [map]);
-
+    
     return (
         <div>
             <div ref={el => mapContainer.current = el} className='map-container' />
