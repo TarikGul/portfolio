@@ -17,8 +17,8 @@ const receiveErrors = (errors) => {
     };
 };
 
-export const fetchGeojson = () => dispatch => {
-    return APIUTIL.fetchGeojson()
+export const fetchGeojson = (key) => dispatch => {
+    return APIUTIL.fetchGeojson(key)
         .then(files => dispatch(receiveGeojson(files)))
         .catch(err => dispatch(receiveErrors(err)))
 };

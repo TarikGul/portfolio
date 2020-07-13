@@ -6,7 +6,7 @@ import '../../styles/map.scss';
 import * as dataGeo from '../../trails/PCT.json';
 import * as CDTGeo from '../../trails/CDT.json'
 import {createPulsingDot} from './util/pulsing_dot';
-import { mapBoxPublicKey } from '../../config/keys_front';
+import { mapBoxPublicKey, trailsAuth } from '../../config/keys';
 import { parseLocation } from '../../util/location_util';
 
 const Map = (props) => {
@@ -127,7 +127,7 @@ const Map = (props) => {
                     }
                 });
                 if(Object.keys(props.adventures).length === 0) {
-                    fetchGeojson()
+                    fetchGeojson({trailsAuth})
                         .then(res => setSourceOfRoutes(res.data.data))
                 } else {
                     setSourceOfRoutes(adventures);

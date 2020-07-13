@@ -7,8 +7,8 @@ const keys = require('../../config/keys');
 
 router.get('/test', (req, res) => res.json({ msg: 'This is a test' }));
 
-router.get('/index', (req, res) => {
-    if(req.authKey === keys.trailAuth) {
+router.post('/index', (req, res) => {
+    if(req.body.trailsAuth === keys.trailsAuth) {
         Inventory.find()
             .then((files) => {
                 res.json(files)

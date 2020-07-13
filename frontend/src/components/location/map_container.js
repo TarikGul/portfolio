@@ -15,7 +15,7 @@ const msp = state => {
 
 const mdtp = dispatch => {
     return {
-        fetchGeojson: () => dispatch(fetchGeojson()),
+        fetchGeojson: (key) => dispatch(fetchGeojson(key)),
         fetchLocations: () => dispatch(fetchLocations())
     };
 };
