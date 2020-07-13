@@ -1,267 +1,179 @@
-import React from 'react';
+import React, { useState, useEffect, useReducer, useRef } from 'react';
 import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
-import '../../styles/map.scss'
+import '../../styles/map.scss';
 
 import * as dataGeo from '../../trails/PCT.json';
 import * as CDTGeo from '../../trails/CDT.json'
+import {createPulsingDot} from './util/pulsing_dot';
 import { mapBoxPublicKey } from '../../config/keys_front';
 import { parseLocation } from '../../util/location_util';
 
+const Map = (props) => {
+    // Destructure props
+    const { fetchLocations } = props;
+    const mapContainer = useRef(null);
 
-class Map extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
+    const [mapOptions, setMapOptions] = useReducer(
+        (state, newState) => ({ ...state, ...newState }),
+        {
             lng: -122.44,
             lat: 37.76,
             zoom: 9,
-            map: '',
-            updated: false,
-            loader: true
+        }
+    );
+
+    const [lng, setLng] = useState(0);
+    const [lat, setLat] = useState(0);
+    const [map, setMap] = useState('');
+    const [loader, setLoader] = useState(true);
+
+    const handleMap = (res) => {
+        mapboxgl.accessToken = mapBoxPublicKey;
+
+        let data;
+        if (res.data === undefined) {
+            data = {
+                data: {
+                    location: mapOptions.lat.toString() + ',' + mapOptions.lng.toString()
+                }
+            }
+        } else {
+            data = res.data.data
         }
 
-        this.handleMap = this.handleMap.bind(this);
+        const coords = parseLocation(Object.values(data)[0], false);
+        setLng(coords[1])
+        setLat(coords[0])
+
+        const initializeMap = ({ setMap, mapContainer }) => {
+            const map = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: 'mapbox://styles/mapbox/light-v10',
+                center: [coords[1], coords[0]],
+                zoom: mapOptions.zoom
+            });
+
+            setMap(map);
+
+            // We are writing the data into a function to handle any potential errors
+            // and too keep our code DRY because we use this in multiple places in
+            // order to configure the map in realtime. 
+            let updatedData = (coords) => {
+                let long;
+                let lat;
+                if (coords === undefined) {
+                    long = mapOptions.lng;
+                    lat = mapOptions.lat;
+                } else {
+                    long = coords[1];
+                    lat = coords[0];
+                }
+                return {
+                    'type': 'FeatureCollection',
+                    'features': [
+                        {
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [long, lat]
+                            }
+                        }
+                    ]
+                }
+            }
+
+            map.on('load', () => {
+                map.addImage('pulsing-dot', createPulsingDot(map), { pixelRatio: 3 });
+
+                map.addSource('points', {
+                    'type': 'geojson',
+                    'data': updatedData(coords)
+                });
+
+                map.addLayer({
+                    'id': 'points',
+                    'type': 'symbol',
+                    'source': 'points',
+                    'layout': {
+                        'icon-image': 'pulsing-dot'
+                    }
+                });
+
+                // Best way to do this would be iterate through an array of files, 
+                // and add source and routes to all of them with the same id's,
+                // that way on mouseover and leave will all do the same thing
+
+            //     map.addSource('PCTroute', {
+            //         'type': 'geojson',
+            //         'data': dataGeo.default
+            //     });
+
+            //     map.addLayer({
+            //         'id': 'PCTroute',
+            //         'type': 'line',
+            //         'source': 'PCTroute',
+            //         'layout': {
+            //             'line-join': 'round',
+            //             'line-cap': 'round'
+            //         },
+            //         'paint': {
+            //             'line-color': '#555',
+            //             'line-width': 4
+            //         }
+            //     });
+
+            //     map.addSource('CDTroute', {
+            //         'type': 'geojson',
+            //         'data': CDTGeo.default
+            //     });
+
+            //     map.addLayer({
+            //         'id': 'CDTroute',
+            //         'type': 'line',
+            //         'source': 'CDTroute',
+            //         'layout': {
+            //             'line-join': 'round',
+            //             'line-cap': 'round'
+            //         },
+            //         'paint': {
+            //             'line-color': '#888',
+            //             'line-width': 4
+            //         }
+            //     });
+            });
+
+            // map.on('mouseover', 'CDTroute', (e) => {
+            //     let value = e.features[0].layer.id
+            //     map.setPaintProperty(value, 'line-color', '#111')
+            // });
+        };
+        if (!map) initializeMap({ setMap, mapContainer });
     }
 
-    componentDidMount() {
-        this.handleMap();
+
+    useEffect(() => {
+        fetchLocations()
+            .then((res) => {
+                handleMap(res);
+            })
+            .then((res) => {
+                setTimeout(() => {
+                    setLoader(false);
+                }, 2500);
+            })
 
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/location');
         }
-    }
-
-    handleMap() {
-        // Receive the current location before setting up the map
-        // or polling the database for updated location
-        this.props.fetchLocations()
-            .then((res) => {
-                // Here we are making sure that the state is positioned correctly,
-                // for the component to mount
-
-                let data;
-                if(res.data === undefined) {
-                    data = {
-                        data: {
-                            location: this.state.lat.toString() + ',' + this.state.lng.toString()
-                        }
-                    }
-                } else {
-                    data = res.data.data
-                }
-                
-                const coords = parseLocation(Object.values(data)[0], false);
-
-                this.setState({
-                    lng: coords[1],
-                    lat: coords[0]
-                });
-
-                //setup the map
-                mapboxgl.accessToken = mapBoxPublicKey;
-
-                const map = new mapboxgl.Map({
-                    container: this.mapContainer,
-                    style: 'mapbox://styles/mapbox/light-v10',
-                    center: [this.state.lng, this.state.lat],
-                    zoom: this.state.zoom
-                })
-
-                // Save map to the state
-                this.setState({ map })
-
-                let size = 200;
-
-                // implementation of CustomLayerInterface to draw a pulsing dot icon on the map
-                // see https://docs.mapbox.com/mapbox-gl-js/api/#customlayerinterface for more info
-                let pulsingDot = {
-                    width: size,
-                    height: size,
-                    data: new Uint8Array(size * size * 4),
-
-                    // get rendering context for the map canvas when layer is added to the map
-                    onAdd: function () {
-                        let canvas = document.createElement('canvas');
-                        canvas.width = this.width;
-                        canvas.height = this.height;
-                        this.context = canvas.getContext('2d');
-                    },
-
-                    // called once before every frame where the icon will be used
-                    render: function () {
-                        let duration = 1000;
-                        let t = (performance.now() % duration) / duration;
-
-                        let radius = (size / 2) * 0.3;
-                        let outerRadius = (size / 2) * 0.7 * t + radius;
-                        let context = this.context;
-
-                        // draw outer circle
-                        context.clearRect(0, 0, this.width, this.height);
-                        context.beginPath();
-                        context.arc(
-                            this.width / 2,
-                            this.height / 2,
-                            outerRadius,
-                            0,
-                            Math.PI * 2
-                        );
-                        context.fillStyle = 'rgba(255, 200, 200,' + (1 - t) + ')';
-                        context.fill();
-
-                        // draw inner circle
-                        context.beginPath();
-                        context.arc(
-                            this.width / 2,
-                            this.height / 2,
-                            radius,
-                            0,
-                            Math.PI * 2
-                        );
-                        context.fillStyle = 'rgba(255, 100, 100, 1)';
-                        context.strokeStyle = 'white';
-                        context.lineWidth = 2 + 4 * (1 - t);
-                        context.fill();
-                        context.stroke();
-
-                        // update this image's data with data from the canvas
-                        this.data = context.getImageData(
-                            0,
-                            0,
-                            this.width,
-                            this.height
-                        ).data;
-
-                        // continuously repaint the map, resulting in the smooth animation of the dot
-                        map.triggerRepaint();
-
-                        // return `true` to let the map know that the image was updated
-                        return true;
-                    }
-                };
-
-                // We are writing the data into a function to handle any potential errors
-                // and too keep our code DRY because we use this in multiple places in
-                // order to configure the map in realtime. 
-                let updatedData = (coords) => {
-                    let long;
-                    let lat;
-                    if (coords === undefined) {
-                        long = this.state.lng;
-                        lat = this.state.lat;
-                    } else {
-                        long = coords[1];
-                        lat = coords[0];
-                    }
-                    return {
-                        'type': 'FeatureCollection',
-                        'features': [
-                            {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [long, lat]
-                                }
-                            }
-                        ]
-                    }
-                }
-
-                map.on('load', () => {
-                    map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 3 });
-                    window.setInterval(() => {
-                        this.props.fetchLocations()
-                            .then(res => {
-                                // We are polling the database, and it is not expensive for us,
-                                // because of the low latency/ zero traffic
-                                // This will need to be changed into a websocket connection though.
-                                let updatedCoords;
-                                if (res.data !== undefined) {
-                                    updatedCoords = res.data.data
-                                    const location = parseLocation(Object.values(updatedCoords)[0], false);
-                                    // This allows us to choose which attribute of the map we want,
-                                    // and change it and see those reflections on the map itself. 
-                                    map.getSource('points').setData(updatedData(location));
-                                    if(location[1] !== this.state.lng && location[0] !== this.state.lat) {
-                                        map.flyTo({ center: [location[1], location[0]] });
-                                        this.setState({ lng: location[1], lat: location[0] });
-                                    }
-                                }
-                            })
-                    }, 30000);
-
-                    map.addSource('points', {
-                        'type': 'geojson',
-                        'data': updatedData()
-                    });
-                    
-                    map.addSource('PCTroute', {
-                        'type': 'geojson',
-                        'data': dataGeo.default
-                    });
-
-                    map.addLayer({
-                        'id': 'PCTroute',
-                        'type': 'line',
-                        'source': 'PCTroute',
-                            'layout': {
-                                'line-join': 'round',
-                                'line-cap': 'round'
-                            },
-                        'paint': {
-                            'line-color': '#888',
-                            'line-width': 4
-                        }
-                    });
-
-                    map.addSource('CDTroute', {
-                        'type': 'geojson',
-                        'data': CDTGeo.default
-                    });
-
-                    map.addLayer({
-                        'id': 'CDTroute',
-                        'type': 'line',
-                        'source': 'CDTroute',
-                            'layout': {
-                                'line-join': 'round',
-                                'line-cap': 'round'
-                            },
-                        'paint': {
-                            'line-color': '#888',
-                            'line-width': 4
-                        }
-                    });
-
-                    map.addLayer({
-                        'id': 'points',
-                        'type': 'symbol',
-                        'source': 'points',
-                        'layout': {
-                            'icon-image': 'pulsing-dot'
-                        }
-                    });
-                })
-
-                // This is a hard coded timeout for the loading spinner. 
-                setTimeout(() => {
-                    this.setState({ loader: false })
-                }, 2500);
-            });
-
-    }
-
-    render() {
-        const { loader } = this.state;
-
-        return (
-            <div>
-                <div ref={el => this.mapContainer = el} className='map-container' />
-                {
-                    loader ?
+    }, [map]);
+    console.log(map)
+    return (
+        <div>
+            <div ref={el => mapContainer.current = el} className='map-container' />
+            {
+                loader ?
                     (
                         <div className='loader-container'>
                             <div className='lds-dual-ring'></div>
@@ -269,11 +181,10 @@ class Map extends React.Component {
                     ) : (
                         null
                     )
-                }
-    
-            </div>
-        )
-    }
+            }
+
+        </div>
+    )
 }
 
 export default Map;
