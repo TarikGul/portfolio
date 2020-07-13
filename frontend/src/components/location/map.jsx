@@ -3,8 +3,6 @@ import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss';
 
-import * as dataGeo from '../../trails/PCT.json';
-import * as CDTGeo from '../../trails/CDT.json'
 import {createPulsingDot} from './util/pulsing_dot';
 import { mapBoxPublicKey, trailsAuth } from '../../config/keys';
 import { parseLocation } from '../../util/location_util';
