@@ -3,6 +3,8 @@ import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss'
 
+import * as dataGeo from '../../trails/PCT.json';
+import * as CDTGeo from '../../trails/CDT.json'
 import { mapBoxPublicKey } from '../../config/keys_front';
 import { parseLocation } from '../../util/location_util';
 
@@ -194,6 +196,44 @@ class Map extends React.Component {
                     map.addSource('points', {
                         'type': 'geojson',
                         'data': updatedData()
+                    });
+                    
+                    map.addSource('PCTroute', {
+                        'type': 'geojson',
+                        'data': dataGeo.default
+                    });
+
+                    map.addLayer({
+                        'id': 'PCTroute',
+                        'type': 'line',
+                        'source': 'PCTroute',
+                            'layout': {
+                                'line-join': 'round',
+                                'line-cap': 'round'
+                            },
+                        'paint': {
+                            'line-color': '#888',
+                            'line-width': 4
+                        }
+                    });
+
+                    map.addSource('CDTroute', {
+                        'type': 'geojson',
+                        'data': CDTGeo.default
+                    });
+
+                    map.addLayer({
+                        'id': 'CDTroute',
+                        'type': 'line',
+                        'source': 'CDTroute',
+                            'layout': {
+                                'line-join': 'round',
+                                'line-cap': 'round'
+                            },
+                        'paint': {
+                            'line-color': '#888',
+                            'line-width': 4
+                        }
                     });
 
                     map.addLayer({
