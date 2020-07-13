@@ -159,7 +159,6 @@ const Map = (props) => {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/location');
         }
-        console.log(props)
     }, [map]);
 
     return (
