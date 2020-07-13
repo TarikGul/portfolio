@@ -1,4 +1,4 @@
 /node_modules
 /package-lock.json
 /src/trails
-# /src/config/keys_front.js
+/src/config/keys_front.js
