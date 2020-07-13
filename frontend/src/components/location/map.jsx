@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss';
 
 import { createPulsingDot } from './util/pulsing_dot';
-import { mapBoxPublicKey, trailsAuth } from '../../config/keys';
+import { mapBoxPublicKey, trailsAuth } from '../../config/keys_front.js';
 import { parseLocation } from '../../util/location_util';
 
 const Map = (props) => {
