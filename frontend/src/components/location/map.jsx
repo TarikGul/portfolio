@@ -11,7 +11,7 @@ import { parseLocation } from '../../util/location_util';
 
 const Map = (props) => {
     // Destructure props
-    const { fetchLocations } = props;
+    const { fetchLocations, fetchGeojson, adventures } = props;
     const mapContainer = useRef(null);
 
     const [mapOptions, setMapOptions] = useReducer(
@@ -83,6 +83,33 @@ const Map = (props) => {
                 }
             }
 
+            const setSourceOfRoutes = (data) => {
+                const routes = ['PCTroute', 'CDTroute', 'CCTroute'];
+
+                if(routes.length !== data.length) return;
+
+                for (let i = 0; i < routes.length; i++) {
+                    map.addSource(routes[i], {
+                        'type': 'geojson',
+                        'data': data[i]
+                    });
+
+                    map.addLayer({
+                        'id': routes[i],
+                        'type': 'line',
+                        'source': routes[i],
+                        'layout': {
+                            'line-join': 'round',
+                            'line-cap': 'round'
+                        },
+                        'paint': {
+                            'line-color': '#555',
+                            'line-width': 4
+                        }
+                    });
+                }
+            }
+
             map.on('load', () => {
                 map.addImage('pulsing-dot', createPulsingDot(map), { pixelRatio: 3 });
 
@@ -99,48 +126,12 @@ const Map = (props) => {
                         'icon-image': 'pulsing-dot'
                     }
                 });
-
-                // Best way to do this would be iterate through an array of files, 
-                // and add source and routes to all of them with the same id's,
-                // that way on mouseover and leave will all do the same thing
-
-            //     map.addSource('PCTroute', {
-            //         'type': 'geojson',
-            //         'data': dataGeo.default
-            //     });
-
-            //     map.addLayer({
-            //         'id': 'PCTroute',
-            //         'type': 'line',
-            //         'source': 'PCTroute',
-            //         'layout': {
-            //             'line-join': 'round',
-            //             'line-cap': 'round'
-            //         },
-            //         'paint': {
-            //             'line-color': '#555',
-            //             'line-width': 4
-            //         }
-            //     });
-
-            //     map.addSource('CDTroute', {
-            //         'type': 'geojson',
-            //         'data': CDTGeo.default
-            //     });
-
-            //     map.addLayer({
-            //         'id': 'CDTroute',
-            //         'type': 'line',
-            //         'source': 'CDTroute',
-            //         'layout': {
-            //             'line-join': 'round',
-            //             'line-cap': 'round'
-            //         },
-            //         'paint': {
-            //             'line-color': '#888',
-            //             'line-width': 4
-            //         }
-            //     });
+                if(Object.keys(props.adventures).length === 0) {
+                    fetchGeojson()
+                        .then(res => setSourceOfRoutes(res.data.data))
+                } else {
+                    setSourceOfRoutes(adventures);
+                }
             });
 
             // map.on('mouseover', 'CDTroute', (e) => {
@@ -153,6 +144,7 @@ const Map = (props) => {
 
 
     useEffect(() => {
+
         fetchLocations()
             .then((res) => {
                 handleMap(res);
@@ -167,8 +159,9 @@ const Map = (props) => {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/location');
         }
+        console.log(props)
     }, [map]);
-    console.log(map)
+
     return (
         <div>
             <div ref={el => mapContainer.current = el} className='map-container' />
