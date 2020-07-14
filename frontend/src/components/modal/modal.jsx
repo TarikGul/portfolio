@@ -27,14 +27,17 @@ class Modal extends React.Component {
         switch (modal.modal) {
             case 'welcome-visitor':
                 component = <VisitorModalContainer />;
-                childClass = "modal-child-visitor"
+                childClass = 'modal-child-visitor';
                 break;
+            case 'map-modal':
+                component = <MapModalContainer />;
+                childClass = 'modal-child-map';
             default:
                 return null;
         }
 
         return (
-            <div className="modal-background" onClick={closeModal}>
+            <div className='modal-background' onClick={closeModal}>
                 <div className={childClass} onClick={e => e.stopPropagation()}>
                     {component}
                 </div>
