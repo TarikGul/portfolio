@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 
+import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchLocations } from '../../actions/location_actions';
 import { fetchGeojson } from '../../actions/adventures_actions';
 import Map from './map';
@@ -15,6 +16,8 @@ const msp = state => {
 
 const mdtp = dispatch => {
     return {
+        closeModal: () => dispatch(closeModal()),
+        openModal: (modal) => dispatch(openModal(modal)),
         fetchGeojson: (key) => dispatch(fetchGeojson(key)),
         fetchLocations: () => dispatch(fetchLocations())
     };
