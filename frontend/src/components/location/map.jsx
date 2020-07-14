@@ -10,6 +10,7 @@ import { parseLocation } from '../../util/location_util';
 const Map = (props) => {
     // Destructure props
     const { fetchLocations, fetchGeojson, adventures } = props;
+    // Define our reference for the map
     const mapContainer = useRef(null);
 
     const [mapOptions, setMapOptions] = useReducer(
@@ -29,6 +30,7 @@ const Map = (props) => {
     const handleMap = (res) => {
         mapboxgl.accessToken = mapBoxPublicKey;
 
+        // Use default Map options if the res of the promise comes back undefined
         let data;
         if (res.data === undefined) {
             data = {
@@ -40,6 +42,7 @@ const Map = (props) => {
             data = res.data.data
         }
 
+        // Parse the locations so that we have the right format 
         const coords = parseLocation(Object.values(data)[0], false);
         setLng(coords[1])
         setLat(coords[0])
@@ -81,6 +84,8 @@ const Map = (props) => {
                 }
             }
 
+            // Function in order to take the geojson data and visualize it on
+            // the map
             const setSourceOfRoutes = (data) => {
                 const routes = ['PCTroute', 'CDTroute', 'CCTroute'];
 
@@ -124,6 +129,10 @@ const Map = (props) => {
                         'icon-image': 'pulsing-dot'
                     }
                 });
+
+                // This is so that we dont make unnecessary calls to the backened
+                // because the file size is 20MB if the geojson files are cached in
+                // global state, then we dont have to make the API call.
                 if(Object.keys(adventures).length === 0) {
                     fetchGeojson({trailsAuth})
                         .then(res => setSourceOfRoutes(res.data.data))
@@ -142,6 +151,9 @@ const Map = (props) => {
 
     useEffect(() => {
 
+        // After we get the latest location of the user, and handle the map,
+        // we set 2 and a half more seconds on the loader to make sure all the tiles
+        // on the map are loaded
         fetchLocations()
             .then((res) => {
                 handleMap(res);
