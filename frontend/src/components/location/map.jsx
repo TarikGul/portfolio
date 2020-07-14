@@ -26,6 +26,7 @@ const Map = (props) => {
     const [lat, setLat] = useState(0);
     const [map, setMap] = useState('');
     const [loader, setLoader] = useState(true);
+    const [errors, setErrors] = useState({});
 
     const handleMap = (res) => {
         mapboxgl.accessToken = mapBoxPublicKey;
@@ -60,7 +61,7 @@ const Map = (props) => {
             // We are writing the data into a function to handle any potential errors
             // and too keep our code DRY because we use this in multiple places in
             // order to configure the map in realtime. 
-            let updatedData = (coords) => {
+            let updatedLatLng = (coords) => {
                 let long;
                 let lat;
                 if (coords === undefined) {
@@ -107,7 +108,7 @@ const Map = (props) => {
                         },
                         'paint': {
                             'line-color': '#555',
-                            'line-width': 4
+                            'line-width': 5
                         }
                     });
                 }
@@ -118,7 +119,7 @@ const Map = (props) => {
 
                 map.addSource('points', {
                     'type': 'geojson',
-                    'data': updatedData(coords)
+                    'data': updatedLatLng(coords)
                 });
 
                 map.addLayer({
@@ -136,12 +137,13 @@ const Map = (props) => {
                 if(Object.keys(adventures).length === 0) {
                     fetchGeojson({trailsAuth})
                         .then(res => setSourceOfRoutes(res.data.data))
+                        .catch(err => setErrors({ geojson: 'Could not retrieve trail data' }))
                 } else {
                     setSourceOfRoutes(adventures.geojson);
                 }
             });
 
-            // map.on('mouseover', 'CDTroute', (e) => {
+            // map.on('click', 'CDTroute', (e) => {
             //     let value = e.features[0].layer.id
             //     map.setPaintProperty(value, 'line-color', '#111')
             // });
@@ -183,7 +185,10 @@ const Map = (props) => {
                         null
                     )
             }
-
+            <div id='console'>
+                <h1>My Adventures</h1>
+                <p>Over the past couple years, I have done a lot of adventures by foot. Use the interactive map, and click on a trail to learn a little more about them.</p>
+            </div>
         </div>
     )
 }
