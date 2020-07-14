@@ -39,6 +39,7 @@
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
@@ -46,4 +47,16 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+#console {
+  position: absolute;
+  width: 240px;
+  height: 500px;
+  margin: 10px;
+  margin-top: 80px;
+  padding: 10px 20px;
+  background-color: white;
+  opacity: 80%;
+  color: black;
 }
