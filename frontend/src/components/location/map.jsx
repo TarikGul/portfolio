@@ -63,31 +63,38 @@ const Map = (props) => {
             });
 
 
-            // The logic behind this is that when the map initially loads it will 
-            // continue to show false until it needs to render other features to which it will
-            // start showing tru again. so we what for it to hit false then
-            // set the value to 0 then wait for it to hit true again,
-            // then we know it is fully rendered
-            
-            // This creates the loader for the map
-            // const interval = () => {
-            let counter = 2;
-            const interval = setInterval(() => {
-                let bool = map.loaded();
-
-                if (bool) counter += 1;
-                // This below is an edge case to make sure if the first value is false to not let it 
-                // get rid of the loader
-                if(counter !== 2 && !bool) {
-                    if (!bool) counter = 0;
-                }
-                // This is for setting state
-                if (counter === 4) setLoaderDetails('Rendering the trails...');
-                if (counter === 1) setLoader(false);
-
-                if (counter === 1) clearInterval(interval);
-                console.log(bool, counter)
-            }, 1500)
+            // This conditional is here so that if the data is in state then
+            // the map will render faster
+            if(Object.keys(adventures).length !== 0) {
+                setTimeout(() => {
+                    setLoader(false)
+                }, 2000)
+            } else {
+                // The logic behind this is that when the map initially loads it will 
+                // continue to show false until it needs to render other features to which it will
+                // start showing tru again. so we what for it to hit false then
+                // set the value to 0 then wait for it to hit true again,
+                // then we know it is fully rendered
+                // This creates the loader for the map
+                // const interval = () => {
+                let counter = 2;
+                const interval = setInterval(() => {
+                    let bool = map.loaded();
+    
+                    if (bool) counter += 1;
+                    // This below is an edge case to make sure if the first value is false to not let it 
+                    // get rid of the loader
+                    if(counter !== 2 && !bool) {
+                        if (!bool) counter = 0;
+                    }
+                    // This is for setting state
+                    if (counter === 4) setLoaderDetails('Rendering the trails...');
+                    if (counter === 1) setLoader(false);
+    
+                    if (counter === 1) clearInterval(interval);
+                    console.log(bool, counter)
+                }, 1500)
+            }
             // }
             // interval();
 
