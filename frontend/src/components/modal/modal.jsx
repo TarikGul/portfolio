@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { closeModal } from '../../actions/modal_actions';
+import MapModalContainer from './map_modal_container';
 import VisitorModalContainer from './visitor_modal_container';
 
 class Modal extends React.Component {

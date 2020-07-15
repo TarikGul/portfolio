@@ -6,21 +6,26 @@ import '../../styles/map.scss';
 import { createPulsingDot } from './util/pulsing_dot';
 import { mapBoxPublicKey, trailsAuth } from '../../config/keys_front.js';
 import { parseLocation } from '../../util/location_util';
+import details from '../../util/trail_descriptions'
 
 const Map = (props) => {
     // Destructure props
     const { fetchLocations, fetchGeojson, adventures } = props;
     // Define our reference for the map
     const mapContainer = useRef(null);
+    // Define our reference for the console details
+    const consoleDetailRef = useRef('');
 
     const [mapOptions, setMapOptions] = useReducer(
         (state, newState) => ({ ...state, ...newState }),
         {
             lng: -122.44,
             lat: 37.76,
-            zoom: 9,
+            zoom: 4,
         }
     );
+    // Set the loader details to be printed on the map
+    const [loaderDetails, setLoaderDetails] = useState('Rendering the map...')
 
     const [lng, setLng] = useState(0);
     const [lat, setLat] = useState(0);
@@ -43,19 +48,50 @@ const Map = (props) => {
             data = res.data.data
         }
 
-        // Parse the locations so that we have the right format 
+        // Parse the locations so that we have the right format for lng lat
         const coords = parseLocation(Object.values(data)[0], false);
         setLng(coords[1])
         setLat(coords[0])
 
         const initializeMap = ({ setMap, mapContainer }) => {
+            
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: 'mapbox://styles/mapbox/light-v10',
-                center: [coords[1], coords[0]],
+                center: ['-100.7129', '37.0902'],
                 zoom: mapOptions.zoom
             });
 
+
+            // The logic behind this is that when the map initially loads it will 
+            // continue to show false until it needs to render other features to which it will
+            // start showing tru again. so we what for it to hit false then
+            // set the value to 0 then wait for it to hit true again,
+            // then we know it is fully rendered
+            
+            // This creates the loader for the map
+            // const interval = () => {
+            let counter = 2;
+            const interval = setInterval(() => {
+                let bool = map.loaded();
+
+                if (bool) counter += 1;
+                // This below is an edge case to make sure if the first value is false to not let it 
+                // get rid of the loader
+                if(counter !== 2 && !bool) {
+                    if (!bool) counter = 0;
+                }
+                // This is for setting state
+                if (counter === 4) setLoaderDetails('Rendering the trails...');
+                if (counter === 1) setLoader(false);
+
+                if (counter === 1) clearInterval(interval);
+                console.log(bool, counter)
+            }, 1500)
+            // }
+            // interval();
+
+            // Save the map to state;
             setMap(map);
 
             // We are writing the data into a function to handle any potential errors
@@ -85,11 +121,19 @@ const Map = (props) => {
                 }
             }
 
+            // This is data to help me set up ids, and naming in the console,
+            // I could also put this data in a different file, and import it
+            const hoveredStateId = null;
+            const routes = ['CCTroute', 'CDTroute', 'PCTroute'];
+            const trailNames = {
+                'PCTroute': 'Pacific Crest Trail',
+                'CDTroute': 'Continental Divide Trail',
+                'CCTroute': 'California Coastal Trail'
+            };
             // Function in order to take the geojson data and visualize it on
             // the map
             const setSourceOfRoutes = (data) => {
-                const routes = ['PCTroute', 'CDTroute', 'CCTroute'];
-
+                
                 if(routes.length !== data.length) return;
 
                 for (let i = 0; i < routes.length; i++) {
@@ -147,23 +191,32 @@ const Map = (props) => {
             //     let value = e.features[0].layer.id
             //     map.setPaintProperty(value, 'line-color', '#111')
             // });
+            for(let i = 0; i < routes.length; i++) {
+                map.on('mouseover', routes[i], (e) => {
+                    const trail = map.queryRenderedFeatures(e.point);
+                    const id = trail[0].layer.id;
+                    const tName = trailNames[id];
+
+                    if (trail.length > 0) {
+                        consoleDetailRef.current.innerHTML = `This is the ${tName}. ${details[routes[i]]}`;
+                    }
+                });
+            }
+
+            for (let i = 0; i < routes.length; i++) {
+                map.on('mouseleave', routes[i], (e) => {
+                    consoleDetailRef.current.innerHTML = 'Hover over any trail for a quick description, or click on one to find out more about it'
+                });
+            }
         };
         if (!map) initializeMap({ setMap, mapContainer });
     }
 
     useEffect(() => {
 
-        // After we get the latest location of the user, and handle the map,
-        // we set 2 and a half more seconds on the loader to make sure all the tiles
-        // on the map are loaded
         fetchLocations()
             .then((res) => {
                 handleMap(res);
-            })
-            .then((res) => {
-                setTimeout(() => {
-                    setLoader(false);
-                }, 2500);
             })
 
         if (window.location.hostname !== 'localhost') {
@@ -171,7 +224,7 @@ const Map = (props) => {
             ReactGA.pageview('/location');
         }
     }, [map]);
-    
+
     return (
         <div>
             <div ref={el => mapContainer.current = el} className='map-container' />
@@ -180,6 +233,9 @@ const Map = (props) => {
                     (
                         <div className='loader-container'>
                             <div className='lds-dual-ring'></div>
+                            <div className='loader-details'>
+                                {loaderDetails}
+                            </div>
                         </div>
                     ) : (
                         null
@@ -187,7 +243,10 @@ const Map = (props) => {
             }
             <div id='console'>
                 <h1>My Adventures</h1>
-                <p>Over the past couple years, I have done a lot of adventures by foot. Use the interactive map, and click on a trail to learn a little more about them.</p>
+                <p>Over the past couple years, I have done a lot of adventures by foot. Use the interactive map to learn a little more about them.</p>
+                <br/>
+                {/* <h5>Hover over a trail, or click on it to find out more</h5> */}
+                <p ref={consoleDetailRef}>Hover over an trail for a quick description, or click on one to find out more about it</p>
             </div>
         </div>
     )

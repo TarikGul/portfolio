@@ -19,6 +19,16 @@
   z-index: 100;
 }
 
+.loader-details {
+  display: inline-block;
+  width: auto;
+  height: 80px;
+  position: absolute;
+  top: 54%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
 .lds-dual-ring {
   display: inline-block;
   width: 80px;
@@ -52,7 +62,7 @@
 #console {
   position: absolute;
   width: 240px;
-  height: 500px;
+  height: auto;
   margin: 10px;
   margin-top: 80px;
   padding: 10px 20px;
