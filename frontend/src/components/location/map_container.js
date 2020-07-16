@@ -17,7 +17,7 @@ const msp = state => {
 const mdtp = dispatch => {
     return {
         closeModal: () => dispatch(closeModal()),
-        openModal: (modal) => dispatch(openModal(modal)),
+        openModal: (modal, route) => dispatch(openModal(modal, route)),
         fetchGeojson: (key) => dispatch(fetchGeojson(key)),
         fetchLocations: () => dispatch(fetchLocations())
     };

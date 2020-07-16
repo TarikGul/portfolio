@@ -10,7 +10,12 @@ import details from '../../util/trail_descriptions'
 
 const Map = (props) => {
     // Destructure props
-    const { fetchLocations, fetchGeojson, adventures } = props;
+    const { 
+        fetchLocations, 
+        fetchGeojson, 
+        adventures,
+        openModal
+    } = props;
     // Define our reference for the map
     const mapContainer = useRef(null);
     // Define our reference for the console details
@@ -91,9 +96,10 @@ const Map = (props) => {
                     }
                     // This is for setting state
                     if (counter === 4) setLoaderDetails('Rendering the trails...');
-                    if (counter === 1) setLoader(false);
+                    if (counter === 1 || counter === 8) setLoader(false);
     
-                    if (counter === 1) clearInterval(interval);
+                    if (counter === 1 || counter === 8) clearInterval(interval);
+                    console.log(bool, counter)
                 }, 1500)
             }
             // }
@@ -194,10 +200,6 @@ const Map = (props) => {
                 }
             });
 
-            // map.on('click', 'CDTroute', (e) => {
-            //     let value = e.features[0].layer.id
-            //     map.setPaintProperty(value, 'line-color', '#111')
-            // });
             for(let i = 0; i < routes.length; i++) {
                 map.on('mouseover', routes[i], (e) => {
                     const trail = map.queryRenderedFeatures(e.point);
@@ -207,13 +209,21 @@ const Map = (props) => {
                     if (trail.length > 0) {
                         consoleDetailRef.current.innerHTML = `This is the ${tName}. ${details[routes[i]]}`;
                     }
+                    map.setPaintProperty(routes[i], 'line-color', '#41b6c4' )
                 });
             }
 
             for (let i = 0; i < routes.length; i++) {
                 map.on('mouseleave', routes[i], (e) => {
-                    consoleDetailRef.current.innerHTML = 'Hover over any trail for a quick description, or click on one to find out more about it'
+                    consoleDetailRef.current.innerHTML = 'Hover over any trail for a quick description, or click on one to find out more about it';
+                    map.setPaintProperty(routes[i], 'line-color', '#555')
                 });
+            }
+
+            for (let i = 0; i < routes.length; i++) {
+                map.on('click', routes[i], (e) => {
+                    openModal('map-modal', routes[i]);
+                })
             }
 
             // WHen the Where Tarik? button is clicked fly to my location

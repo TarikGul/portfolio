@@ -5,46 +5,36 @@ import { closeModal } from '../../actions/modal_actions';
 import MapModalContainer from './map_modal_container';
 import VisitorModalContainer from './visitor_modal_container';
 
-class Modal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.close = this.close.bind(this);
+const Modal = (props) => {
+    const { modal, closeModal } = props;
+
+    if(!modal) {
+        return null;
     }
 
-    close() {
-        this.props.closeModal();
-    }
-
-    render() {
-        const { modal, closeModal } = this.props;
-
-        if (!modal) {
+    let component;
+    let childClass;
+    
+    switch(modal.modal) {
+        case 'welcome-visitor':
+            component = <VisitorModalContainer />;
+            childClass = 'modal-child-visitor';
+            break;
+        case 'map-modal':
+            component = <MapModalContainer route={modal.route} />;
+            childClass = 'modal-child-map';
+            break;
+        default:
             return null;
-        }
-
-        let component;
-        let childClass;
-
-        switch (modal.modal) {
-            case 'welcome-visitor':
-                component = <VisitorModalContainer />;
-                childClass = 'modal-child-visitor';
-                break;
-            case 'map-modal':
-                component = <MapModalContainer />;
-                childClass = 'modal-child-map';
-            default:
-                return null;
-        }
-
-        return (
-            <div className='modal-background' onClick={closeModal}>
-                <div className={childClass} onClick={e => e.stopPropagation()}>
-                    {component}
-                </div>
-            </div>
-        )
     }
+
+    return (
+        <div className='modal-background' onClick={closeModal}>
+            <div className={childClass} onClick={e => e.stopPropagation()}>
+                {component}
+            </div>
+        </div>
+    )
 }
 
 const msp = (state) => {
@@ -55,7 +45,7 @@ const msp = (state) => {
 
 const mdtp = dispatch => {
     return {
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
     }
 }
 
