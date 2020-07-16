@@ -6,7 +6,8 @@ const modalReducer = (state = null, action) => {
 
     switch (action.type) {
         case OPEN_MODAL:
-            nextState.modal = action.modal
+            nextState.modal = action.modal;
+            nextState.route = action.route;
             return nextState
         case CLOSE_MODAL:
             return null;
