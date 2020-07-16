@@ -15,6 +15,8 @@ const Map = (props) => {
     const mapContainer = useRef(null);
     // Define our reference for the console details
     const consoleDetailRef = useRef('');
+    // Define a reference for the flyto my location button
+    const consoleFlytoLocation = useRef();
 
     const [mapOptions, setMapOptions] = useReducer(
         (state, newState) => ({ ...state, ...newState }),
@@ -92,7 +94,6 @@ const Map = (props) => {
                     if (counter === 1) setLoader(false);
     
                     if (counter === 1) clearInterval(interval);
-                    console.log(bool, counter)
                 }, 1500)
             }
             // }
@@ -130,7 +131,6 @@ const Map = (props) => {
 
             // This is data to help me set up ids, and naming in the console,
             // I could also put this data in a different file, and import it
-            const hoveredStateId = null;
             const routes = ['CCTroute', 'CDTroute', 'PCTroute'];
             const trailNames = {
                 'PCTroute': 'Pacific Crest Trail',
@@ -215,6 +215,18 @@ const Map = (props) => {
                     consoleDetailRef.current.innerHTML = 'Hover over any trail for a quick description, or click on one to find out more about it'
                 });
             }
+
+            // WHen the Where Tarik? button is clicked fly to my location
+            consoleFlytoLocation.current.addEventListener('click', () => {
+                map.flyTo({
+                    center: [
+                        coords[1],
+                        coords[0], 
+                    ],
+                    zoom: 9,
+                    essenial: true,
+                })
+            })
         };
         if (!map) initializeMap({ setMap, mapContainer });
     }
@@ -248,6 +260,9 @@ const Map = (props) => {
                         null
                     )
             }
+            <button id='button-console' ref={consoleFlytoLocation}>
+                Wheres Tarik?
+            </button>
             <div id='console'>
                 <h1>My Adventures</h1>
                 <p>Over the past couple years, I have done a lot of adventures by foot. Use the interactive map to learn a little more about them.</p>

@@ -61,7 +61,23 @@
 
 #console {
   position: absolute;
+  border-radius: 4px;
   width: 240px;
+  height: auto;
+  margin: 10px;
+  margin-top: 140px;
+  padding: 10px 20px;
+  background-color: white;
+  opacity: 80%;
+  color: black;
+  transform: 1s ease-in-out;
+}
+
+#button-console {
+  position: absolute;
+  border-radius: 5px;
+  outline: none;
+  width: 280px;
   height: auto;
   margin: 10px;
   margin-top: 80px;
@@ -69,4 +85,11 @@
   background-color: white;
   opacity: 80%;
   color: black;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#button-console:hover {
+  background-color: rgb(231, 209, 209);
 }
