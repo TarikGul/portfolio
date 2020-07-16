@@ -3,7 +3,8 @@ import data from '../../util/map_trails_data';
 
 const MapModal = (props) => {
     const { route } = props;
-    const trail = data[route];
+    const trail = data.routes[route];
+
 
     return (
         <div className='map-modal-container'>
