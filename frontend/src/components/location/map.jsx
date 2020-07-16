@@ -99,7 +99,6 @@ const Map = (props) => {
                     if (counter === 1 || counter === 8) setLoader(false);
     
                     if (counter === 1 || counter === 8) clearInterval(interval);
-                    console.log(bool, counter)
                 }, 1500)
             }
             // }
