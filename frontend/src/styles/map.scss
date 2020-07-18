@@ -71,6 +71,7 @@
   opacity: 80%;
   color: black;
   transform: 1s ease-in-out;
+  z-index: 100;
 }
 
 #button-console {
@@ -88,6 +89,7 @@
   transition: .3s ease-in-out;
   cursor: pointer;
   font-size: 16px;
+  z-index: 100;
 }
 
 #button-console:hover {
