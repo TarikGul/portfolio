@@ -136,7 +136,7 @@ const Map = (props) => {
 
             // This is data to help me set up ids, and naming in the console,
             // I could also put this data in a different file, and import it
-            const routes = ['CCTroute', 'CDTroute', 'PCTroute'];
+            const routes = ['PCTroute', 'CDTroute', 'CCTroute',];
             const trailNames = {
                 'PCTroute': 'Pacific Crest Trail',
                 'CDTroute': 'Continental Divide Trail',

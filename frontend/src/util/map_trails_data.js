@@ -14,7 +14,7 @@ module.exports = {
                 '/CDT_image2.jpg',
                 '/CDT_image3.jpg',
                 '/CDT_image4.jpg',
-                '/CDT_image5.JPG',
+                '/CDT_image5.jpg',
             ],
         },
         'PCTroute': {
