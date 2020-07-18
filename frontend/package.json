@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.19.19",
     "framer-motion": "^1.11.0",
     "lodash": "^4.17.15",
     "mapbox-gl": "^1.10.0",
