@@ -59,7 +59,7 @@
   }
 }
 
-#console {
+.console {
   position: absolute;
   border-radius: 4px;
   width: 240px;
@@ -74,7 +74,7 @@
   z-index: 100;
 }
 
-#button-console {
+.button-console {
   position: absolute;
   border-radius: 5px;
   outline: none;
@@ -92,6 +92,6 @@
   z-index: 100;
 }
 
-#button-console:hover {
+.button-console:hover {
   background-color: rgb(231, 209, 209);
 }

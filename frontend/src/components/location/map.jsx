@@ -269,10 +269,10 @@ const Map = (props) => {
                         null
                     )
             }
-            <button id='button-console' ref={consoleFlytoLocation}>
+            <button className='button-console' ref={consoleFlytoLocation}>
                 Wheres Tarik?
             </button>
-            <div id='console'>
+            <div className='console'>
                 <h1>My Adventures</h1>
                 <p>Over the past couple years, I have done a lot of adventures by foot. Use the interactive map to learn a little more about them.</p>
                 <br/>
