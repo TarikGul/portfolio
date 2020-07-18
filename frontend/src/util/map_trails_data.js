@@ -15,13 +15,12 @@ module.exports = {
                 '/CDT_image3.jpg',
                 '/CDT_image4.jpg',
                 '/CDT_image5.JPG',
-                '/CDT_image6.jpg',
             ],
         },
         'PCTroute': {
             'name': 'The Pacific Crest Trail',
             'miles': '2652',
-            'details': `The PCT, or more popularly known as The Pacific Crest Trail is a 2662 mile continuous foot path from the border of Mexico, and Califnoria to Washington,
+            'details': `The PCT, or more popularly known as The Pacific Crest Trail is a 2662 mile continuous foot path from the border of Mexico, and California to Washington,
                         and Canada. In the Summer of 2017 I decided to start my first thru-hikr from Canada. It took me 105 days to complete the PCT, and was an absolute blast. That year was one of the biggest snow years, and the 
                         fields in Washington were incredibly steep and icy. It seemed as if I was always out running fires, and could never figure out how to avoid them but to walk faster.
                         Being my first thru-hike this trail taught me a lot about expectations, and discipline. The end was anti-climactic and didnt really bring much joy. It really was everything,
@@ -48,7 +47,16 @@ module.exports = {
                         with not a single car all night can be incredibly special.`,
             'states': ['California'],
             'pictures': [
-
+                '/CCT_image1.jpg',
+                '/CCT_image2.jpg',
+                '/CCT_image3.jpg',
+                '/CCT_image4.jpg',
+                '/CCT_image5.jpg',
+                '/CCT_image6.jpg',
+                '/CCT_image7.jpg',
+                '/CCT_image8.jpg',
+                '/CCT_image9.jpg',
+                '/CCT_image10.jpg',
             ],
         }
     }
