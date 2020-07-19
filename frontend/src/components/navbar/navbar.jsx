@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import LogoButton from './logo_button';
 import NavButton from './nav_button';
@@ -6,7 +6,7 @@ import ResumeButton from '../main/resume/resume_button';
 import { detectMob } from '../../util/detect_mobile';
 import '../../styles/navbar.scss';
 
-const Navbar = props => {
+const Navbar = memo((props) => {
     const mobile = detectMob();
     const { session } = props;
 
@@ -80,6 +80,6 @@ const Navbar = props => {
             </div>
         </div>
     )
-}
+})
 
 export default Navbar;
