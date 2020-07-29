@@ -33,7 +33,7 @@ const Map = (props) => {
     );
     // Set the loader details to be printed on the map
     const [loaderDetails, setLoaderDetails] = useState('Rendering the map...')
-    
+
     const [map, setMap] = useState('');
     const [loader, setLoader] = useState(true);
     const [errors, setErrors] = useState({});
@@ -242,6 +242,7 @@ const Map = (props) => {
             .then((res) => {
                 handleMap(res);
             })
+            .catch((err) => handleMap(err));
 
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
