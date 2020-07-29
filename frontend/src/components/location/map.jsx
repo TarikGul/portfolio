@@ -33,9 +33,7 @@ const Map = (props) => {
     );
     // Set the loader details to be printed on the map
     const [loaderDetails, setLoaderDetails] = useState('Rendering the map...')
-
-    const [lng, setLng] = useState(0);
-    const [lat, setLat] = useState(0);
+    
     const [map, setMap] = useState('');
     const [loader, setLoader] = useState(true);
     const [errors, setErrors] = useState({});
@@ -57,8 +55,6 @@ const Map = (props) => {
 
         // Parse the locations so that we have the right format for lng lat
         const coords = parseLocation(Object.values(data)[0], false);
-        setLng(coords[1])
-        setLat(coords[0])
 
         const initializeMap = ({ setMap, mapContainer }) => {
             
