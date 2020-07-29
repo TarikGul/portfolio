@@ -21,7 +21,6 @@ router.post('/message', (req, res) => {
     // The terminal commands for development
     // -$ twilio login
     // -$ twilio phone-numbers:update "+1${twilioNumber}" --sms-url="http://localhost:5000/api/message"
-    // -$ node message_server.js
     if (process.env.NODE_ENV === 'production') {
         const requestIsValid = twilio.validateRequest(
             process.env.TWILIO_AUTH_TOKEN,
