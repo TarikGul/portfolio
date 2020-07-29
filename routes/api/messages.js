@@ -36,8 +36,8 @@ router.post('/message', (req, res) => {
         }
     }
 
-    const { errors, isValid } = validateLocationInput({ location: body.Body });
     const coordinates = body.Body;
+    const { errors, isValid } = validateLocationInput({ location: coordinates });
 
     const newLocation = new Location({
         location: coordinates
