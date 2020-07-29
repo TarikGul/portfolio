@@ -32,7 +32,7 @@ const Map = (props) => {
         }
     );
     // Set the loader details to be printed on the map
-    const [loaderDetails, setLoaderDetails] = useState('Rendering the map...')
+    const [loaderDetails, setLoaderDetails] = useState('Rendering the map...');
 
     const [map, setMap] = useState('');
     const [loader, setLoader] = useState(true);

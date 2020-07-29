@@ -1,7 +1,7 @@
-const twilio = require('twilio');
 const express = require('express');
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const twilio = require('twilio');
 const Location = require('../../models/Location');
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const validateLocationInput = require('../../validation/location');
 
 
