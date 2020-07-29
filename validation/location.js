@@ -12,7 +12,7 @@ module.exports = function validateLocationInput(locationData) {
     };
 
     if (/^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/.test(data.location) === false) {
-        errors.locationFormat = 'Location is formatted invalid'
+        errors.locationFormat = 'Location is formatted invalid';
     }
 
     return {
