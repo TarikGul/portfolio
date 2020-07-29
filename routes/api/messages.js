@@ -12,12 +12,14 @@ router.get('/test', (req, res) => res.json({ msg: 'this is a test route' }));
 // Success webhook route for receiving messages,
 // Responds with a success message to the receivers number
 router.post('/message', (req, res) => {
+    //TwilioSignature and url are used for two factor auth in production
     const twilioSignature = req.headers['x-twilio-signature'];
     const url = 'https://www.tarikgul.com/api/messages/message';
+
     const { body } = req;
 
     // Authenticating the request when in production
-    // Otherwise ngrok is used for secure TCP tunnelling
+    // Otherwise ngrok is used for secure TCP tunnelling in development
     // The terminal commands for development
     // -$ twilio login
     // -$ twilio phone-numbers:update "+1${twilioNumber}" --sms-url="http://localhost:5000/api/message"
