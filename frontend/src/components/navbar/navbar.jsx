@@ -15,7 +15,7 @@ const Navbar = memo((props) => {
 
     const navs = [
         'portfolio',
-        'location',
+        'map',
         'blog',
         'contact',
     ];
@@ -23,8 +23,8 @@ const Navbar = memo((props) => {
     const reRoute = (field) => {
         if (field === 'portfolio') {
             history.push('/');
-        } else if (field === 'location') {
-            history.push('/location');
+        } else if (field === 'map') {
+            history.push('/map');
         } else if (field === 'contact') {
             history.push('/contact');
         } else if (field === 'blog') {
