@@ -20,7 +20,7 @@ const MapModal = (props) => {
                 slidesPerPage={2}
             >
                 {
-                    images.map((link) => <img className='carousel-image' src={link} alt=""/>)
+                    images.map((link) => <img className='carousel-image' height='350' src={link} alt=""/>)
                     
                 }
             </Carousel>
