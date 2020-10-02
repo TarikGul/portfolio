@@ -38,7 +38,7 @@ const Projects = props => {
                                     onClick={() => handleReroute('https://covid415.herokuapp.com')} />
                                 <div className='project-description-container'>
                                     <div className='project-description'>
-                                        Built using the MERN stack, COVID415 gives San Franciscan's the resources to establish a connection for help during the coronavirus pandemic.
+                                        Built using the MERN stack, COVID415 gives San Franciscans the resources to establish a connection for help during the COVID-19 pandemic.
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@ const Projects = props => {
                                     onClick={() => handleReroute('https://tarikgul.github.io/Sudoku-solving-visualizer/dist/')} />
                                 <div className='project-description-container'>
                                     <div className='project-description'>
-                                        This is a Sudoku solving visualizer. It focus's on solving the Exact Cover problem. Used in computer science and mathematics it is studied under the NP vs P debate.
+                                        This is a Sudoku solving visualizer. It focuses on solving the Exact Cover problem. Used in computer science and mathematics it is studied under the NP vs P debate.
                                     </div>
                                 </div>
                             </div>
@@ -115,10 +115,10 @@ const Projects = props => {
                                     </h3>
                                     <div className='project-description-container'>
                                         <div className='project-description'>
-                                            Built using the MERN stack, COVID415 gives San Franciscan's the resources 
-                                            to establish a connection for assistance while sheltering-in-place, during the Corona virus pandemic.
+                                            Built using the MERN stack, COVID415 gives San Franciscans the resources 
+                                            to establish a connection for assistance while sheltering-in-place, during the COVID-19 pandemic.
                                             We implemented a tooling system using Mapbox's API, in order to match recipients with volunteers. 
-                                            After we establish the connection, we allow the users to communicate, and confirm there transaction via the Twilio Api.
+                                            After we establish the connection, we allow the users to communicate, and confirm their transaction via the Twilio API.
 
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@ const Projects = props => {
                                     </h3>
                                     <div className='project-description-container'>
                                         <div className='project-description'>
-                                            This is a Sudoku solving visualizer. It focus's on solving the Exact Cover problem. Used in computer science and mathematics it is studied under the NP vs P debate.
+                                            This is a Sudoku solving visualizer. It focuses on solving the Exact Cover problem. Used in computer science and mathematics it is studied under the NP vs P debate.
                                         </div>
                                     </div>
                                     <div className='technologies'>
