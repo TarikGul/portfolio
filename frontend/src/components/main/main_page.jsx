@@ -21,7 +21,7 @@ const Main = props => {
         <div className="main-page-container">
             <Welcome />
             <About />
-            <Timeline />
+            {/* <Timeline /> */}
             <Projects />
             <Skills />
             <Resume />
