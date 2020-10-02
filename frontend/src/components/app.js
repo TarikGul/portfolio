@@ -22,7 +22,7 @@ const App = () => (
         <Modal />
         <Route path='/' component={NavbarContainer}/>
         <Route exact path='/' component={MainContainer}/>
-        <Route exact path='/location' component={MapContainer}/>
+        <Route exact path='/map' component={MapContainer}/>
         <Route exact path='/blog' component={BlogContainer}/>
         <Route exact path='/contact' component={ContactContainer}/>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
