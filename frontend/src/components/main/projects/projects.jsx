@@ -61,6 +61,52 @@ const Projects = props => {
                         <div className='projects-header'>
                             Other Projects and Scripts
                         </div>
+                        <div className='projects-boxes'>
+                            <div className='box-container'>
+                                <span>GeoJson Minifier - Script</span>
+                                <img alt=''
+                                    src='/geojson.jpg'
+                                    className='image-project'
+                                    onClick={() => handleReroute('https://github.com/TarikGul/compress_geojson_coords')} />
+                                <div className='project-description-container'>
+                                    <div className='project-description'>
+                                            This Script takes in a GeoJson file, and writes a new minified version, making sure white space is gone,
+                                            decimals are reduced to appropriate accuracies, and repetetive points are cleared as well as redundant ones. I actually wrote this script for this portfolio.
+                                            The map section shows all the long distance trails I have hiked. The issue was the files I received from the government were so accurate.
+                                            In effect, the files were so large it complicated with the querying. <br /><br /> So I wrote this to add one more facet to the performance while maintaining the integrity
+                                            of the trails.
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='box-container'>
+                                    <span>Steganography - Script</span>
+                                <img alt=''
+                                    src='/steganography-image.jpeg'
+                                    className='image-project'
+                                    onClick={() => handleReroute('https://github.com/TarikGul/Steganography')} />
+                                <div className='project-description-container'>
+                                    <div className='project-description'>
+                                        This script takes in a image, and a message and returns the image with the message embedded in the pixels.
+                                        I also wrote a One Time Pad Cipher as well in order to encrypt the message before embedding.
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='box-container'>
+                                <span>Blowfish - Clone</span>
+                                <img alt=''
+                                    src='/blowfish.jpg'
+                                    className='image-project'
+                                    onClick={() => handleReroute('https://github.com/TarikGul/cryptographic-algorithms/tree/master/javascript/blowfish')} />
+                                <div className='project-description-container'>
+                                    <div className='project-description'>
+                                        This is a clone of Bruce Schneier's (American Cryptographer) 1993 symmetric-key block cipher Blowfish. It is used in BCRYPT, a known library and method to
+                                        save and store password's in databases etc. It is based off of a Fiestel Network architecture, and is an absolute blast to learn. Jump into the repo to see more 
+                                        resources, and information. I wrote one in Javascript and one in python. Feel free to explore the rest of the repo as well,
+                                        as there are many other interpretations of other symmetric key ciphers.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <div className='projects-inner-container'>
