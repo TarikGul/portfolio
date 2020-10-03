@@ -202,19 +202,33 @@
     }
 
     .technologies {
+        display: flex;
+        flex-direction: column;
         height: 80px;
         width: 90%;
         color: rgb(116, 200, 206);
     }
 
-    .technologies > span {
+    .tech-container {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .tech-container > span {
+        width: 75px;
         margin-right: 10px;
-        width: 60px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 17px;
         height: 25px;
-        padding: 10px;
+        padding: 7px;
         background-color: rgba(139, 179, 182, 0.651);
         border-radius: 20px;
         color: white;
+        line-height: 25px;
     }
 
     .project-right-box {

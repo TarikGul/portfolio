@@ -132,13 +132,15 @@ const Projects = props => {
                                         <h4 className='technologies-header'>
                                             Technologies:
                                         </h4>
-                                        <span>React</span>
-                                        <span>Redux</span>
-                                        <span>Rails</span>
-                                        <span>AWS</span>
-                                        <span>PostgreSQL</span>
-                                        <span>HTML</span>
-                                        <span>SCSS</span>
+                                        <div className='tech-container'>
+                                            <span>React</span>
+                                            <span>Redux</span>
+                                            <span>Rails</span>
+                                            <span>AWS</span>
+                                            <span>PSQL</span>
+                                            <span>HTML</span>
+                                            <span>SCSS</span>
+                                        </div>
                                     </div>
                                     <div className='project-links-wrapper'>
                                         <div className='link-wrapper'>
@@ -178,13 +180,15 @@ const Projects = props => {
                                         <h4 className='technologies-header'>
                                             Technologies:
                                         </h4>
-                                        <span>React</span>
-                                        <span>Redux</span>
-                                        <span>Express</span>
-                                        <span>Node</span>
-                                        <span>MongoDB</span>
-                                        <span>HTML</span>
-                                        <span>SCSS</span>
+                                        <div className='tech-container'>
+                                            <span>React</span>
+                                            <span>Redux</span>
+                                            <span>Express</span>
+                                            <span>Node</span>
+                                            <span>MongoDB</span>
+                                            <span>HTML</span>
+                                            <span>SCSS</span>
+                                        </div>
                                     </div>
                                     <div className='project-links-wrapper'>
                                         <div className='link-wrapper'>
@@ -220,10 +224,12 @@ const Projects = props => {
                                         <h4 className='technologies-header'>
                                             Technologies:
                                         </h4>
-                                        <span>Javascript</span>
-                                        <span>HTML</span>
-                                        <span>CSS</span>
-                                        <span>Webpack</span>
+                                        <div className='tech-container'>
+                                            <span>Javascript</span>
+                                            <span>HTML</span>
+                                            <span>CSS</span>
+                                            <span>Webpack</span>
+                                        </div>
                                     </div>
                                     <div className='project-links-wrapper'>
                                         <div className='link-wrapper'>
@@ -268,7 +274,9 @@ const Projects = props => {
                                         <h4 className='technologies-header'>
                                             Technologies:
                                         </h4>
-                                        <span>Ruby</span>
+                                        <div className='tech-container'>
+                                            <span>Ruby</span>
+                                        </div>
                                     </div>
                                     <div className='project-links-wrapper'>
                                         <div className='link-wrapper'>
@@ -299,7 +307,9 @@ const Projects = props => {
                                         <h4 className='technologies-header'>
                                             Technologies:
                                         </h4>
-                                        <span>Python</span>
+                                        <div className='tech-container'>
+                                            <span>Python</span>
+                                        </div>
                                     </div>
                                     <div className='project-links-wrapper'>
                                         <div className='link-wrapper'>
@@ -332,8 +342,10 @@ const Projects = props => {
                                         <h4 className='technologies-header'>
                                             Technologies:
                                         </h4>
-                                        <span>Javascript</span>
-                                        <span>Python</span>
+                                        <div className='tech-container'>
+                                            <span>Javascript</span>
+                                            <span>Python</span>
+                                        </div>
                                     </div>
                                     <div className='project-links-wrapper'>
                                         <div className='link-wrapper'>
