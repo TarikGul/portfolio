@@ -265,6 +265,40 @@ const Projects = props => {
                                     </div>
                                 </div>
                             </div>
+                            <div className='box-container'>
+                                <img alt=''
+                                    src='/blowfish.jpg'
+                                    className='image-project'
+                                    onClick={() => handleReroute('https://github.com/TarikGul/cryptographic-algorithms/tree/master/javascript/blowfish')} />
+                                <div className='project-right-box'>
+                                    <h3 className='project-name'>
+                                        Blowfish - Clone
+                                    </h3>
+                                    <div className='project-description-container'>
+                                        <div className='project-description'>
+                                            This is a clone of Bruce Schneier's (American Cryptographer) 1993 symmetric-key block cipher Blowfish. It is used in BCRYPT, a known library and method to
+                                            save and store password's in databases etc. It is based off of a Fiestel Network architecture, and is an absolute blast to learn. Jump into the repo to see more 
+                                            resources, and information. I wrote one in Javascript and one in python. Feel free to explore the rest of the repo as well,
+                                            as there are many other interpretations of other symmetric key ciphers.
+                                        </div>
+                                    </div>
+                                    <div className='technologies'>
+                                        <h4 className='technologies-header'>
+                                            Technologies:
+                                        </h4>
+                                        <span>Javascript</span>
+                                        <span>Python</span>
+                                    </div>
+                                    <div className='project-links-wrapper'>
+                                        <div className='link-wrapper'>
+                                            <img src='/github-link.svg' className='site-link-svg' />
+                                            <a href='https://github.com/TarikGul/cryptographic-algorithms/tree/master/javascript/blowfish' className='project-link'>
+                                                Github Repo
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )
