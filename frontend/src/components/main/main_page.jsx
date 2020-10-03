@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Welcome from './welcome';
 import Timeline from './timeline/timeline';
 import About from './about/about';
@@ -7,15 +7,27 @@ import Skills from './skills/skills';
 import Projects from './projects/projects';
 import Footer from '../footer/footer';
 
-const Main = props => {
+import { trailsAuth } from '../../config/keys_front.js';
 
+const Main = props => {
+    const { 
+        adventures, 
+        setPreloadingGeojson, 
+        fetchGeojson, 
+        setCachedGeojson 
+    } = props;
     // This is for new visitors if they want to log there first time coming to 
     // the site
 
     // const { openModal } = props;
-    // useEffect(() => {
-    //     openModal('welcome-visitor')
-    // }, []);
+    useEffect(() => {
+        if(adventures.preloading === false) {
+            (function retrieveGeoJson(trailsAuth) {
+                setCachedGeojson(true);
+                fetchGeojson({ trailsAuth }).then(() => setPreloadingGeojson(true));
+            })(trailsAuth)
+        }
+    }, []);
 
     return (
         <div className="main-page-container">
