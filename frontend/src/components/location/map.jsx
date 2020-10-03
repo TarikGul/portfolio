@@ -4,12 +4,15 @@ import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss';
 
+import { detectMob } from '../../util/detect_mobile';
 import { createPulsingDot } from './util/pulsing_dot';
 import { mapBoxPublicKey, trailsAuth } from '../../config/keys_front.js';
 import { parseLocation } from '../../util/location_util';
 import details from '../../util/trail_descriptions'
 
 const Map = (props) => {
+    // Check if we are on mobile
+    const mobile = detectMob();
     // Destructure props
     const { 
         fetchLocations, 
@@ -39,7 +42,9 @@ const Map = (props) => {
     const [loader, setLoader] = useState(true);
     const [errors, setErrors] = useState({});
 
-    const handleMap = (res) => {
+    const handleMap = (res, mobile) => {
+        if(mobile) return;
+        
         mapboxgl.accessToken = mapBoxPublicKey;
 
         // Use default Map options if the res of the promise comes back undefined
@@ -245,7 +250,7 @@ const Map = (props) => {
         if(adventures.preloading || !adventures.cached) {
             fetchLocations()
                 .then((res) => {
-                    handleMap(res);
+                    handleMap(res, mobile);
                 })
                 .catch((err) => handleMap(err));
         }
@@ -258,30 +263,40 @@ const Map = (props) => {
 
     return (
         <div>
-            <div ref={el => mapContainer.current = el} className='map-container' />
             {
-                loader ?
-                    (
-                        <div className='loader-container'>
-                            <div className='lds-dual-ring'></div>
-                            <div className='loader-details'>
-                                {loaderDetails}
-                            </div>
+                mobile ? (
+                    <div>
+                        mobile
+                    </div>
+                ) : (
+                    <div>
+                        <div ref={el => mapContainer.current = el} className='map-container' />
+                        {
+                            loader ?
+                                (
+                                    <div className='loader-container'>
+                                        <div className='lds-dual-ring'></div>
+                                        <div className='loader-details'>
+                                            {loaderDetails}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    null
+                                )
+                        }
+                        <button className='button-console' ref={consoleFlytoLocation}>
+                            Wheres Tarik?
+                        </button>
+                        <div className='console'>
+                            <h1>My Adventures</h1>
+                            <p>Over the past couple years, I have done a lot of adventures by foot. Use the interactive map to learn a little more about them.</p>
+                            <br/>
+                            {/* <h5>Hover over a trail, or click on it to find out more</h5> */}
+                            <p ref={consoleDetailRef}>Hover over an trail for a quick description, or click on one to find out more about it</p>
                         </div>
-                    ) : (
-                        null
-                    )
+                    </div>
+                )
             }
-            <button className='button-console' ref={consoleFlytoLocation}>
-                Wheres Tarik?
-            </button>
-            <div className='console'>
-                <h1>My Adventures</h1>
-                <p>Over the past couple years, I have done a lot of adventures by foot. Use the interactive map to learn a little more about them.</p>
-                <br/>
-                {/* <h5>Hover over a trail, or click on it to find out more</h5> */}
-                <p ref={consoleDetailRef}>Hover over an trail for a quick description, or click on one to find out more about it</p>
-            </div>
         </div>
     )
 }
