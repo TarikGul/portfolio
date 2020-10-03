@@ -44,7 +44,7 @@ const Map = (props) => {
 
     const handleMap = (res, mobile) => {
         if(mobile) return;
-        
+
         mapboxgl.accessToken = mapBoxPublicKey;
 
         // Use default Map options if the res of the promise comes back undefined
@@ -265,8 +265,11 @@ const Map = (props) => {
         <div>
             {
                 mobile ? (
-                    <div>
-                        mobile
+                    <div className='mobile-update-container'>
+                        <img src='/sorry-image.png' className='sorry-image'/>
+                        <p>
+                            The Map portion is currently being upgraded on mobile. <br/> Check out the desktop version as its live.
+                        </p>
                     </div>
                 ) : (
                     <div>
