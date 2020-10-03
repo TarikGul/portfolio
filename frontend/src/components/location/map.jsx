@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
 import '../../styles/map.scss';
@@ -57,7 +58,7 @@ const Map = (props) => {
         const coords = parseLocation(Object.values(data)[0], false);
 
         const initializeMap = ({ setMap, mapContainer }) => {
-            
+
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: 'mapbox://styles/mapbox/light-v10',
@@ -68,7 +69,7 @@ const Map = (props) => {
 
             // This conditional is here so that if the data is in state then
             // the map will render faster
-            if(Object.keys(adventures).length !== 0) {
+            if(adventures.geojson) {
                 setTimeout(() => {
                     setLoader(false)
                 }, 2000)
@@ -92,9 +93,9 @@ const Map = (props) => {
                     }
                     // This is for setting state
                     if (counter === 4) setLoaderDetails('Rendering the trails...');
-                    if (counter === 1 || counter === 8) setLoader(false);
+                    if (counter === 1 || counter === 6) setLoader(false);
     
-                    if (counter === 1 || counter === 8) clearInterval(interval);
+                    if (counter === 1 || counter === 6) clearInterval(interval);
                 }, 1500)
             }
             // }
@@ -184,14 +185,18 @@ const Map = (props) => {
                 });
 
                 // This is so that we dont make unnecessary calls to the backened
-                // because the file size is 20MB if the geojson files are cached in
+                // because the file size is 7MB if the geojson files are cached in
                 // global state, then we dont have to make the API call.
-                if(Object.keys(adventures).length === 0) {
-                    fetchGeojson({trailsAuth})
-                        .then(res => setSourceOfRoutes(res.data.data))
-                        .catch(err => setErrors({ geojson: 'Could not retrieve trail data' }))
+                if (!adventures.preloading) {
+                    if(adventures.geojson === undefined) {
+                        fetchGeojson({trailsAuth})
+                            .then(res => setSourceOfRoutes(res.data.data))
+                            .catch(err => setErrors({ geojson: 'Could not retrieve trail data' }))
+                    } 
                 } else {
-                    setSourceOfRoutes(adventures.geojson);
+                    if (adventures.geojson) {
+                        setSourceOfRoutes(adventures.geojson);
+                    }
                 }
             });
 
@@ -237,18 +242,19 @@ const Map = (props) => {
     }
 
     useEffect(() => {
-
-        fetchLocations()
-            .then((res) => {
-                handleMap(res);
-            })
-            .catch((err) => handleMap(err));
+        if(adventures.preloading || !adventures.cached) {
+            fetchLocations()
+                .then((res) => {
+                    handleMap(res);
+                })
+                .catch((err) => handleMap(err));
+        }
 
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/location');
         }
-    }, [map]);
+    }, [map, adventures.preloading]);
 
     return (
         <div>
