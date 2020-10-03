@@ -215,7 +215,7 @@ const Map = (props) => {
 
             for (let i = 0; i < routes.length; i++) {
                 map.on('mouseleave', routes[i], (e) => {
-                    consoleDetailRef.current.innerHTML = 'Hover over any trail for a quick description, or click on one to find out more about it';
+                    consoleDetailRef.current.innerHTML = 'Hover over any trail for a quick description, or click on one to find out more about it.';
                     map.setPaintProperty(routes[i], 'line-color', '#555')
                 });
             }
