@@ -8,6 +8,9 @@ const handleReroute = (route) => {
 
 const Projects = props => {
     const mobile = detectMob();
+
+    // I can totally refactor this so that each project is a box because I
+    // am definitely repeating myself in here
     return (
         <div className='projects-container'>
             {
@@ -54,6 +57,9 @@ const Projects = props => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className='projects-header'>
+                            Other Projects and Scripts
                         </div>
                     </div>
                 ) : (
@@ -184,6 +190,76 @@ const Projects = props => {
                                             <img src='/link.svg' className='site-link-svg'/>
                                             <a href='https://tarikgul.github.io/Sudoku-solving-visualizer/dist/' className='project-link'>
                                                 Live Site
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='projects-header'>
+                            Other Projects and Scripts
+                        </div>
+                        <div className='projects-boxes'>
+                            <div className='box-container'>
+                                <img alt=''
+                                    src='/geojson.jpg'
+                                    className='image-project'
+                                        onClick={() => handleReroute('https://github.com/TarikGul/compress_geojson_coords')} />
+                                <div className='project-right-box'>
+                                    <h3 className='project-name'>
+                                        GeoJson Minifier - Script
+                                    </h3>
+                                    <div className='project-description-container'>
+                                        <div className='project-description'>
+                                            This Script takes in a GeoJson file, and writes a new minified version, making sure white space is gone, 
+                                            decimals are reduced to appropriate accuracies, and repetetive points are cleared as well as redundant ones. I actually wrote this script for this portfolio.
+                                            The map section shows all the long distance trails I have hiked. The issue was the files I received from the government were so accurate.
+                                            In effect, the files were so large it complicated with the querying. <br/><br/> So I wrote this to add one more facet to the performance while maintaining the integrity
+                                            of the trails. 
+                                        </div>
+                                    </div>
+                                    <div className='technologies'>
+                                        <h4 className='technologies-header'>
+                                            Technologies:
+                                        </h4>
+                                        <span>Ruby</span>
+                                    </div>
+                                    <div className='project-links-wrapper'>
+                                        <div className='link-wrapper'>
+                                            <img src='/github-link.svg' className='site-link-svg' />
+                                                <a href='https://github.com/TarikGul/compress_geojson_coords' className='project-link'>
+                                                Github Repo
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='box-container'>
+                                <img alt=''
+                                    src='/steganography-image.jpeg'
+                                    className='image-project'
+                                    onClick={() => handleReroute('https://github.com/TarikGul/Steganography')} />
+                                <div className='project-right-box'>
+                                    <h3 className='project-name'>
+                                        Steganography - Script
+                                    </h3>
+                                    <div className='project-description-container'>
+                                        <div className='project-description'>
+                                            This script takes in a image, and a message and returns the image with the message embedded in the pixels.<br/>
+                                            I also wrote a One Time Pad Cipher as well in order to encrypt the message before embedding.
+                                        </div>
+                                    </div>
+                                    <div className='technologies'>
+                                        <h4 className='technologies-header'>
+                                            Technologies:
+                                        </h4>
+                                        <span>Python</span>
+                                    </div>
+                                    <div className='project-links-wrapper'>
+                                        <div className='link-wrapper'>
+                                            <img src='/github-link.svg' className='site-link-svg' />
+                                            <a href='https://github.com/TarikGul/Steganography' className='project-link'>
+                                                Github Repo
                                             </a>
                                         </div>
                                     </div>
