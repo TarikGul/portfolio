@@ -89,17 +89,15 @@ const Map = (props) => {
                 let counter = 2;
                 const interval = setInterval(() => {
                     let bool = map.loaded();
-    
                     if (bool) counter += 1;
                     // This below is an edge case to make sure if the first value is false to not let it 
                     // get rid of the loader
                     if(counter !== 2 && !bool) {
-                        if (!bool) counter = 0;
+                        counter = 0;
                     }
                     // This is for setting state
                     if (counter === 4) setLoaderDetails('Rendering the trails...');
                     if (counter === 1 || counter === 6) setLoader(false);
-    
                     if (counter === 1 || counter === 6) clearInterval(interval);
                 }, 1500)
             }
