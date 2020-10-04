@@ -11,7 +11,7 @@ const Footer = props => {
 
     return (
         <div className='footer-wrapper' style={{ position }}>
-            <p className='footer-quote'> "The queiter you become, the more you can hear" <br/>
+            <p className='footer-quote'> "The quieter you become, the more you can hear" <br/>
             -Some Hacker
             </p>
         </div>
