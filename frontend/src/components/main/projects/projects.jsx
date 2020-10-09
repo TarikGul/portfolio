@@ -29,7 +29,7 @@ const Projects = props => {
                                     onClick={() => handleReroute('https://bimeo.herokuapp.com')} />
                                 <div className='project-description-container'>
                                     <div className='project-description'>
-                                        Fullstack clone of Vimeo. Built on Ruby on Rails, React, Redux, webpack, PostgreSQL. Displays full CRUD actions, RESTful API routes, and database management.
+                                        Fullstack clone of Vimeo. Built on Ruby on Rails, React, Redux, webpack, PostgreSQL, and AWS. Displays full CRUD actions, RESTful API routes, database management, client-side as well as server-side file management.
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ const Projects = props => {
                                     onClick={() => handleReroute('https://tarikgul.github.io/Sudoku-solving-visualizer/dist/')} />
                                 <div className='project-description-container'>
                                     <div className='project-description'>
-                                        This is a Sudoku solving visualizer. It focuses on solving the Exact Cover problem. Used in computer science and mathematics it is studied under the NP vs P debate.
+                                        This is a Sudoku solving visualizer. It focuses on solving the Exact Cover problem. Used in computer science and mathematics. It is studied under the NP vs P debate.
                                     </div>
                                 </div>
                             </div>
