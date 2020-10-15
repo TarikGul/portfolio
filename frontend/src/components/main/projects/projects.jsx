@@ -138,8 +138,6 @@ const Projects = props => {
                                             <span>Rails</span>
                                             <span>AWS</span>
                                             <span>PSQL</span>
-                                            <span>HTML</span>
-                                            <span>SCSS</span>
                                         </div>
                                     </div>
                                     <div className='project-links-wrapper'>
@@ -186,8 +184,6 @@ const Projects = props => {
                                             <span>Express</span>
                                             <span>Node</span>
                                             <span>MongoDB</span>
-                                            <span>HTML</span>
-                                            <span>SCSS</span>
                                         </div>
                                     </div>
                                     <div className='project-links-wrapper'>
