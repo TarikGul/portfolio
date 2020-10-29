@@ -13,7 +13,7 @@ const BlogForm = (props) => {
             quote: '',
             authorQuote: '',
             description: '',
-            imageFile: '',
+            imageFile: null,
         }
     );
 
@@ -30,6 +30,8 @@ const BlogForm = (props) => {
     }
 
     const handleSubmit = () => {
+        const formData = new FormData();
+
         const { createBlog } = props;
         const { description, title, quote, authorQuote, imageFile } = filterInput;
 
@@ -37,19 +39,13 @@ const BlogForm = (props) => {
             return null
         } 
 
-        const objToCreate = {
-            description,
-            title,
-            ownerId,
-            quote,
-            authorQuote
-        };
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('authorQuote', authorQuote);
+        formData.append('quote', quote);
+        formData.append('iamgeFile', imageFile)
 
-        if (imageFile !== '') {
-            objToCreate = Object.assign(objToCreate, {imageFile});
-        }
-
-        createBlog(objToCreate)
+        createBlog(formData)
             .then (() => {
                 setSuccess(true);
                 setFilterInput({
