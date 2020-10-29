@@ -12,7 +12,8 @@ const BlogForm = (props) => {
             title: '',
             quote: '',
             authorQuote: '',
-            description: ''
+            description: '',
+            imageFile: '',
         }
     );
 
@@ -24,21 +25,31 @@ const BlogForm = (props) => {
         setFilterInput({ [name]: value });
     };
 
+    const handleFile = (e) => {
+
+    }
+
     const handleSubmit = () => {
         const { createBlog } = props;
-        const { description, title, quote, authorQuote } = filterInput;
+        const { description, title, quote, authorQuote, imageFile } = filterInput;
 
         if (title.length === 0 || description.length === 0) {
             return null
         } 
 
-        createBlog({
+        const objToCreate = {
             description,
             title,
             ownerId,
             quote,
             authorQuote
-        })
+        };
+
+        if (imageFile !== '') {
+            objToCreate = Object.assign(objToCreate, {imageFile});
+        }
+
+        createBlog(objToCreate)
             .then (() => {
                 setSuccess(true);
                 setFilterInput({
@@ -64,6 +75,11 @@ const BlogForm = (props) => {
                 </div>
             <div className='blog-form-inner-container'>
                 <form onSubmit={() => handleSubmit()} className='blog-form'>
+                    <p>Blog Cover Photo</p>
+                    <input type='file'
+                            accept='image/png, image/jpeg'
+                            onChange={(e) => handleFile(e)}
+                            className='upload-file-input'/>
                     <label>
                         <input
                             type='text'
