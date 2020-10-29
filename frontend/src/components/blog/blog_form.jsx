@@ -14,6 +14,7 @@ const BlogForm = (props) => {
             authorQuote: '',
             description: '',
             imageFile: null,
+            imageFileName: null
         }
     );
 
@@ -26,24 +27,32 @@ const BlogForm = (props) => {
     };
 
     const handleFile = (e) => {
+        const f = e.currentTarget.files[0]
+        const file = new Blob([f], { type: 'image/png' });
 
+        setFilterInput({ imageFile: file, imageFileName: f.name });
     }
 
     const handleSubmit = () => {
-        const formData = new FormData();
 
         const { createBlog } = props;
-        const { description, title, quote, authorQuote, imageFile } = filterInput;
+        const { description, title, quote, authorQuote, imageFile, imageFileName } = filterInput;
 
         if (title.length === 0 || description.length === 0) {
             return null
         } 
 
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('authorQuote', authorQuote);
-        formData.append('quote', quote);
-        formData.append('iamgeFile', imageFile)
+        const formData = new FormData()
+
+        formData.set('title', title);
+        formData.set('description', description);
+        formData.set('authorQuote', authorQuote);
+        formData.set('quote', quote);
+        formData.append('imageFile', imageFile)
+        
+        for(let pair of formData.entries()) {
+            console.log(pair[0] + ', ' + pair[1]); 
+        }
 
         createBlog(formData)
             .then (() => {
@@ -53,6 +62,8 @@ const BlogForm = (props) => {
                     title: '',
                     quote: '',
                     authorQuote: '',
+                    imageFile: null,
+                    imageFileName: null
                 })
             })
                 .then(() => {
