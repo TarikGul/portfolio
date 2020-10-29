@@ -102,7 +102,7 @@ router.post('/blog', (req, res) => {
         }
     };
 
-    uploadBlog(req.body.file);
+    uploadBlog(req.body.imageFile);
 });
 
 module.exports = router;
