@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-export const createBlog = blogData => {
-    return axios.post('/api/blogs/blog', blogData)
+export const createBlog = (blogData) => {
+    const blogHeaders = {
+        'Content-Type': `multipart/form-data boundary=${blogData._boundary}`,
+    }
+    return axios.post('/api/blogs/blog', blogData, { headers: blogHeaders })
 };
 
 export const getBlogs = () => {

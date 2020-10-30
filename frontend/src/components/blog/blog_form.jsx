@@ -12,7 +12,9 @@ const BlogForm = (props) => {
             title: '',
             quote: '',
             authorQuote: '',
-            description: ''
+            description: '',
+            imageFile: null,
+            imageFileName: null
         }
     );
 
@@ -24,21 +26,35 @@ const BlogForm = (props) => {
         setFilterInput({ [name]: value });
     };
 
+    const handleFile = (e) => {
+        const f = e.currentTarget.files[0]
+        const file = new Blob([f], { type: 'image/png' });
+
+        setFilterInput({ imageFile: file, imageFileName: f.name });
+    }
+
     const handleSubmit = () => {
+
         const { createBlog } = props;
-        const { description, title, quote, authorQuote } = filterInput;
+        const { description, title, quote, authorQuote, imageFile, imageFileName } = filterInput;
 
         if (title.length === 0 || description.length === 0) {
             return null
         } 
 
-        createBlog({
-            description,
-            title,
-            ownerId,
-            quote,
-            authorQuote
-        })
+        const formData = new FormData()
+
+        formData.set('title', title);
+        formData.set('description', description);
+        formData.set('authorQuote', authorQuote);
+        formData.set('quote', quote);
+        formData.append('imageFile', imageFile)
+        
+        for(let pair of formData.entries()) {
+            console.log(pair[0] + ', ' + pair[1]); 
+        }
+
+        createBlog(formData)
             .then (() => {
                 setSuccess(true);
                 setFilterInput({
@@ -46,6 +62,8 @@ const BlogForm = (props) => {
                     title: '',
                     quote: '',
                     authorQuote: '',
+                    imageFile: null,
+                    imageFileName: null
                 })
             })
                 .then(() => {
@@ -64,6 +82,11 @@ const BlogForm = (props) => {
                 </div>
             <div className='blog-form-inner-container'>
                 <form onSubmit={() => handleSubmit()} className='blog-form'>
+                    <p>Blog Cover Photo</p>
+                    <input type='file'
+                            accept='image/png, image/jpeg'
+                            onChange={(e) => handleFile(e)}
+                            className='upload-file-input'/>
                     <label>
                         <input
                             type='text'

@@ -1,4 +1,5 @@
 const express = require('express');
+const formidable = require('formidable');
 
 //AWS SDK
 const AWS = require('aws-sdk');
@@ -26,8 +27,25 @@ router.get('/', (req, res) => {
         .catch((err) => res.status(404).json({ notasksfound: 'No blogs found', err }));
 })
 
-router.post('/blog', (req, res) => {
-    const { errors, isValid } = validateBlogInput(req.body);
+router.post('/blog', async (req, res) => {
+    let body;
+
+    const form = new formidable.IncomingForm();
+
+    await new Promise((resolve, reject) => {
+        form.parse(req, (err, fields, files) => {
+            if(err) {
+                console.log(err.message)
+                reject();
+            }
+            let data = {...fields, ...files}
+
+            body = data;
+            resolve();
+        })
+    })
+
+    const { errors, isValid } = validateBlogInput(body);
 
     if (!isValid) {
         return res.status(400).json(errors)
@@ -55,10 +73,12 @@ router.post('/blog', (req, res) => {
             authorQuote: body.authorQuote,
             locationUrl: location,
         });
+
         newBlog.save()
             .then((blog) => res.json(blog))
             .catch(err => res.json(err))
     };
+
     // On a successful response check if there is anything to upload
     const uploadBlog = (file) => {
         const { body } = req;
@@ -102,7 +122,7 @@ router.post('/blog', (req, res) => {
         }
     };
 
-    uploadBlog(req.body.file);
+    uploadBlog(body.imageFile);
 });
 
 module.exports = router;
