@@ -31,17 +31,17 @@ router.post('/blog', async (req, res) => {
     let body;
 
     const form = new formidable.IncomingForm();
-    
+
     await new Promise((resolve, reject) => {
         form.parse(req, (err, fields, files) => {
             if(err) {
                 console.log(err.message)
-                return;
+                reject();
             }
             let data = {...fields, ...files}
 
             body = data;
-            resolve()
+            resolve();
         })
     })
 
