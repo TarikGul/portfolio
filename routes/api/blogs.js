@@ -1,5 +1,6 @@
 const express = require('express');
 const formidable = require('formidable');
+const fs = require('fs');
 
 //AWS SDK
 const AWS = require('aws-sdk');
@@ -36,7 +37,7 @@ router.post('/blog', async (req, res) => {
         form.parse(req, (err, fields, files) => {
             if(err) {
                 console.log(err.message)
-                reject();
+                reject(err);
             }
             let data = {...fields, ...files}
 
@@ -55,15 +56,8 @@ router.post('/blog', async (req, res) => {
     // If the user attached a file to the post request. That way we can know whether
     // or not we can send the file to AWS, or if we can just write the new data object in 
     // mogno and say the location url field to null. 
-    const createBlog = (boolean, data, body) => {
-        let location; 
-
-        // The boolen paramter just allows you to declare whether or not a file was attached
-        if (boolean) {
-            location = data.locationURL
-        } else {
-            location = undefined
-        }
+    const createBlog = (data, body) => {
+        const { Location } = data;
 
         const newBlog = new Blog({
             title: body.title,
@@ -71,17 +65,22 @@ router.post('/blog', async (req, res) => {
             description: body.description,
             quote: body.quote,
             authorQuote: body.authorQuote,
-            locationUrl: location,
+            locationURL: Location,
         });
 
         newBlog.save()
-            .then((blog) => res.json(blog))
-            .catch(err => res.json(err))
+            .then((blog) => {
+                console.log('Successfully saved the new blog post.')
+                res.json(blog)
+            })
+            .catch(err => {
+                console.log(err)
+                res.json(err)
+            })
     };
 
     // On a successful response check if there is anything to upload
-    const uploadBlog = (file) => {
-        const { body } = req;
+    const uploadBlog = async (file) => {
 
         let s3bucket = new AWS.S3({
             accessKeyId: IAM_USER_KEY,
@@ -94,30 +93,40 @@ router.post('/blog', async (req, res) => {
         // This is allowing us to define whether or not we have a file in our params
         // If there is no file we want to make it undefined so we dont chat with
         // AWS s3
+
         if (file) {
-            params = {
-                Bucket: BUCKET_NAME,
-                Key: file.name,
-                Body: file.data
-            };
+            await new Promise((resolve, reject) => {
+                fs.readFile(file.path, (err, data) => {
+                    console.log('reading file...')
+                    if (err) {
+                        reject(err);
+                    }
+                    params = {
+                        Bucket: BUCKET_NAME,
+                        Key: file.name,
+                        Body: data
+                    };
+                    resolve()
+                })
+            })
+            .catch(err => console.log(err))
         } else {
             params = undefined;
         }
 
         if (params === undefined) {
-            createBlog(false, undefined, body);
+            createBlog(undefined, body);
         } else {
             // Callback to return the locationUrl from AWS
+            console.log('Uploading to AWS S3...')
             s3bucket.upload(params, (err, data) => {
                 if (err) {
                     console.log('error in callback');
                     console.log(err);
                 }
-                console.log('success');
-
-
+                console.log('Successfully uploaded image to S3');
                 //If Successful create a new blog post in mongoDB;
-                createBlog(true, data, body);
+                createBlog(data, body);
             });
         }
     };
