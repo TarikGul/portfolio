@@ -5,8 +5,6 @@ module.exports = function validateBlogInput(blogData) {
     const errors = {};
     const data = { ...blogData };
 
-    console.log('this is the data in validator', data)
-
     data.body = validText(data.description) ? data.description : '';
     data.title = validText(data.title) ? data.title : '';
     data.quote = validText(data.quote) ? data.quote : '';
