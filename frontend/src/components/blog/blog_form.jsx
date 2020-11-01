@@ -49,10 +49,6 @@ const BlogForm = (props) => {
         formData.set('authorQuote', authorQuote);
         formData.set('quote', quote);
         formData.append('imageFile', imageFile, imageFileName)
-        
-        for(let pair of formData.entries()) {
-            console.log(pair[0] + ', ' + pair[1]); 
-        }
 
         createBlog(formData)
             .then (() => {
