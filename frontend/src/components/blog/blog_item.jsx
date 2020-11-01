@@ -1,6 +1,9 @@
 import React from 'react';
 
 const parseDate = date => {
+    //Quick fix
+    if(!date) return ' '; 
+
     const split = date.split('T');
     return split[0];
 }

@@ -30,7 +30,7 @@ const BlogForm = (props) => {
         const f = e.currentTarget.files[0]
         const file = new Blob([f], { type: 'image/png' });
 
-        setFilterInput({ imageFile: file, imageFileName: f.name });
+        setFilterInput({ imageFile: f, imageFileName: f.name });
     }
 
     const handleSubmit = () => {
@@ -48,7 +48,7 @@ const BlogForm = (props) => {
         formData.set('description', description);
         formData.set('authorQuote', authorQuote);
         formData.set('quote', quote);
-        formData.append('imageFile', imageFile)
+        formData.append('imageFile', imageFile, imageFileName)
         
         for(let pair of formData.entries()) {
             console.log(pair[0] + ', ' + pair[1]); 
