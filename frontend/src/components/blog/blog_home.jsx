@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import BlogCard from '../card/blog_card';
+import '../../styles/blog_home.scss';
 
+// Can store this data in a different file
 const data = {
     adventures: {
         title: 'Adventures',
@@ -8,7 +10,8 @@ const data = {
             tons of crazy stories and adventures that I have stored and gathered over the years. This is where I try to tell 
             those very stories and share some thoughts.`,
         imageUrl: '',
-        queryType: ''
+        queryType: '',
+        path: 'adventures',
     },
     programming: {
         title: 'Programming',
@@ -16,7 +19,8 @@ const data = {
             tons of crazy stories and adventures that I have stored and gathered over the years. This is where I try to tell 
             those very stories and share some thoughts.`,
         imageUrl: '',
-        queryType: ''
+        queryType: '',
+        path: 'programming',
     },
     randomThoughts: {
         title: 'Random Thoughts',
@@ -24,7 +28,8 @@ const data = {
             tons of crazy stories and adventures that I have stored and gathered over the years. This is where I try to tell 
             those very stories and share some thoughts.`,
         imageUrl: '',
-        queryType: ''
+        queryType: '',
+        path: 'random-thoughts',
     },
     recentPost: {
         title: 'Most Recent',
@@ -32,7 +37,8 @@ const data = {
             tons of crazy stories and adventures that I have stored and gathered over the years. This is where I try to tell 
             those very stories and share some thoughts.`,
         imageUrl: '',
-        queryType: ''
+        queryType: '',
+        path: 'recent',
     }
 
 }
@@ -52,7 +58,7 @@ const BlogHome = () => {
         const keys = Object.keys(input);
 
         return keys.map((key) => {
-            input[key]
+            return input[key]
         })
     }
 
@@ -66,12 +72,14 @@ const BlogHome = () => {
      */
 
     return (
-        <div>
+        <div className='blog-home-container'>
             {
-                blogCards.map((data, i) => (``
-                    <BlogCard title={data.title} 
-                              description={data.description} 
-                              imageUrl={data.imageUrl}/>
+                blogCards.map((blogCard, i) => (
+                    <BlogCard title={blogCard.title}
+                              url={blogCard.url} 
+                              description={blogCard.description} 
+                              imageUrl={blogCard.imageUrl}
+                              key={`blog-card-${i}`}/>
                 ))
             }
         </div>
