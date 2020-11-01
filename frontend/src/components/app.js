@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { AuthRoute } from '../util/route_util';
 
@@ -10,6 +10,7 @@ import MapContainer from './location/map_container';
 import ContactContainer from './contact/contact_container';
 import LoginFormContainer from './session/login_form_container';
 import BlogContainer from './blog/blog_container';
+import BlogHome from './blog/blog_home';
 import Modal from './modal/modal';
 
 if (window.location.hostname !== 'localhost') {
@@ -23,7 +24,8 @@ const App = () => (
         <Route path='/' component={NavbarContainer}/>
         <Route exact path='/' component={MainContainer}/>
         <Route exact path='/map' component={MapContainer}/>
-        <Route exact path='/blog' component={BlogContainer}/>
+        <Route exact path='/blog' component={BlogHome}/>
+        <Route path='/blog/:blogType' component={BlogContainer}/>
         <Route exact path='/contact' component={ContactContainer}/>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
     </div>
