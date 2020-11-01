@@ -80,7 +80,7 @@ router.post('/blog', async (req, res) => {
     };
 
     // On a successful response check if there is anything to upload
-    const uploadBlog = async (file) => {
+    const uploadAwsImage = async (file) => {
 
         let s3bucket = new AWS.S3({
             accessKeyId: IAM_USER_KEY,
@@ -131,7 +131,7 @@ router.post('/blog', async (req, res) => {
         }
     };
 
-    uploadBlog(body.imageFile);
+    uploadAwsImage(body.imageFile);
 });
 
 module.exports = router;
