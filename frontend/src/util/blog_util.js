@@ -10,3 +10,7 @@ export const createBlog = (blogData) => {
 export const getBlogs = () => {
     return axios.get('/api/blogs')
 };
+
+export const getTypeBlogs = (type) => {
+    return axios.get(`/api/blogs/${type}`)
+}
