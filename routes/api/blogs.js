@@ -66,6 +66,12 @@ router.post('/blog', async (req, res) => {
     // or not we can send the file to AWS, or if we can just write the new data object in 
     // mogno and say the location url field to null. 
     const createBlog = (data, body) => {
+        /**
+         *  I plan on coming back and re writing this
+         *  Add the ability for multiple files, as well as markdown blogs
+         *  and remove a lot of this silly sanity check logic, because it wont 
+         *  be needed once the blog is finished
+         */ 
         let Location;
         if (!data) {
             Location = undefined;
