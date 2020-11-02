@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchBlogs } from '../../actions/blog_actions';
+import { fetchBlogs, fetchTypeBlogs } from '../../actions/blog_actions';
 
 import Blog from './blog';
 
@@ -16,6 +16,7 @@ const msp = state => {
 const mdtp = dispatch => {
     return {
         fetchBlogs: () => dispatch(fetchBlogs()),
+        fetchTypeBlogs: () => dispatch(fetchTypeBlogs()),
     };
 };
 
