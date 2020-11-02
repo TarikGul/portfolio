@@ -25,8 +25,17 @@ router.get('/', (req, res) => {
     Blog.find()
         .sort({ date: -1 })
         .then((blogs) => res.json(blogs))
-        .catch((err) => res.status(404).json({ notasksfound: 'No blogs found', err }));
-})
+        .catch((err) => res.status(404).json({ noBlogsFound: 'No blogs found', err }));
+});
+
+router.get('/:blogType', (req, res) => {
+    const paramBlogType = req.params.blogType;
+
+    Blog.find({ blogType: paramBlogType })
+        .sort({ date: -1 })
+        .then((blogs) => res.json(blogs))
+        .catch((err) => res.status(404).json({ noBlogsFound: 'No blogs found', err }))
+});
 
 router.post('/blog', async (req, res) => {
     let body;
@@ -57,7 +66,13 @@ router.post('/blog', async (req, res) => {
     // or not we can send the file to AWS, or if we can just write the new data object in 
     // mogno and say the location url field to null. 
     const createBlog = (data, body) => {
-        const { Location } = data;
+        let Location;
+        if (!data) {
+            Location = undefined;
+        } else {
+            Location = data.Location
+        }
+        // const { Location } = data;
 
         const newBlog = new Blog({
             title: body.title,
@@ -65,6 +80,7 @@ router.post('/blog', async (req, res) => {
             description: body.description,
             quote: body.quote,
             authorQuote: body.authorQuote,
+            blogType: body.blogType,
             locationURL: Location,
         });
 
