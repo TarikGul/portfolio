@@ -37,3 +37,8 @@ export const createNewBlog = data => dispatch => {
         .catch(err => dispatch(receiveErrors(err)))
 };
 
+export const fetchTypeBlogs = (type) => dispatch => {
+    return APIUTIL.getTypeBlogs(type)
+        .then(blogs => dispatch(receiveBlogPosts(blogs)))
+        .catch(err => dispatch(receiveErrors(err)))
+};
