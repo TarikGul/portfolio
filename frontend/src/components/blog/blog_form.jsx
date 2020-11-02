@@ -1,7 +1,10 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import '../../styles/blog_form.scss';
 
 const BlogForm = (props) => {
+    const params = useParams();
+
     const [ownerId, setOwnerId] = useState(props.session.user.id);
     const [pictureFiles, setPictureFiles] = useState(null);
     const [success, setSuccess] = useState(false);
@@ -13,6 +16,7 @@ const BlogForm = (props) => {
             quote: '',
             authorQuote: '',
             description: '',
+            blogType: '',
             imageFile: null,
             imageFileName: null
         }
@@ -28,7 +32,6 @@ const BlogForm = (props) => {
 
     const handleFile = (e) => {
         const f = e.currentTarget.files[0]
-        const file = new Blob([f], { type: 'image/png' });
 
         setFilterInput({ imageFile: f, imageFileName: f.name });
     }
@@ -36,7 +39,15 @@ const BlogForm = (props) => {
     const handleSubmit = () => {
 
         const { createBlog } = props;
-        const { description, title, quote, authorQuote, imageFile, imageFileName } = filterInput;
+        const { 
+            description, 
+            title, 
+            quote, 
+            authorQuote, 
+            imageFile, 
+            imageFileName, 
+            blogType 
+        } = filterInput;
 
         if (title.length === 0 || description.length === 0) {
             return null
@@ -48,6 +59,7 @@ const BlogForm = (props) => {
         formData.set('description', description);
         formData.set('authorQuote', authorQuote);
         formData.set('quote', quote);
+        formData.set('blogType', blogType);
         formData.append('imageFile', imageFile, imageFileName)
 
         createBlog(formData)
@@ -68,6 +80,14 @@ const BlogForm = (props) => {
                     }, 5000)
                 });
     };
+
+    useEffect(() => {
+        // Adds the current param we are at to the blogType so that we can
+        // organize on better in the DB.
+        const { blogType } = params;
+
+        setFilterInput({ blogType });
+    }, [])
 
     return (
         <div className='blog-form-container'>
