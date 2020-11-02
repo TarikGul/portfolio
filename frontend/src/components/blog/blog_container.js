@@ -16,7 +16,7 @@ const msp = state => {
 const mdtp = dispatch => {
     return {
         fetchBlogs: () => dispatch(fetchBlogs()),
-        fetchTypeBlogs: () => dispatch(fetchTypeBlogs()),
+        fetchTypeBlogs: (type) => dispatch(fetchTypeBlogs(type)),
     };
 };
 
