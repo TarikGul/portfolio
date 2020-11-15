@@ -3,6 +3,7 @@ import { RECEIVE_BLOGS, RECEIVE_NEW_BLOG } from '../actions/blog_actions';
 const BlogsReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
+    let replacedState = {};
     let data;
     switch(action.type) {
         case RECEIVE_NEW_BLOG:
@@ -12,9 +13,9 @@ const BlogsReducer = (state = {}, action) => {
         case RECEIVE_BLOGS:
             data = action.data.data
             for(let i = 0; i < data.length; i++) {
-                nextState[i] = data[i]
+                replacedState[i] = data[i]
             }
-            return nextState;
+            return replacedState;
         default:
             return nextState;
     };
