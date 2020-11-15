@@ -32,7 +32,7 @@ const db = require('./config/db');
 // To run mongo in development, write following in command line
 // $ mongod --dbpath /Users/tarik/data
 // Then in a new terminal write
-// $ mongo to access the db with the shell
+// $ mongo  -> to access the db with the shell
 
 // Connect database using mongoose
 mongoose
