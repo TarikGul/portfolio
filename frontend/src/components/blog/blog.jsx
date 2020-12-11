@@ -16,15 +16,16 @@ const Blog = props => {
 
     useEffect(() => {
         // Fetch all the blogs but not sorted
-        // props.fetchBlogs();
+        props.fetchBlogs();
         // Fetch blogs pretaining to the url
-        props.fetchTypeBlogs(params.blogType)
+        // props.fetchTypeBlogs(params.blogType)
 
         // Google analytics - tracking
         if (window.location.hostname !== 'localhost') {
             ReactGA.initialize('UA-162754702-2');
             ReactGA.pageview('/blog');
         }
+        
     }, []);
 
     // This fixes the style bug with the footer.
@@ -32,7 +33,7 @@ const Blog = props => {
     if(posts.length === 0) {
         style['height'] = 'calc(100vh - 60px)'
     }
-
+    
     return (
         <div className='blog-container' style={style}>
             {
@@ -55,7 +56,8 @@ const Blog = props => {
                                         description={post.description}
                                         date={post.date}
                                         quote={post.quote}
-                                        authorQuote={post.authorQuote} />
+                                        authorQuote={post.authorQuote} 
+                                        locationURL={post.locationURL}/>
                                 })
                             ) : (
                                 // lets change this to a no blogs, and add a new blog loader

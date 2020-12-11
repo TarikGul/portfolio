@@ -6,11 +6,27 @@
 
 @media only screen and (min-device-width: 600px) {
     .blog-home-container {
-        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+        align-items: center;
     }
 
     .blog-card {
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+        background-color: rgba(223, 223, 223, 0.925);
+        border-radius: 0.5em;
+        box-shadow: inset;
+        margin: 10px;
+        padding: 5px;
+        color: black;
+    }
 
+    .blog-card-image {
+        width: 200px;
+        height: 200px;
     }
 
     .blog-card-header {
@@ -18,7 +34,8 @@
     }
 
     .blog-card-container {
-
+        display: flex;
+        flex-direction: row;
     }
 
     .blog-card-image {

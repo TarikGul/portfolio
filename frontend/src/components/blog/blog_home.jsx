@@ -76,7 +76,7 @@ const BlogHome = () => {
             {
                 blogCards.map((blogCard, i) => (
                     <BlogCard title={blogCard.title}
-                              url={blogCard.url} 
+                              url={blogCard.path} 
                               description={blogCard.description} 
                               imageUrl={blogCard.imageUrl}
                               key={`blog-card-${i}`}/>
