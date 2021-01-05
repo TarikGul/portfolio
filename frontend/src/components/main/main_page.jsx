@@ -36,7 +36,7 @@ const Main = props => {
             {/* <Timeline /> */}
             <Projects />
             <Skills />
-            <Resume />
+            {/* <Resume /> */}
             <Footer position={'relative'} />
         </div>
     )

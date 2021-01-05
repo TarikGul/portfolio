@@ -73,7 +73,7 @@ const Navbar = memo((props) => {
                             <img className='github-logo' src='/github.svg' width='41' height='41' onClick={() => reRoute('github')} />
                         )
                 }
-                <ResumeButton nav={true} />
+                {/* <ResumeButton nav={true} /> */}
                 {/* <div className='light-toggle'>
                         <img src='/moon.svg' className='moon-svg'/>
                     </div> */}
