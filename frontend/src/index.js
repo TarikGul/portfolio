@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // window.location.href = '/login'; // TODO might change to no redirect
         }
     } else {
-        // If this is a first time user, start with an empty store
+        // If this is a first time user, start with an empty store.
         store = configureStore({});
     }
     // let store = configureStore({});
